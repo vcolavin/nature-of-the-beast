@@ -15,6 +15,8 @@ interface IProps {}
 export default class Terminal extends React.Component<IProps, IState> {
 	constructor(props) {
 		super(props);
+
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
 	state: IState = {
@@ -26,9 +28,34 @@ export default class Terminal extends React.Component<IProps, IState> {
 
 	private inputEl: HTMLInputElement = null;
 
+	private onSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		if (this.inputEl) {
+			this.setState(
+				state => ({
+					bufferItems: [
+						...state.bufferItems,
+						{
+							content: this.inputEl.value,
+							id: uuid()
+						}
+					]
+				}),
+				() => {
+					this.inputEl.value = '';
+				}
+			);
+		}
+	}
+
 	render() {
 		return (
-			<div className="terminal">
+			<div
+				className="terminal"
+				onClick={() => {
+					this.inputEl && this.inputEl.focus();
+				}}
+			>
 				<ul className="terminal-buffer-list">
 					{this.state.bufferItems.map(bufferItem => (
 						<li
@@ -39,18 +66,11 @@ export default class Terminal extends React.Component<IProps, IState> {
 						</li>
 					))}
 				</ul>
-				<form
-					onSubmit={e => {
-						e.preventDefault();
-						console.log(this.inputEl.value);
-					}}
-				>
+				<form onSubmit={this.onSubmit}>
 					<input
 						ref={e => {
-							if (e) {
-								e.focus();
-								this.inputEl = e;
-							}
+							this.inputEl = e;
+							this.inputEl && this.inputEl.focus();
 						}}
 						className="terminal-input"
 						type="text"
