@@ -8,3 +8,7 @@ It shouldn't be too hard.
 
 -   `$ npm install`
 -   `$ npm start`
+
+## To deploy to github pages (found at http://vcolavin.com/nature-of-the-beast/)
+
+-   `$ npm run deploy`
