@@ -1,13 +1,19 @@
 import React from 'react';
 import uuid from '../utils/uuid';
 
-interface IBufferItem {
+interface ICommandItem {
+	content: string;
+	id: string;
+}
+
+interface IHistoryItem {
 	content: string;
 	id: string;
 }
 
 interface IState {
-	bufferItems: IBufferItem[];
+	commandHistory: ICommandItem[];
+	terminalHistory: IHistoryItem[];
 }
 
 interface IProps {}
@@ -16,35 +22,46 @@ export default class Terminal extends React.Component<IProps, IState> {
 	constructor(props) {
 		super(props);
 
-		this.onSubmit = this.onSubmit.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	state: IState = {
-		bufferItems: [
-			{ content: 'test1', id: uuid() },
-			{ content: 'test2', id: uuid() }
-		]
+		terminalHistory: [
+			{ content: 'welcome to the forest', id: uuid() },
+			{ content: 'feel free to look around', id: uuid() }
+		],
+		commandHistory: []
 	};
 
 	private inputEl: HTMLInputElement = null;
 
-	private onSubmit(e: React.FormEvent<HTMLFormElement>) {
+	private handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+		// console.log('oy');
+		// debugger;
+
 		if (this.inputEl) {
-			this.setState(
-				state => ({
-					bufferItems: [
-						...state.bufferItems,
-						{
-							content: this.inputEl.value,
-							id: uuid()
-						}
-					]
-				}),
-				() => {
-					this.inputEl.value = '';
-				}
-			);
+			console.log(this.state.commandHistory.length);
+
+			const val = this.inputEl.value;
+			this.inputEl.value = '';
+
+			this.setState(state => ({
+				commandHistory: [
+					...state.commandHistory,
+					{
+						content: val,
+						id: uuid()
+					}
+				],
+				terminalHistory: [
+					...this.state.terminalHistory,
+					{
+						content: `you wrote ${val}`,
+						id: uuid()
+					}
+				]
+			}));
 		}
 	}
 
@@ -57,16 +74,16 @@ export default class Terminal extends React.Component<IProps, IState> {
 				}}
 			>
 				<ul className="terminal-buffer-list">
-					{this.state.bufferItems.map(bufferItem => (
+					{this.state.terminalHistory.map(historyItem => (
 						<li
 							className="terminal-buffer-list-item"
-							key={bufferItem.id}
+							key={historyItem.id}
 						>
-							{bufferItem.content}
+							{historyItem.content}
 						</li>
 					))}
 				</ul>
-				<form onSubmit={this.onSubmit}>
+				<form onSubmit={this.handleSubmit}>
 					<input
 						ref={e => {
 							this.inputEl = e;
