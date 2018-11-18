@@ -14,17 +14,12 @@ interface IHistoryItem {
 interface IState {
 	commandHistory: ICommandItem[];
 	terminalHistory: IHistoryItem[];
+	currentPlaceInHistory?: number;
 }
 
 interface IProps {}
 
 export default class Terminal extends React.Component<IProps, IState> {
-	constructor(props) {
-		super(props);
-
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
 	state: IState = {
 		terminalHistory: [
 			{ content: 'welcome to the forest', id: uuid() },
@@ -35,35 +30,49 @@ export default class Terminal extends React.Component<IProps, IState> {
 
 	private inputEl: HTMLInputElement = null;
 
-	private handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		switch (e.key) {
+			case 'ArrowUp':
+				console.log('arrow up!');
+				break;
+			case 'ArrowDown':
+				console.log('arrow down!');
+				break;
+		}
+	};
+
+	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// console.log('oy');
-		// debugger;
 
 		if (this.inputEl) {
-			console.log(this.state.commandHistory.length);
-
 			const val = this.inputEl.value;
-			this.inputEl.value = '';
+			this.inputEl.value = '...';
 
-			this.setState(state => ({
-				commandHistory: [
-					...state.commandHistory,
-					{
-						content: val,
-						id: uuid()
+			window.setTimeout(() => {
+				this.setState(
+					state => ({
+						commandHistory: [
+							...state.commandHistory,
+							{
+								content: val,
+								id: uuid()
+							}
+						],
+						terminalHistory: [
+							...this.state.terminalHistory,
+							{
+								content: `you wrote ${val}`,
+								id: uuid()
+							}
+						]
+					}),
+					() => {
+						this.inputEl.value = '';
 					}
-				],
-				terminalHistory: [
-					...this.state.terminalHistory,
-					{
-						content: `you wrote ${val}`,
-						id: uuid()
-					}
-				]
-			}));
+				);
+			}, 300);
 		}
-	}
+	};
 
 	render() {
 		return (
@@ -72,8 +81,9 @@ export default class Terminal extends React.Component<IProps, IState> {
 				onClick={() => {
 					this.inputEl && this.inputEl.focus();
 				}}
+				onKeyDown={this.handleKeyDown}
 			>
-				<pre className="terminal-buffer-list">
+				<pre className="terminal-buffer">
 					{this.state.terminalHistory.reduce(
 						(memo, historyItem) =>
 							`${memo}\n${historyItem.content}`,
