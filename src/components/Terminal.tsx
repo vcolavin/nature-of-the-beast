@@ -73,16 +73,13 @@ export default class Terminal extends React.Component<IProps, IState> {
 					this.inputEl && this.inputEl.focus();
 				}}
 			>
-				<ul className="terminal-buffer-list">
-					{this.state.terminalHistory.map(historyItem => (
-						<li
-							className="terminal-buffer-list-item"
-							key={historyItem.id}
-						>
-							{historyItem.content}
-						</li>
-					))}
-				</ul>
+				<pre className="terminal-buffer-list">
+					{this.state.terminalHistory.reduce(
+						(memo, historyItem) =>
+							`${memo}\n${historyItem.content}`,
+						''
+					)}
+				</pre>
 				<form onSubmit={this.handleSubmit}>
 					<input
 						ref={e => {
