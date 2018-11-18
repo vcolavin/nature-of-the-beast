@@ -19,6 +19,8 @@ interface IState {
 
 interface IProps {}
 
+const INPUT_PROMPT = '~/a/cool/forest > ';
+
 export default class Terminal extends React.Component<IProps, IState> {
 	state: IState = {
 		terminalHistory: [
@@ -46,30 +48,25 @@ export default class Terminal extends React.Component<IProps, IState> {
 
 		if (this.inputEl) {
 			const val = this.inputEl.value;
-			this.inputEl.value = '...';
+			this.inputEl.value = '';
 
 			window.setTimeout(() => {
-				this.setState(
-					state => ({
-						commandHistory: [
-							...state.commandHistory,
-							{
-								content: val,
-								id: uuid()
-							}
-						],
-						terminalHistory: [
-							...this.state.terminalHistory,
-							{
-								content: `you wrote ${val}`,
-								id: uuid()
-							}
-						]
-					}),
-					() => {
-						this.inputEl.value = '';
-					}
-				);
+				this.setState(state => ({
+					commandHistory: [
+						...state.commandHistory,
+						{
+							content: val,
+							id: uuid()
+						}
+					],
+					terminalHistory: [
+						...this.state.terminalHistory,
+						{
+							content: `you wrote ${val}`,
+							id: uuid()
+						}
+					]
+				}));
 			}, 300);
 		}
 	};
@@ -90,14 +87,16 @@ export default class Terminal extends React.Component<IProps, IState> {
 						''
 					)}
 				</pre>
-				<form onSubmit={this.handleSubmit}>
+
+				<form className="input-form" onSubmit={this.handleSubmit}>
+					<span className="input-prompt">{INPUT_PROMPT}</span>
 					<input
+						className="input"
+						type="text"
 						ref={e => {
 							this.inputEl = e;
 							this.inputEl && this.inputEl.focus();
 						}}
-						className="terminal-input"
-						type="text"
 					/>
 				</form>
 			</div>

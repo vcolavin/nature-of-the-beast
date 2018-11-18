@@ -15,11 +15,28 @@
 	bottom: 1rem;
 }
 
-.terminal-input {
+.input-form {
+	display: grid;
+
+	grid-template-columns: min-content auto;
+
+	align-items: end;
+
 	position: absolute;
 	bottom: 0;
+	left: 0;
+	right: 0;
 	outline: 0;
 	height: 1rem;
+}
+
+.input-prompt {
+	padding-right: 3px;
+	background-color: var(--background-color);
+	white-space: nowrap;
+}
+
+.input {
 	font-size: inherit;
 	font-family: inherit;
 	background-color: var(--background-color);
