@@ -27,7 +27,8 @@ export default class Terminal extends React.Component<IProps, IState> {
 			{ content: 'welcome to the forest', id: uuid() },
 			{ content: 'feel free to look around', id: uuid() }
 		],
-		commandHistory: []
+		commandHistory: [],
+		currentPlaceInHistory: 0
 	};
 
 	private inputEl: HTMLInputElement = null;
@@ -42,6 +43,9 @@ export default class Terminal extends React.Component<IProps, IState> {
 				break;
 			case 'Tab':
 				this.writeToConsole('tab completion not yet available');
+				break;
+			default:
+				break;
 		}
 	};
 
@@ -49,16 +53,13 @@ export default class Terminal extends React.Component<IProps, IState> {
 		this.setState(
 			state => {
 				if (
-					state.currentPlaceInHistory ===
-					state.commandHistory.length - 1
+					state.currentPlaceInHistory === state.commandHistory.length
 				) {
 					return;
 				}
 
-				const newPlace = state.currentPlaceInHistory + 1;
-
 				return {
-					currentPlaceInHistory: newPlace
+					currentPlaceInHistory: state.currentPlaceInHistory + 1
 				};
 			},
 			() => {
@@ -87,8 +88,12 @@ export default class Terminal extends React.Component<IProps, IState> {
 				};
 			},
 			() => {
+				// if (this.state.currentPlaceInHistory === 0) {
+				// 	this.inputEl.value = '';
+				// }
+
 				const command = this.state.commandHistory[
-					this.state.currentPlaceInHistory
+					this.state.currentPlaceInHistory + 1
 				];
 
 				if (command) {
