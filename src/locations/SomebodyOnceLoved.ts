@@ -6,4 +6,6 @@ export default class SomebodyOnceLoved extends BaseLocation {
 		'Someone somebody once loved, probably, is sitting at an old kitchen table. They are an adult, but beyond that you struggle to make out anything about them. The stench is magnificent.';
 
 	static neighbors = [ColdCabin];
+
+	static title = 'somebody_once_loved';
 }

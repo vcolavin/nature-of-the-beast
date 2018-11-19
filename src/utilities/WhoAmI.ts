@@ -9,7 +9,7 @@ export default class WhoAmI extends BaseUtility {
 		'You are a grease smudge on a screen',
 		'You were a mistake',
 		'You are a dog lover',
-		'Or, you were a dog lover'
+		'Or you were a dog lover'
 	];
 
 	static run(_args: string[], writeToConsole): void {

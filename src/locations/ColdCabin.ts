@@ -6,4 +6,6 @@ export default class ColdCabin extends BaseLocation {
 	static description = 'it is a cold cabin';
 
 	static neighbors = [QuietForest, SomebodyOnceLoved];
+
+	static title = 'a_cold_cabin';
 }

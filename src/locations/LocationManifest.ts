@@ -4,9 +4,9 @@ import QuietForest from './QuietForest';
 import ColdCabin from './ColdCabin';
 
 const LocationManifest: { [s: string]: typeof BaseLocation } = {
-	someone_somebody_once_loved: SomebodyOnceLoved,
-	a_quiet_forest: QuietForest,
-	a_cold_cabin: ColdCabin
+	[SomebodyOnceLoved.title]: SomebodyOnceLoved,
+	[QuietForest.title]: QuietForest,
+	[ColdCabin.title]: ColdCabin
 };
 
 export default LocationManifest;
