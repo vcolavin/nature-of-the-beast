@@ -13,11 +13,9 @@ export default class WhoAmI extends BaseUtility {
 		'You are a dog lover'
 	];
 
-	static run(_args: string[]): Promise<string> {
-		return new Promise(resolve => {
-			window.setTimeout(() => {
-				resolve(this.responses[this.counter++]);
-			}, 500);
-		});
+	static run(_args: string[], writeToConsole): void {
+		window.setTimeout(() => {
+			writeToConsole(this.responses[this.counter++]);
+		}, 500);
 	}
 }
