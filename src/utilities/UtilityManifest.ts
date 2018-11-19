@@ -6,13 +6,19 @@ import WhoAmI from './WhoAmI';
 import Pwd from './Pwd';
 import Cd from './Cd';
 
-const UtilityManifest: { [s: string]: typeof BaseUtility } = {
-	echo: Echo,
-	help: Help,
-	ls: Ls,
-	whoami: WhoAmI,
-	cd: Cd,
-	pwd: Pwd
-};
+const utilities = [
+	new Echo(),
+	new Help(),
+	new Ls(),
+	new WhoAmI(),
+	new Cd(),
+	new Pwd()
+];
+
+const UtilityManifest: { [s: string]: BaseUtility } = {};
+
+utilities.forEach(utility => {
+	UtilityManifest[utility.command] = utility;
+});
 
 export default UtilityManifest;

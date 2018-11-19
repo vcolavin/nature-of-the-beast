@@ -1,7 +1,7 @@
 import BaseUtility from './BaseUtility';
 
 export default class WhoAmI extends BaseUtility {
-	private static responses: string[] = [
+	private responses: string[] = [
 		"I don't remember",
 		'I am glad you asked. I am glad you are here.',
 		"I don't know who you are",
@@ -12,11 +12,13 @@ export default class WhoAmI extends BaseUtility {
 		'Or you were a dog lover'
 	];
 
-	static run(_args: string[], writeToConsole): void {
+	run(_args: string[], writeToConsole): void {
 		this.responses.forEach((response, index) => {
 			window.setTimeout(() => {
 				writeToConsole(response);
 			}, 1000 + 2500 * index);
 		});
 	}
+
+	command = 'whoami';
 }

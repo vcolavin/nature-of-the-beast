@@ -2,7 +2,7 @@ import BaseUtility from './BaseUtility';
 import BigStateObject from '../BigStateObject';
 
 export default class Cd extends BaseUtility {
-	static run(args: string[], writeToConsole): void {
+	run(args: string[], writeToConsole): void {
 		const newLocation = BigStateObject.location.neighbors.find(location => {
 			return location.slug === args[0];
 		});
@@ -14,4 +14,6 @@ export default class Cd extends BaseUtility {
 
 		writeToConsole(`invalid location ${args[0]}`);
 	}
+
+	command = 'cd';
 }
