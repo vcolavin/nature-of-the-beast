@@ -7,5 +7,5 @@ export default class ColdCabin extends BaseLocation {
 
 	static neighbors = [QuietForest, SomebodyOnceLoved];
 
-	static title = 'a_cold_cabin';
+	static slug = 'a_cold_cabin';
 }

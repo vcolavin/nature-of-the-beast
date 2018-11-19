@@ -4,6 +4,7 @@ import BaseUtility from './BaseUtility';
 import Ls from './Ls';
 import WhoAmI from './WhoAmI';
 import Pwd from './Pwd';
+import Cd from './Cd';
 
 const UtilityManifest: { [s: string]: typeof BaseUtility } = {
 	echo: Echo,

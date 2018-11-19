@@ -1,10 +1,11 @@
 import BaseUtility from './BaseUtility';
-import LocationManifest from '../locations/LocationManifest';
+import BigStateObject from '../BigStateObject';
 
 export default class Ls extends BaseUtility {
 	static run(_args: string[], writeToConsole): void {
 		writeToConsole(
-			Object.keys(LocationManifest)
+			BigStateObject.location.neighbors
+				.map(location => location.slug)
 				.sort()
 				.join('    ')
 		);

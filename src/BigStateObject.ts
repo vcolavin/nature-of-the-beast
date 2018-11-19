@@ -3,12 +3,10 @@ import QuietForest from './locations/QuietForest';
 
 interface BigStateInterface {
 	location: typeof BaseLocation;
-	path: typeof BaseLocation[];
 }
 
 const BigStateObject: BigStateInterface = {
-	location: QuietForest,
-	path: []
+	location: QuietForest
 };
 
 export default BigStateObject;
