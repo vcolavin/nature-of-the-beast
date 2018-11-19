@@ -35,14 +35,67 @@ export default class Terminal extends React.Component<IProps, IState> {
 	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (e.key) {
 			case 'ArrowUp':
-				console.log('arrow up!');
+				this.goBackInHistory();
 				break;
 			case 'ArrowDown':
-				console.log('arrow down!');
+				this.goForwardInHistory();
 				break;
 			case 'Tab':
 				this.writeToConsole('tab completion not yet available');
 		}
+	};
+
+	private goBackInHistory = () => {
+		this.setState(
+			state => {
+				if (
+					state.currentPlaceInHistory ===
+					state.commandHistory.length - 1
+				) {
+					return;
+				}
+
+				const newPlace = state.currentPlaceInHistory + 1;
+
+				return {
+					currentPlaceInHistory: newPlace
+				};
+			},
+			() => {
+				const command = this.state.commandHistory[
+					this.state.currentPlaceInHistory
+				];
+
+				if (command) {
+					this.inputEl.value = command.content;
+				}
+			}
+		);
+	};
+
+	private goForwardInHistory = () => {
+		this.setState(
+			state => {
+				if (state.currentPlaceInHistory === 0) {
+					return;
+				}
+
+				const newPlace = state.currentPlaceInHistory - 1;
+
+				return {
+					currentPlaceInHistory: newPlace
+				};
+			},
+			() => {
+				const command = this.state.commandHistory[
+					this.state.currentPlaceInHistory
+				];
+
+				if (command) {
+					this.inputEl.value = command.content;
+				}
+			}
+		);
 	};
 
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,12 +113,13 @@ export default class Terminal extends React.Component<IProps, IState> {
 	private addToHistory = (value: string) => {
 		this.setState(state => ({
 			commandHistory: [
-				...state.commandHistory,
 				{
 					content: value,
 					id: uuid()
-				}
-			]
+				},
+				...state.commandHistory
+			],
+			currentPlaceInHistory: 0
 		}));
 	};
 
