@@ -40,6 +40,8 @@ export default class Terminal extends React.Component<IProps, IState> {
 			case 'ArrowDown':
 				console.log('arrow down!');
 				break;
+			case 'Tab':
+				this.writeToConsole('tab completion not yet available');
 		}
 	};
 
@@ -47,28 +49,36 @@ export default class Terminal extends React.Component<IProps, IState> {
 		e.preventDefault();
 
 		if (this.inputEl) {
-			const val = this.inputEl.value;
+			const value = this.inputEl.value;
 			this.inputEl.value = '';
 
-			window.setTimeout(() => {
-				this.setState(state => ({
-					commandHistory: [
-						...state.commandHistory,
-						{
-							content: val,
-							id: uuid()
-						}
-					],
-					terminalHistory: [
-						...this.state.terminalHistory,
-						{
-							content: `you wrote ${val}`,
-							id: uuid()
-						}
-					]
-				}));
-			}, 300);
+			this.writeToConsole(`you wrote ${value}. cool.`);
+			this.addToHistory(value);
 		}
+	};
+
+	private addToHistory = (value: string) => {
+		this.setState(state => ({
+			commandHistory: [
+				...state.commandHistory,
+				{
+					content: value,
+					id: uuid()
+				}
+			]
+		}));
+	};
+
+	private writeToConsole = (value: string) => {
+		this.setState(state => ({
+			terminalHistory: [
+				...state.terminalHistory,
+				{
+					content: value,
+					id: uuid()
+				}
+			]
+		}));
 	};
 
 	render() {
