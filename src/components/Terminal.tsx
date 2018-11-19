@@ -18,11 +18,9 @@ interface IState {
 	currentPlaceInHistory?: number;
 }
 
-interface IProps {}
-
 const INPUT_PROMPT = '~/ > ';
 
-export default class Terminal extends React.Component<IProps, IState> {
+export default class Terminal extends React.Component<{}, IState> {
 	state: IState = {
 		terminalHistory: [
 			{ content: 'welcome to the forest', id: uuid() },

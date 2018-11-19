@@ -14,3 +14,14 @@ It shouldn't be too hard.
 found at http://vcolavin.com/nature-of-the-beast/
 
 -   `$ npm run deploy`
+
+### Todo list
+
+-   [ ] keep cursor at the end of the prompt when moving through history
+-   [ ] use Redux instead of a POJO
+-   [ ] fix issue with `ls` and `cd` usage
+-   [ ] tests???? especially for the utilities
+-   [ ] make the console writer function public (i.e. it shouldn't need to be passed explicitly)
+-   [ ] make input prompt change based on location
+-   [ ] get text to wrap correctly on long passages
+-   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
