@@ -1,6 +1,6 @@
 import BaseLocation from './BaseLocation';
 import SomebodyOnceLoved from './SomebodyOnceLoved';
-import { QuietForest } from './QuietForest';
+import QuietForest from './QuietForest';
 import ColdCabin from './ColdCabin';
 
 const locations = [SomebodyOnceLoved, QuietForest, ColdCabin];

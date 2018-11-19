@@ -19,7 +19,7 @@ found at http://vcolavin.com/nature-of-the-beast/
 
 -   [ ] keep cursor at the end of the prompt when moving through history
 -   [ ] use Redux instead of a POJO
--   [ ] fix issue with `ls` and `cd` usage
+-   [ ] fix issue where QuietForest is appearing as undefined in neighbors
 -   [ ] tests???? especially for the utilities
 -   [ ] make the console writer function public (i.e. it shouldn't need to be passed explicitly)
 -   [ ] make input prompt change based on location
