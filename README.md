@@ -25,3 +25,5 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] make input prompt change based on location
 -   [ ] get text to wrap correctly on long passages
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
+-   [ ] date utility (probably replicate `date +%s`)
+-   [ ] uptime utility (this could be a source of spooky mysteries)
