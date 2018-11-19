@@ -1,5 +1,6 @@
 import React from 'react';
 import uuid from '../utils/uuid';
+import UtilityManifest from '../utilities/UtilityManifest';
 
 interface ICommandItem {
 	content: string;
@@ -115,13 +116,21 @@ export default class Terminal extends React.Component<IProps, IState> {
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (this.inputEl) {
-			const value = this.inputValue;
-			this.inputValue = '';
+		const value = this.inputValue;
+		this.inputValue = '';
 
-			this.writeToConsole(`you wrote ${value}`);
-			this.addToCommandHistory(value);
+		this.addToCommandHistory(value);
+
+		const [utilityName, ...args] = value.split(' ');
+
+		const utility = UtilityManifest[utilityName];
+
+		if (!utility) {
+			this.writeToConsole(`unrecognized command ${utilityName}`);
+			return;
 		}
+
+		this.writeToConsole(utility.run(args));
 	};
 
 	private addToCommandHistory = (value: string) => {
