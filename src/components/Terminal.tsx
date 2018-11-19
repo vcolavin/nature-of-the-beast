@@ -20,7 +20,7 @@ interface IState {
 
 interface IProps {}
 
-const INPUT_PROMPT = '~/a/cool/forest > ';
+const INPUT_PROMPT = '~/ > ';
 
 export default class Terminal extends React.Component<IProps, IState> {
 	state: IState = {
