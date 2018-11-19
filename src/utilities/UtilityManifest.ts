@@ -2,11 +2,13 @@ import Echo from './Echo';
 import Help from './Help';
 import BaseUtility from './BaseUtility';
 import Ls from './Ls';
+import WhoAmI from './WhoAmI';
 
-const manifest: { [s: string]: typeof BaseUtility } = {
+const UtilityManifest: { [s: string]: typeof BaseUtility } = {
 	echo: Echo,
 	help: Help,
-	ls: Ls
+	ls: Ls,
+	whoami: WhoAmI
 };
 
-export default manifest;
+export default UtilityManifest;
