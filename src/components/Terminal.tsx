@@ -125,12 +125,12 @@ export default class Terminal extends React.Component<IProps, IState> {
 
 		const utility = UtilityManifest[utilityName];
 
-		if (!utility) {
-			this.writeToConsole(`unrecognized command ${utilityName}`);
-			return;
-		}
+		const response = utility
+			? utility.run(args)
+			: `I don't know how to ${utilityName}`;
 
-		this.writeToConsole(utility.run(args));
+		this.writeToConsole(`${INPUT_PROMPT}${value}`);
+		this.writeToConsole(response);
 	};
 
 	private addToCommandHistory = (value: string) => {
