@@ -28,7 +28,7 @@ export default class Terminal extends React.Component<IProps, IState> {
 			{ content: 'feel free to look around', id: uuid() }
 		],
 		commandHistory: [],
-		currentPlaceInHistory: 0
+		currentPlaceInHistory: -1
 	};
 
 	private inputEl: HTMLInputElement = null;
@@ -53,7 +53,8 @@ export default class Terminal extends React.Component<IProps, IState> {
 		this.setState(
 			state => {
 				if (
-					state.currentPlaceInHistory === state.commandHistory.length
+					state.currentPlaceInHistory ===
+					state.commandHistory.length + 1
 				) {
 					return;
 				}
@@ -68,7 +69,7 @@ export default class Terminal extends React.Component<IProps, IState> {
 				];
 
 				if (command) {
-					this.inputEl.value = command.content;
+					this.inputValue = command.content;
 				}
 			}
 		);
@@ -77,45 +78,53 @@ export default class Terminal extends React.Component<IProps, IState> {
 	private goForwardInHistory = () => {
 		this.setState(
 			state => {
-				if (state.currentPlaceInHistory === 0) {
+				if (state.currentPlaceInHistory === -1) {
 					return;
 				}
 
-				const newPlace = state.currentPlaceInHistory - 1;
-
 				return {
-					currentPlaceInHistory: newPlace
+					currentPlaceInHistory: state.currentPlaceInHistory - 1
 				};
 			},
 			() => {
-				// if (this.state.currentPlaceInHistory === 0) {
-				// 	this.inputEl.value = '';
-				// }
+				if (this.state.currentPlaceInHistory === -1) {
+					this.inputValue = '';
+				}
 
 				const command = this.state.commandHistory[
-					this.state.currentPlaceInHistory + 1
+					this.state.currentPlaceInHistory
 				];
 
 				if (command) {
-					this.inputEl.value = command.content;
+					this.inputValue = command.content;
 				}
 			}
 		);
 	};
 
+	private get inputValue(): string {
+		return this.inputEl && this.inputEl.value;
+	}
+
+	private set inputValue(value: string) {
+		if (this.inputEl) {
+			this.inputEl.value = value;
+		}
+	}
+
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (this.inputEl) {
-			const value = this.inputEl.value;
-			this.inputEl.value = '';
+			const value = this.inputValue;
+			this.inputValue = '';
 
-			this.writeToConsole(`you wrote ${value}. cool.`);
-			this.addToHistory(value);
+			this.writeToConsole(`you wrote ${value}`);
+			this.addToCommandHistory(value);
 		}
 	};
 
-	private addToHistory = (value: string) => {
+	private addToCommandHistory = (value: string) => {
 		this.setState(state => ({
 			commandHistory: [
 				{
@@ -124,7 +133,7 @@ export default class Terminal extends React.Component<IProps, IState> {
 				},
 				...state.commandHistory
 			],
-			currentPlaceInHistory: 0
+			currentPlaceInHistory: -1
 		}));
 	};
 
