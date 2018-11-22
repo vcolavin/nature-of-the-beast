@@ -13,3 +13,8 @@ export default class Location {
 	neighbors: Location[] = [];
 	slug: string;
 }
+
+export const initialLocation = new Location({
+	description: 'locations are still loading',
+	slug: 'loading'
+});
