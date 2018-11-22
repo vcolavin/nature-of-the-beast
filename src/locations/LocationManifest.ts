@@ -1,7 +1,7 @@
 import BaseLocation from './BaseLocation';
 
-import locations from '../../public/data/locations.json';
-import neighbors from '../../public/data/neighbors.json';
+import locations from '../data/locations.json';
+import neighbors from '../data/neighbors.json';
 
 const LocationManifest: { [s: string]: BaseLocation } = {};
 
