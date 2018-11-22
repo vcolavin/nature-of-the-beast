@@ -1,10 +1,11 @@
 import BaseUtility from './BaseUtility';
-import getState from '../BigStateObject';
+import store from '../store';
 
 export default class Ls extends BaseUtility {
 	run(_args: string[], writeToConsole): void {
 		writeToConsole(
-			getState()
+			store
+				.getState()
 				.location.neighbors.map(location => location.slug)
 				.sort()
 				.join('    ')

@@ -1,14 +1,19 @@
 import BaseUtility from './BaseUtility';
-import getState from '../BigStateObject';
+import store, { ActionTypes } from '../store';
 
 export default class Cd extends BaseUtility {
 	run(args: string[], writeToConsole): void {
-		const newLocation = getState().location.neighbors.find(location => {
-			return location.slug === args[0];
-		});
+		const newLocation = store
+			.getState()
+			.location.neighbors.find(location => {
+				return location.slug === args[0];
+			});
 
 		if (newLocation) {
-			getState().location = newLocation;
+			store.dispatch({
+				type: ActionTypes.SET_LOCATION,
+				value: newLocation
+			});
 			return;
 		}
 

@@ -1,9 +1,9 @@
 import BaseUtility from './BaseUtility';
-import getState from '../BigStateObject';
+import store from '../store';
 
 export default class Pwd extends BaseUtility {
 	run(_args: string[], writeToConsole): void {
-		writeToConsole(getState().location.description);
+		writeToConsole(store.getState().location.description);
 	}
 
 	command = 'pwd';
