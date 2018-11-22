@@ -10,6 +10,6 @@ export default class BaseLocation {
 	}
 
 	description: string;
-	neighbors: BaseLocation[];
+	neighbors: BaseLocation[] = [];
 	slug: string;
 }
