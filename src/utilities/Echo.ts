@@ -1,7 +1,7 @@
-import BaseUtility from './BaseUtility';
+import BaseUtility, { RunParams } from './BaseUtility';
 
 export default class Echo extends BaseUtility {
-	run(args: string[], writeToConsole): void {
+	run({ args, writeToConsole }: RunParams): void {
 		writeToConsole(args.join(' '));
 	}
 

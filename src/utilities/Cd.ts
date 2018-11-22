@@ -1,8 +1,8 @@
-import BaseUtility from './BaseUtility';
+import BaseUtility, { RunParams } from './BaseUtility';
 import store, { ActionTypes } from '../store';
 
 export default class Cd extends BaseUtility {
-	run(args: string[], writeToConsole): void {
+	run({ args, writeToConsole }: RunParams): void {
 		const newLocation = store
 			.getState()
 			.location.neighbors.find(location => {

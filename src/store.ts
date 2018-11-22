@@ -7,8 +7,7 @@ interface State {
 }
 
 export enum ActionTypes {
-	SET_LOCATION = 'SET_LOCATION',
-	OTHER_ACTION = 'IDK'
+	SET_LOCATION = 'SET_LOCATION'
 }
 
 interface SetLocationAction {

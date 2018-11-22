@@ -1,8 +1,8 @@
-import BaseUtility from './BaseUtility';
+import BaseUtility, { RunParams } from './BaseUtility';
 import store from '../store';
 
 export default class Ls extends BaseUtility {
-	run(_args: string[], writeToConsole): void {
+	run({ writeToConsole }: RunParams): void {
 		writeToConsole(
 			store
 				.getState()

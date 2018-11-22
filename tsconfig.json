@@ -12,7 +12,7 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "preserve",
-		"strict": false
+		"strict": true
 	},
 	"include": ["src"]
 }

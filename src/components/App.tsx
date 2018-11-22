@@ -6,8 +6,10 @@ import LocationManifest, {
 import { initializeUtilities } from '../utilities/UtilityManifest';
 import store, { ActionTypes } from '../store';
 
-export default class App extends React.Component {
-	constructor(props) {
+interface Props {}
+
+export default class App extends React.Component<Props, {}> {
+	constructor(props: Props) {
 		super(props);
 
 		initializeLocations();

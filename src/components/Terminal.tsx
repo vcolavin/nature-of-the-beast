@@ -15,7 +15,7 @@ interface IHistoryItem {
 interface IState {
 	commandHistory: ICommandItem[];
 	terminalHistory: IHistoryItem[];
-	currentPlaceInHistory?: number;
+	currentPlaceInHistory: number;
 }
 
 const INPUT_PROMPT = '~/ > ';
@@ -30,7 +30,7 @@ export default class Terminal extends React.Component<{}, IState> {
 		currentPlaceInHistory: -1
 	};
 
-	private inputEl: HTMLInputElement = null;
+	private inputEl: HTMLInputElement | null = null;
 
 	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (e.key) {
@@ -55,7 +55,7 @@ export default class Terminal extends React.Component<{}, IState> {
 					state.currentPlaceInHistory ===
 					state.commandHistory.length + 1
 				) {
-					return;
+					return null;
 				}
 
 				return {
@@ -78,7 +78,7 @@ export default class Terminal extends React.Component<{}, IState> {
 		this.setState(
 			state => {
 				if (state.currentPlaceInHistory === -1) {
-					return;
+					return null;
 				}
 
 				return {

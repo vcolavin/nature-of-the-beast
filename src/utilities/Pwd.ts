@@ -1,8 +1,8 @@
-import BaseUtility from './BaseUtility';
+import BaseUtility, { RunParams } from './BaseUtility';
 import store from '../store';
 
 export default class Pwd extends BaseUtility {
-	run(_args: string[], writeToConsole): void {
+	run({ writeToConsole }: RunParams): void {
 		writeToConsole(store.getState().location.description);
 	}
 

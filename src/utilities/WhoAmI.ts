@@ -1,4 +1,4 @@
-import BaseUtility from './BaseUtility';
+import BaseUtility, { RunParams } from './BaseUtility';
 
 export default class WhoAmI extends BaseUtility {
 	private responses: string[] = [
@@ -12,7 +12,7 @@ export default class WhoAmI extends BaseUtility {
 		'Or you were a dog lover'
 	];
 
-	run(_args: string[], writeToConsole): void {
+	run({ writeToConsole }: RunParams): void {
 		this.responses.forEach((response, index) => {
 			window.setTimeout(() => {
 				writeToConsole(response);
