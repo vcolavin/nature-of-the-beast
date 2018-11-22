@@ -18,13 +18,13 @@ found at http://vcolavin.com/nature-of-the-beast/
 ### Todo list
 
 -   [ ] keep cursor at the end of the prompt when moving through history
--   [ ] use Redux instead of a POJO
--   [ ] fix issue where QuietForest is appearing as undefined in neighbors
+-   [x] use Redux instead of a POJO
+-   [x] fix issue where QuietForest is appearing as undefined in neighbors
 -   [ ] tests???? especially for the utilities
--   [ ] make the console writer function public (i.e. it shouldn't need to be passed explicitly)
+-   [ ] make the console writer function public (i.e. it shouldn't need to be passed explicitly) (actually I don't know about this one)
 -   [ ] make input prompt change based on location
--   [ ] get text to wrap correctly on long passages
+-   [x] get text to wrap correctly on long passages
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
 -   [ ] date utility (probably replicate `date +%s`)
 -   [ ] uptime utility (this could be a source of spooky mysteries)
--   [] Switich typescript back to strict mode
+-   [ ] Switich typescript back to strict mode
