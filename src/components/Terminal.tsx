@@ -102,7 +102,7 @@ export default class Terminal extends React.Component<{}, IState> {
 	};
 
 	private get inputValue(): string {
-		return this.inputEl && this.inputEl.value;
+		return this.inputEl ? this.inputEl.value : '';
 	}
 
 	private set inputValue(value: string) {
@@ -126,7 +126,7 @@ export default class Terminal extends React.Component<{}, IState> {
 		this.writeToConsole(`${INPUT_PROMPT}${value}`);
 
 		utility
-			? utility.run(args, this.writeToConsole)
+			? utility.run({ args, writeToConsole: this.writeToConsole })
 			: this.writeToConsole(`I don't know how to ${utilityName}`);
 	};
 
