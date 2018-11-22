@@ -20,8 +20,9 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] keep cursor at the end of the prompt when moving through history
 -   [x] use Redux instead of a POJO
 -   [x] fix issue where QuietForest is appearing as undefined in neighbors
+-   [x] tab completion
 -   [ ] tests???? especially for the utilities
--   [ ] make the console writer function public (i.e. it shouldn't need to be passed explicitly) (actually I don't know about this one)
+-   [ ] Make the console writing permission revocable, or make running utilities cancellable. E.g. we don't want `whoami` to run through its whole dialog if we've `cd`'d to another location
 -   [ ] make input prompt change based on location
 -   [x] get text to wrap correctly on long passages
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)

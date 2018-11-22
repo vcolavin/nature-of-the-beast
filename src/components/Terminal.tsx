@@ -38,6 +38,7 @@ export default class Terminal extends React.Component<{}, IState> {
 		switch (e.key) {
 			case 'ArrowUp':
 				this.goBackInHistory();
+				this.moveCursorToEnd();
 				break;
 			case 'ArrowDown':
 				this.goForwardInHistory();
@@ -74,7 +75,7 @@ export default class Terminal extends React.Component<{}, IState> {
 		} else if (options.length > 1) {
 			this.writeToConsole(
 				options.reduce(
-					(memo: string, option: string) => `${memo}   ${option}`
+					(memo: string, option: string) => `${memo}    ${option}`
 				)
 			);
 		}
@@ -104,6 +105,19 @@ export default class Terminal extends React.Component<{}, IState> {
 				}
 			}
 		);
+	};
+
+	// from https://stackoverflow.com/a/6249440
+	// TODO: This whole dang function
+	private moveCursorToEnd = () => {
+		const anyEl = this.inputEl as any;
+
+		const range = document.createRange();
+		const selection = window.getSelection();
+
+		// debugger;
+		// range.setStart(this.inputEl.childNodes)
+		this.inputEl;
 	};
 
 	private goForwardInHistory = () => {
