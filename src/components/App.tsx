@@ -8,6 +8,8 @@ import store, { ActionTypes } from '../store';
 
 interface Props {}
 
+const INITIAL_LOCATION_SLUG = 'a_quiet_forest';
+
 export default class App extends React.Component<Props, {}> {
 	constructor(props: Props) {
 		super(props);
@@ -17,7 +19,7 @@ export default class App extends React.Component<Props, {}> {
 
 		store.dispatch({
 			type: ActionTypes.SET_LOCATION,
-			value: LocationManifest['a_quiet_forest']
+			value: LocationManifest[INITIAL_LOCATION_SLUG]
 		});
 	}
 
