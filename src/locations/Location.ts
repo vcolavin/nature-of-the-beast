@@ -3,13 +3,13 @@ interface args {
 	description: string;
 }
 
-export default class BaseLocation {
+export default class Location {
 	constructor({ description, slug }: args) {
 		this.description = description;
 		this.slug = slug;
 	}
 
 	description: string;
-	neighbors: BaseLocation[] = [];
+	neighbors: Location[] = [];
 	slug: string;
 }

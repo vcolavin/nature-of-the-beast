@@ -1,9 +1,9 @@
-import BaseLocation from './BaseLocation';
+import Location from './Location';
 
 import locations from '../data/locations.json';
 import neighbors from '../data/neighbors.json';
 
-const LocationManifest: { [s: string]: BaseLocation } = {};
+const LocationManifest: { [s: string]: Location } = {};
 
 let hasRun: boolean = false;
 
@@ -15,7 +15,7 @@ export function initializeLocations() {
 	hasRun = true;
 
 	locations.forEach(location => {
-		LocationManifest[location.slug] = new BaseLocation(location);
+		LocationManifest[location.slug] = new Location(location);
 	});
 
 	neighbors.forEach(neighborPair => {
