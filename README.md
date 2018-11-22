@@ -27,3 +27,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
 -   [ ] date utility (probably replicate `date +%s`)
 -   [ ] uptime utility (this could be a source of spooky mysteries)
+-   [] Switich typescript back to strict mode
