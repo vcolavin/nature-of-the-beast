@@ -1,14 +1,14 @@
 import BaseUtility from './BaseUtility';
-import BigStateObject from '../BigStateObject';
+import getState from '../BigStateObject';
 
 export default class Cd extends BaseUtility {
 	run(args: string[], writeToConsole): void {
-		const newLocation = BigStateObject.location.neighbors.find(location => {
+		const newLocation = getState().location.neighbors.find(location => {
 			return location.slug === args[0];
 		});
 
 		if (newLocation) {
-			BigStateObject.location = newLocation;
+			getState().location = newLocation;
 			return;
 		}
 

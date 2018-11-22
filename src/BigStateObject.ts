@@ -1,11 +1,12 @@
 import BaseLocation from './locations/BaseLocation';
+import LocationManifest from './locations/LocationManifest';
 
-interface BigStateInterface {
-	location: typeof BaseLocation;
+interface BigStateObject {
+	location: BaseLocation;
 }
 
-const BigStateObject: BigStateInterface = {
-	location: QuietForest
-};
-
-export default BigStateObject;
+export default function getState(): BigStateObject {
+	return {
+		location: LocationManifest['a_quiet_forest']
+	};
+}
