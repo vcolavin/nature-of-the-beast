@@ -6,19 +6,29 @@ import WhoAmI from './WhoAmI';
 import Pwd from './Pwd';
 import Cd from './Cd';
 
-const utilities = [
-	new Echo(),
-	new Help(),
-	new Ls(),
-	new WhoAmI(),
-	new Cd(),
-	new Pwd()
-];
-
 const UtilityManifest: { [s: string]: BaseUtility } = {};
 
-utilities.forEach(utility => {
-	UtilityManifest[utility.command] = utility;
-});
+let hasRun: boolean = false;
+
+export function initializeUtilities() {
+	if (hasRun) {
+		return;
+	}
+
+	hasRun = true;
+
+	const utilities = [
+		new Echo(),
+		new Help(),
+		new Ls(),
+		new WhoAmI(),
+		new Cd(),
+		new Pwd()
+	];
+
+	utilities.forEach(utility => {
+		UtilityManifest[utility.command] = utility;
+	});
+}
 
 export default UtilityManifest;

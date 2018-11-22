@@ -1,5 +1,15 @@
+interface args {
+	slug: string;
+	description: string;
+}
+
 export default class BaseLocation {
-	static description: string;
-	static neighbors: typeof BaseLocation[];
-	static slug: string;
+	constructor({ description, slug }: args) {
+		this.description = description;
+		this.slug = slug;
+	}
+
+	description: string;
+	neighbors: BaseLocation[];
+	slug: string;
 }
