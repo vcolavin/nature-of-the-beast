@@ -1,6 +1,8 @@
 import React from 'react';
 import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
+import store from '../store';
+import Location from '../locations/Location';
 
 interface ICommandItem {
 	content: string;
@@ -41,10 +43,40 @@ export default class Terminal extends React.Component<{}, IState> {
 				this.goForwardInHistory();
 				break;
 			case 'Tab':
-				this.writeToConsole('tab completion not yet available');
+				e.preventDefault();
+				this.tabComplete();
 				break;
 			default:
-				break;
+		}
+	};
+
+	private tabComplete = () => {
+		if (this.inputValue === '') {
+			return;
+		}
+
+		// TODO: Regex could probably do a better job of this
+		let [command, currentVal] = this.inputValue.split(' ');
+
+		if (typeof currentVal === 'undefined') {
+			currentVal = '';
+		}
+
+		const options = store
+			.getState()
+			.location.neighbors.filter(
+				(location: Location) => location.slug.indexOf(currentVal) === 0
+			)
+			.map((location: Location) => location.slug);
+
+		if (options.length === 1) {
+			this.inputValue = `${command} ${options[0]}`;
+		} else if (options.length > 1) {
+			this.writeToConsole(
+				options.reduce(
+					(memo: string, option: string) => `${memo}   ${option}`
+				)
+			);
 		}
 	};
 
