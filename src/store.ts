@@ -17,10 +17,10 @@ interface SetLocationAction {
 
 // to add new action types, add to the union type like this:
 /* type Action = SetLocationAction | OtherAction | TestAction; */
-type Action = SetLocationAction;
+type CombinedActions = SetLocationAction;
 
-function reducer(state?: State, action?: Action): State {
-	if (!state) {
+function reducer(state?: State, action?: CombinedActions): State {
+	if (!state || !action) {
 		return {
 			location: initialLocation
 		};
