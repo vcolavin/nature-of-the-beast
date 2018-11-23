@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, Action } from 'redux';
 
 import Location, { initialLocation } from './locations/Location';
 
@@ -10,7 +10,7 @@ export enum ActionTypes {
 	SET_LOCATION = 'SET_LOCATION'
 }
 
-interface SetLocationAction {
+interface SetLocationAction extends Action {
 	type: ActionTypes.SET_LOCATION;
 	value: Location;
 }
