@@ -1,5 +1,4 @@
-import { createStore, Action } from 'redux';
-
+import { createStore, AnyAction } from 'redux';
 import Location, { initialLocation } from './locations/Location';
 
 interface State {
@@ -10,25 +9,28 @@ export enum ActionTypes {
 	SET_LOCATION = 'SET_LOCATION'
 }
 
-interface SetLocationAction extends Action {
+interface SetLocation {
 	type: ActionTypes.SET_LOCATION;
 	value: Location;
 }
 
+const initialState: State = {
+	location: initialLocation
+};
+
 // to add new action types, add to the union type like this:
-/* type Action = SetLocationAction | OtherAction | TestAction; */
-type CombinedActions = SetLocationAction;
+// type Action = SetLocation | OtherAction | TestAction;
+type CombinedAction = SetLocation;
 
-function reducer(state?: State, action?: CombinedActions): State {
-	if (!state || !action) {
-		return {
-			location: initialLocation
-		};
-	}
+function reducer(state: State = initialState, action: AnyAction): State {
+	// I don't understand TS deeply enough to know why this is necessary
+	// but it certainly is
+	// https://github.com/reduxjs/redux/pull/2467
+	const typedAction = action as CombinedAction;
 
-	switch (action.type) {
+	switch (typedAction.type) {
 		case ActionTypes.SET_LOCATION:
-			return { ...state, location: action.value };
+			return { ...state, location: typedAction.value };
 		default:
 			return state;
 	}
