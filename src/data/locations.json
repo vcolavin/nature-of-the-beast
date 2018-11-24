@@ -3,18 +3,22 @@
 		"slug": "a_quiet_forest",
 		"descriptions": [
 			{
-				"text": "it is early morning"
+				"text": "it is early morning",
+				"timer": 100
 			},
 			{
-				"text": "cold rain is melting the remaining snow hanging from the boughs of the surround trees"
+				"text": "cold rain is melting the remaining snow hanging from the boughs of the surround trees",
+				"timer": 1500
 			},
 			{
-				"text": "you are surrounded by evergreens."
+				"text": "you are surrounded by evergreens.",
+				"timer": 500
 			},
+			{ "text": "douglas fir", "timer": 1000 },
 			{
-				"text": "douglas fir"
-			},
-			{ "text": "you can make out a path heading into the fog" }
+				"text": "you can make out a path heading into the fog",
+				"timer": 1500
+			}
 		]
 	},
 	{

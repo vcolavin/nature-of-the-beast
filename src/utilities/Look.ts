@@ -3,10 +3,15 @@ import store from '../store';
 
 export default class Look extends BaseUtility {
 	run({ writeToConsole }: RunParams): void {
-		store.getState().location.descriptions.forEach((description, index) => {
+		let timeAccumulator = 0;
+
+		store.getState().location.descriptions.forEach(description => {
+			timeAccumulator += description.timer || 2500;
+			const timer = timeAccumulator;
+
 			window.setTimeout(() => {
 				writeToConsole(description.text);
-			}, description.timer || 2500 * index);
+			}, timer);
 		});
 	}
 
