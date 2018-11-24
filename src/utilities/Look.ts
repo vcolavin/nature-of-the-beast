@@ -7,11 +7,10 @@ export default class Look extends BaseUtility {
 
 		store.getState().location.descriptions.forEach(description => {
 			timeAccumulator += description.timer || 2500;
-			const timer = timeAccumulator;
 
 			window.setTimeout(() => {
 				writeToConsole(description.text);
-			}, timer);
+			}, timeAccumulator);
 		});
 	}
 
