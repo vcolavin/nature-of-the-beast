@@ -1,14 +1,44 @@
 [
 	{
 		"slug": "a_quiet_forest",
-		"description": "It is early morning. Cold rain is melting the remaining pieces of ice and snow clinging to the evergreens and you can hear them falling around you. Some of them are large enough to be dangerous, but mostly it is just uncomfortable. Your cotton blouse is not keeping you warm."
+		"descriptions": [
+			{
+				"text": "it is early morning"
+			},
+			{
+				"text": "cold rain is melting the remaining snow hanging from the boughs of the surround trees"
+			},
+			{
+				"text": "you are surrounded by evergreens."
+			},
+			{
+				"text": "douglas fir"
+			},
+			{ "text": "you can make out a path heading into the fog" }
+		]
 	},
 	{
 		"slug": "a_cold_cabin",
-		"description": "it is a cold cabin"
+		"descriptions": [
+			{ "text": "it is a cold cabin" },
+			{
+				"text": "someone somebody once loved, probably, is here"
+			},
+			{
+				"text": "sitting alone at a table set for two,"
+			},
+			{ "text": "dead." },
+			{
+				"text": "diffuse light flows and pools and illuminates"
+			}
+		]
 	},
 	{
 		"slug": "somebody_once_loved",
-		"description": "Someone somebody once loved, probably, is sitting at an old kitchen table. They are an adult, but beyond that you struggle to make out anything about them. The stench is magnificent."
+		"descriptions": [
+			{
+				"text": "They are an adult, but beyond that you struggle to make out anything about them. The stench is magnificent."
+			}
+		]
 	}
 ]

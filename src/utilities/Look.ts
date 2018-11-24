@@ -3,7 +3,11 @@ import store from '../store';
 
 export default class Look extends BaseUtility {
 	run({ writeToConsole }: RunParams): void {
-		writeToConsole(store.getState().location.description);
+		store.getState().location.descriptions.forEach((description, index) => {
+			window.setTimeout(() => {
+				writeToConsole(description.text);
+			}, description.timer || 2500 * index);
+		});
 	}
 
 	command = 'look';

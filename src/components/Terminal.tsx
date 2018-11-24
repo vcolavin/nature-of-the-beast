@@ -25,7 +25,9 @@ interface ConsoleWriter {
 	writeToConsole: (string: string) => void;
 }
 
-const INPUT_PROMPT = '~/ > ';
+function inputPrompt(): string {
+	return `~/${store.getState().location.slug} > `;
+}
 export const TAB_WIDTH = '    ';
 
 export default class Terminal extends React.Component<{}, IState> {
@@ -198,7 +200,7 @@ export default class Terminal extends React.Component<{}, IState> {
 
 		const utility = UtilityManifest[utilityName];
 
-		this.writeToConsole(`${INPUT_PROMPT}${value}`);
+		this.writeToConsole(`${inputPrompt()}${value}`);
 
 		if (utility) {
 			const revocableConsoleWriter = this.getRevocableConsoleWriter();
@@ -256,7 +258,7 @@ export default class Terminal extends React.Component<{}, IState> {
 				</pre>
 
 				<form className="input-form" onSubmit={this.handleSubmit}>
-					<span className="input-prompt">{INPUT_PROMPT}</span>
+					<span className="input-prompt">{inputPrompt()}</span>
 					<input
 						className="input"
 						type="text"

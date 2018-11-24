@@ -1,20 +1,25 @@
-interface args {
+interface Description {
+	text: string;
+	timer?: number;
+}
+
+interface Args {
 	slug: string;
-	description: string;
+	descriptions: Description[];
 }
 
 export default class Location {
-	constructor({ description, slug }: args) {
-		this.description = description;
+	constructor({ descriptions, slug }: Args) {
+		this.descriptions = descriptions;
 		this.slug = slug;
 	}
 
-	description: string;
+	descriptions: Description[];
 	neighbors: Location[] = [];
 	slug: string;
 }
 
 export const initialLocation = new Location({
-	description: 'locations are still loading',
+	descriptions: [{ text: 'locations are still loading' }],
 	slug: 'loading'
 });
