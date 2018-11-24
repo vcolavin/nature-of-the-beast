@@ -17,7 +17,7 @@ found at http://vcolavin.com/nature-of-the-beast/
 
 ### Todo list
 
--   [ ] keep cursor at the end of the prompt when moving through history
+-   [x] keep cursor at the end of the prompt when moving through history
 -   [x] use Redux instead of a POJO
 -   [x] fix issue where QuietForest is appearing as undefined in neighbors
 -   [x] tab completion
@@ -29,3 +29,5 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] date utility (probably replicate `date +%s`)
 -   [ ] uptime utility (this could be a source of spooky mysteries)
 -   [x] Switich typescript back to strict mode
+-   [ ] Use location API to change some things about the story
+-   [ ] Create an ambient sound visualizer
