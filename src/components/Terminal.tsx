@@ -21,6 +21,7 @@ interface IState {
 }
 
 const INPUT_PROMPT = '~/ > ';
+export const TAB_WIDTH = '    ';
 
 export default class Terminal extends React.Component<{}, IState> {
 	state: IState = {
@@ -76,7 +77,8 @@ export default class Terminal extends React.Component<{}, IState> {
 		} else if (options.length > 1) {
 			this.writeToConsole(
 				options.reduce(
-					(memo: string, option: string) => `${memo}    ${option}`
+					(memo: string, option: string) =>
+						`${memo}${TAB_WIDTH}${option}`
 				)
 			);
 		}

@@ -1,6 +1,7 @@
 import BaseUtility, { RunParams } from './BaseUtility';
 import store from '../store';
 import Location from '../locations/Location';
+import { TAB_WIDTH } from '../components/Terminal';
 
 export default class Ls extends BaseUtility {
 	run({ writeToConsole }: RunParams): void {
@@ -9,7 +10,7 @@ export default class Ls extends BaseUtility {
 				.getState()
 				.location.neighbors.map((location: Location) => location.slug)
 				.sort()
-				.join('    ')
+				.join(TAB_WIDTH)
 		);
 	}
 
