@@ -42,6 +42,7 @@ export default class Terminal extends React.Component<{}, IState> {
 				break;
 			case 'ArrowDown':
 				this.goForwardInHistory();
+				this.moveCursorToEnd();
 				break;
 			case 'Tab':
 				e.preventDefault();
@@ -107,17 +108,12 @@ export default class Terminal extends React.Component<{}, IState> {
 		);
 	};
 
-	// from https://stackoverflow.com/a/6249440
-	// TODO: This whole dang function
 	private moveCursorToEnd = () => {
-		const anyEl = this.inputEl as any;
-
-		const range = document.createRange();
-		const selection = window.getSelection();
-
-		// debugger;
-		// range.setStart(this.inputEl.childNodes)
-		this.inputEl;
+		window.setTimeout(() => {
+			if (this.inputEl) {
+				this.inputEl.selectionStart = 1000;
+			}
+		}, 0);
 	};
 
 	private goForwardInHistory = () => {
