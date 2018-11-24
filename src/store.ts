@@ -1,4 +1,4 @@
-import { createStore, AnyAction } from 'redux';
+import { createStore } from 'redux';
 import Location, { initialLocation } from './locations/Location';
 
 interface State {
@@ -22,15 +22,10 @@ const initialState: State = {
 // type Action = SetLocation | OtherAction | TestAction;
 type CombinedAction = SetLocation;
 
-function reducer(state: State = initialState, action: AnyAction): State {
-	// I don't understand TS deeply enough to know why this is necessary
-	// but it certainly is
-	// https://github.com/reduxjs/redux/pull/2467
-	const typedAction = action as CombinedAction;
-
-	switch (typedAction.type) {
+function reducer(state: State = initialState, action: CombinedAction): State {
+	switch (action.type) {
 		case ActionTypes.SET_LOCATION:
-			return { ...state, location: typedAction.value };
+			return { ...state, location: action.value };
 		default:
 			return state;
 	}
