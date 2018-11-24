@@ -20,6 +20,11 @@ interface IState {
 	currentPlaceInHistory: number;
 }
 
+interface ConsoleWriter {
+	revoke: () => void;
+	writeToConsole: (string: string) => void;
+}
+
 const INPUT_PROMPT = '~/ > ';
 export const TAB_WIDTH = '    ';
 
@@ -34,6 +39,7 @@ export default class Terminal extends React.Component<{}, IState> {
 	};
 
 	private inputEl: HTMLInputElement | null = null;
+	private consoleWriters: ConsoleWriter[] = [];
 
 	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (e.key) {
@@ -155,11 +161,36 @@ export default class Terminal extends React.Component<{}, IState> {
 		}
 	}
 
+	private getRevocableConsoleWriter(): ConsoleWriter {
+		let revoked = false;
+
+		return {
+			revoke: () => {
+				revoked = true;
+			},
+			writeToConsole: (string: string) => {
+				if (!revoked) {
+					this.writeToConsole(string);
+				}
+			}
+		};
+	}
+
+	private revokeConsoleWriters(): void {
+		this.consoleWriters.forEach(writer => {
+			writer.revoke();
+		});
+
+		this.consoleWriters = [];
+	}
+
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const value = this.inputValue;
 		this.inputValue = '';
+
+		this.revokeConsoleWriters();
 
 		this.addToCommandHistory(value);
 
@@ -169,9 +200,17 @@ export default class Terminal extends React.Component<{}, IState> {
 
 		this.writeToConsole(`${INPUT_PROMPT}${value}`);
 
-		utility
-			? utility.run({ args, writeToConsole: this.writeToConsole })
-			: this.writeToConsole(`I don't know how to ${utilityName}`);
+		if (utility) {
+			const revocableConsoleWriter = this.getRevocableConsoleWriter();
+			this.consoleWriters.push(revocableConsoleWriter);
+
+			utility.run({
+				args,
+				writeToConsole: revocableConsoleWriter.writeToConsole
+			});
+		} else {
+			this.writeToConsole(`I don't know how to ${utilityName}`);
+		}
 	};
 
 	private addToCommandHistory = (value: string) => {
