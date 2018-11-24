@@ -3,7 +3,7 @@ import Help from './Help';
 import BaseUtility from './BaseUtility';
 import Ls from './Ls';
 import WhoAmI from './WhoAmI';
-import Pwd from './Pwd';
+import Look from './Look';
 import Cd from './Cd';
 
 const UtilityManifest: { [s: string]: BaseUtility } = {};
@@ -23,7 +23,7 @@ export function initializeUtilities() {
 		new Ls(),
 		new WhoAmI(),
 		new Cd(),
-		new Pwd()
+		new Look()
 	];
 
 	utilities.forEach(utility => {

@@ -28,6 +28,8 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
 -   [ ] date utility (probably replicate `date +%s`)
 -   [ ] uptime utility (this could be a source of spooky mysteries)
--   [x] Switich typescript back to strict mode
+-   [x] Switch typescript back to strict mode
 -   [ ] Use location API to change some things about the story
 -   [ ] Create an ambient sound visualizer
+-   [ ] introduce concept of aliased utilities
+-   [ ] make locations a little more complicated. can they behave anything like the "whoami" tool?
