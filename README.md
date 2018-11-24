@@ -32,4 +32,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] Use location API to change some things about the story
 -   [ ] Create an ambient sound visualizer
 -   [ ] introduce concept of aliased utilities
--   [ ] make locations a little more complicated. can they behave anything like the "whoami" tool?
+-   [x] make locations a little more complicated. can they behave anything like the "whoami" tool?
