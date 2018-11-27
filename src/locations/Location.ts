@@ -1,3 +1,5 @@
+import LocationManifest from './LocationManifest';
+
 interface Description {
 	text: string;
 	timer?: number;
@@ -15,11 +17,10 @@ export default class Location {
 	}
 
 	descriptions: Description[];
-	neighbors: Location[] = [];
+	neighborSlugs: string[] = [];
 	slug: string;
-}
 
-export const initialLocation = new Location({
-	descriptions: [{ text: 'locations are still loading' }],
-	slug: 'loading'
-});
+	get neighbors(): Location[] {
+		return this.neighborSlugs.map(slug => LocationManifest[slug]);
+	}
+}

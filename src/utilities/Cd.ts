@@ -1,5 +1,5 @@
 import BaseUtility, { RunParams } from './BaseUtility';
-import store, { ActionTypes } from '../store';
+import store, { ActionTypes, getCurrentLocation } from '../store';
 import Location from '../locations/Location';
 
 export default class Cd extends BaseUtility {
@@ -24,11 +24,9 @@ export default class Cd extends BaseUtility {
 			return;
 		}
 
-		const newLocation = store
-			.getState()
-			.location.neighbors.find((location: Location) => {
-				return location.slug === args[0];
-			});
+		const newLocation = getCurrentLocation().neighbors.find(
+			(location: Location) => location.slug === args[0]
+		);
 
 		if (newLocation) {
 			store.dispatch({
@@ -38,7 +36,7 @@ export default class Cd extends BaseUtility {
 
 			store.dispatch({
 				type: ActionTypes.SET_LOCATION,
-				value: newLocation
+				value: newLocation.slug
 			});
 			return;
 		}

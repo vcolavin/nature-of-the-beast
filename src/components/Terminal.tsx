@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
-import store from '../store';
+import store, { getCurrentLocation } from '../store';
 import Location from '../locations/Location';
 
 interface ICommandItem {
@@ -26,7 +26,7 @@ interface ConsoleWriter {
 }
 
 function inputPrompt(): string {
-	return `~/${store.getState().location.slug} > `;
+	return `~/${store.getState().location} > `;
 }
 export const TAB_WIDTH = '    ';
 
@@ -73,9 +73,8 @@ export default class Terminal extends React.Component<{}, IState> {
 			currentVal = '';
 		}
 
-		const options = store
-			.getState()
-			.location.neighbors.filter(
+		const options = getCurrentLocation()
+			.neighbors.filter(
 				(location: Location) => location.slug.indexOf(currentVal) === 0
 			)
 			.map((location: Location) => location.slug);

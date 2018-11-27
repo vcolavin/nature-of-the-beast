@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
-import Location, { initialLocation } from './locations/Location';
+import Location from './locations/Location';
+import LocationManifest, { loading } from './locations/LocationManifest';
 
 interface State {
-	location: Location;
-	previousLocationStack: Location[];
+	location: string;
+	previousLocationStack: string[];
 }
 
 export enum ActionTypes {
@@ -14,7 +15,7 @@ export enum ActionTypes {
 
 interface SetLocation {
 	type: ActionTypes.SET_LOCATION;
-	value: Location;
+	value: string;
 }
 
 interface PopLocationStack {
@@ -23,16 +24,14 @@ interface PopLocationStack {
 
 interface PushLocationStack {
 	type: ActionTypes.PUSH_LOCATION_STACK;
-	value: Location;
+	value: string;
 }
 
 const initialState: State = {
-	location: initialLocation,
+	location: loading.slug,
 	previousLocationStack: []
 };
 
-// to add new action types, add to the union type like this:
-// type Action = SetLocation | OtherAction | TestAction;
 type CombinedAction = SetLocation | PopLocationStack | PushLocationStack;
 
 function reducer(state: State = initialState, action: CombinedAction): State {
@@ -63,3 +62,7 @@ function reducer(state: State = initialState, action: CombinedAction): State {
 const store = createStore(reducer);
 
 export default store;
+
+export function getCurrentLocation(): Location {
+	return LocationManifest[store.getState().location];
+}

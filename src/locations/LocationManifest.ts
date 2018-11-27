@@ -3,7 +3,14 @@ import Location from './Location';
 import locations from '../data/locations.json';
 import neighbors from '../data/neighbors.json';
 
-const LocationManifest: { [s: string]: Location } = {};
+export const loading = new Location({
+	slug: 'loading',
+	descriptions: [{ text: 'loading' }]
+});
+
+const LocationManifest: { [s: string]: Location } = {
+	loading
+};
 
 let hasRun: boolean = false;
 
@@ -19,13 +26,9 @@ export function initializeLocations() {
 	});
 
 	neighbors.forEach(neighborPair => {
-		LocationManifest[neighborPair[0]].neighbors.push(
-			LocationManifest[neighborPair[1]]
-		);
+		LocationManifest[neighborPair[0]].neighborSlugs.push(neighborPair[1]);
 
-		LocationManifest[neighborPair[1]].neighbors.push(
-			LocationManifest[neighborPair[0]]
-		);
+		LocationManifest[neighborPair[1]].neighborSlugs.push(neighborPair[0]);
 	});
 }
 

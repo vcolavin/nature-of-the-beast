@@ -1,8 +1,6 @@
 import React from 'react';
 import Terminal from './Terminal';
-import LocationManifest, {
-	initializeLocations
-} from '../locations/LocationManifest';
+import { initializeLocations } from '../locations/LocationManifest';
 import { initializeUtilities } from '../utilities/UtilityManifest';
 import store, { ActionTypes } from '../store';
 
@@ -19,7 +17,7 @@ export default class App extends React.Component<Props, {}> {
 
 		store.dispatch({
 			type: ActionTypes.SET_LOCATION,
-			value: LocationManifest[INITIAL_LOCATION_SLUG]
+			value: INITIAL_LOCATION_SLUG
 		});
 	}
 
