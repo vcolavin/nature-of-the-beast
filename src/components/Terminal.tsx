@@ -167,7 +167,7 @@ export default class Terminal extends React.Component<{}, State> {
 		}
 	}
 
-	private getRevocableConsoleWriter(): ConsoleWriter {
+	private getRevocableConsoleWriter = (): ConsoleWriter => {
 		let revoked = false;
 
 		return {
@@ -180,15 +180,15 @@ export default class Terminal extends React.Component<{}, State> {
 				}
 			}
 		};
-	}
+	};
 
-	private revokeConsoleWriters(): void {
+	private revokeConsoleWriters = (): void => {
 		this.consoleWriters.forEach(writer => {
 			writer.revoke();
 		});
 
 		this.consoleWriters = [];
-	}
+	};
 
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
