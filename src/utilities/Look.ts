@@ -8,7 +8,7 @@ export default class Look extends BaseUtility {
 		getCurrentLocation().descriptions.forEach(description => {
 			timeAccumulator +=
 				typeof description.timer === 'undefined'
-					? 2500
+					? 1500
 					: description.timer;
 
 			window.setTimeout(() => {

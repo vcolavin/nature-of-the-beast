@@ -2,7 +2,6 @@ import React from 'react';
 import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
 import store, { getCurrentLocation } from '../store';
-import Location from '../locations/Location';
 
 interface CommandItem {
 	content: string;
@@ -28,6 +27,7 @@ interface ConsoleWriter {
 function inputPrompt(): string {
 	return `~/${store.getState().location} > `;
 }
+
 export const TAB_WIDTH = '    ';
 
 export default class Terminal extends React.Component<{}, State> {
