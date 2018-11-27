@@ -43,3 +43,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] [per redux docs](https://redux.js.org/basics/reducers#note-on-relationships), don't store relations as actual objects (e.g. `location.neighbors: Location[]`), but IDs (e.g. `location.neighborSlugs: string[]`), and create get/set helpers in place
 -   [ ] Instead of revocable write permission, only one thing should get to write to the console at a time, including the user. With a wait timer. Currently, any command from the user revokes write access.
 -   [ ] Rewritable console lines. For example, how would a loading bar be simulated?
+-   [ ] Tab completion should work on whatever the last argument is
