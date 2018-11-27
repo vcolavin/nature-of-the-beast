@@ -2,18 +2,26 @@ import BaseUtility, { RunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
 
 export default class Look extends BaseUtility {
-	run({ writeToConsole }: RunParams): void {
-		let timeAccumulator = 0;
+	run({ writeToConsole }: RunParams): Promise<null> {
+		return new Promise(resolve => {
+			let timeAccumulator = 0;
 
-		getCurrentLocation().descriptions.forEach(description => {
-			timeAccumulator +=
-				typeof description.timer === 'undefined'
-					? 1500
-					: description.timer;
+			const descriptions = getCurrentLocation().descriptions;
 
-			window.setTimeout(() => {
-				writeToConsole(description.text);
-			}, timeAccumulator);
+			descriptions.forEach((description, i) => {
+				timeAccumulator +=
+					typeof description.timer === 'undefined'
+						? 1500
+						: description.timer;
+
+				window.setTimeout(() => {
+					writeToConsole(description.text);
+
+					if (i === descriptions.length - 1) {
+						resolve();
+					}
+				}, timeAccumulator);
+			});
 		});
 	}
 

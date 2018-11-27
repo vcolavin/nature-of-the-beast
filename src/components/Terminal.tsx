@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
-import store, { getCurrentLocation } from '../store';
+import store, { getCurrentLocation, ActionTypes } from '../store';
 
 interface CommandItem {
 	content: string;
@@ -47,6 +47,8 @@ export default class Terminal extends React.Component<{}, State> {
 	private consoleWriters: ConsoleWriter[] = [];
 
 	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		this.revokeConsoleWriters();
+
 		switch (e.key) {
 			case 'ArrowUp':
 				this.goBackInHistory();
@@ -188,6 +190,8 @@ export default class Terminal extends React.Component<{}, State> {
 		});
 
 		this.consoleWriters = [];
+
+		store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 	};
 
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -195,8 +199,6 @@ export default class Terminal extends React.Component<{}, State> {
 
 		const value = this.inputValue;
 		this.inputValue = '';
-
-		this.revokeConsoleWriters();
 
 		this.addToCommandHistory(value);
 
@@ -210,10 +212,16 @@ export default class Terminal extends React.Component<{}, State> {
 			const revocableConsoleWriter = this.getRevocableConsoleWriter();
 			this.consoleWriters.push(revocableConsoleWriter);
 
-			utility.run({
-				args,
-				writeToConsole: revocableConsoleWriter.writeToConsole
-			});
+			store.dispatch({ type: ActionTypes.LOCK_CONSOLE });
+
+			utility
+				.run({
+					args,
+					writeToConsole: revocableConsoleWriter.writeToConsole
+				})
+				.then(() => {
+					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
+				});
 		} else {
 			this.writeToConsole(`I don't know how to ${utilityName}`);
 		}

@@ -18,10 +18,12 @@ export default class Cd extends BaseUtility {
 		}
 	}
 
-	run({ args, writeToConsole }: RunParams): void {
+	run({ args, writeToConsole }: RunParams): Promise<null> {
+		const nullPromise = Promise.resolve(null);
+
 		if (args[0] == '..') {
 			this.goToPreviousLocation();
-			return;
+			return nullPromise;
 		}
 
 		const newLocation = getCurrentLocation().neighbors.find(
@@ -38,10 +40,11 @@ export default class Cd extends BaseUtility {
 				type: ActionTypes.SET_LOCATION,
 				value: newLocation.slug
 			});
-			return;
+		} else {
+			writeToConsole(`invalid location ${args[0]}`);
 		}
 
-		writeToConsole(`invalid location ${args[0]}`);
+		return nullPromise;
 	}
 
 	command = 'cd';

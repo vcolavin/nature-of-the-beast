@@ -12,11 +12,17 @@ export default class WhoAmI extends BaseUtility {
 		'Or you were a dog lover'
 	];
 
-	run({ writeToConsole }: RunParams): void {
-		this.responses.forEach((response, index) => {
-			window.setTimeout(() => {
-				writeToConsole(response);
-			}, 1000 + 2500 * index);
+	run({ writeToConsole }: RunParams): Promise<null> {
+		return new Promise(resolve => {
+			this.responses.forEach((response, index) => {
+				window.setTimeout(() => {
+					writeToConsole(response);
+
+					if (index === this.responses.length - 1) {
+						resolve();
+					}
+				}, 1000 + 2500 * index);
+			});
 		});
 	}
 

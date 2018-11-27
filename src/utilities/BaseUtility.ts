@@ -4,7 +4,7 @@ export interface RunParams {
 }
 
 export default class BaseUtility {
-	run(_params: RunParams): void {
+	run(_params: RunParams): Promise<null> {
 		throw 'not implemented';
 	}
 
