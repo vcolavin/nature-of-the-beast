@@ -6,7 +6,10 @@ export default class Look extends BaseUtility {
 		let timeAccumulator = 0;
 
 		getCurrentLocation().descriptions.forEach(description => {
-			timeAccumulator += description.timer || 2500;
+			timeAccumulator +=
+				typeof description.timer === 'undefined'
+					? 2500
+					: description.timer;
 
 			window.setTimeout(() => {
 				writeToConsole(description.text);

@@ -4,19 +4,19 @@ import UtilityManifest from '../utilities/UtilityManifest';
 import store, { getCurrentLocation } from '../store';
 import Location from '../locations/Location';
 
-interface ICommandItem {
+interface CommandItem {
 	content: string;
 	id: string;
 }
 
-interface IHistoryItem {
+interface HistoryItem {
 	content: string;
 	id: string;
 }
 
-interface IState {
-	commandHistory: ICommandItem[];
-	terminalHistory: IHistoryItem[];
+interface State {
+	commandHistory: CommandItem[];
+	terminalHistory: HistoryItem[];
 	currentPlaceInHistory: number;
 }
 
@@ -30,11 +30,14 @@ function inputPrompt(): string {
 }
 export const TAB_WIDTH = '    ';
 
-export default class Terminal extends React.Component<{}, IState> {
-	state: IState = {
+export default class Terminal extends React.Component<{}, State> {
+	state: State = {
 		terminalHistory: [
-			{ content: 'welcome to the forest', id: uuid() },
-			{ content: 'feel free to look around', id: uuid() }
+			{ content: 'you are in a freaky forest', id: uuid() },
+			{
+				content: 'type help to get an idea of what is going on',
+				id: uuid()
+			}
 		],
 		commandHistory: [],
 		currentPlaceInHistory: -1
@@ -73,22 +76,24 @@ export default class Terminal extends React.Component<{}, IState> {
 			currentVal = '';
 		}
 
-		const options = getCurrentLocation()
-			.neighbors.filter(
-				(location: Location) => location.slug.indexOf(currentVal) === 0
-			)
-			.map((location: Location) => location.slug);
+		const options = getCurrentLocation().neighborSlugs.filter(
+			(slug: string) => slug.indexOf(currentVal) === 0
+		);
+
+		if (options.length === 0) {
+			return;
+		}
 
 		if (options.length === 1) {
 			this.inputValue = `${command} ${options[0]}`;
-		} else if (options.length > 1) {
-			this.writeToConsole(
-				options.reduce(
-					(memo: string, option: string) =>
-						`${memo}${TAB_WIDTH}${option}`
-				)
-			);
+			return;
 		}
+
+		this.writeToConsole(
+			options.reduce(
+				(memo: string, option: string) => `${memo}${TAB_WIDTH}${option}`
+			)
+		);
 	};
 
 	private goBackInHistory = () => {
