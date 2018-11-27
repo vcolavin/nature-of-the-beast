@@ -30,12 +30,15 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] uptime utility (this could be a source of spooky mysteries)
 -   [x] Switch typescript back to strict mode
 -   [ ] Use browser APIs to change some things about the story (e.g. sound, location, camera, time)
+-   [ ] A tutorial, or at least better help
 -   [ ] Create an ambient ASCII sound visualizer.
--   [ ] introduce concept of aliased utilities. shouldn't be very difficult, but this way "pwd" and "look" can be the same.
+-   [ ] introduce concept of aliased utilities. don't overthink this, but this way "pwd" and "look" can be the same.
 -   [x] make locations a little more complicated. can they behave anything like the "whoami" tool?
--   [ ] `$ cd ..` should work
--   [ ] some sort of CMS / authorship solution. it's no fun writing JSON
+-   [x] `$ cd ..` should work
+-   [ ] some sort of CMS / authorship solution. it's no fun writing JSON. But maybe this isn't so important
 -   [ ] create richer features for locations... interactivity, items, different descriptions based on state
 -   [ ] create usable items and an inventory. e.g. "use key on lock"
--   [ ][per redux docs](https://redux.js.org/basics/reducers#note-on-relationships), don't store relations as actual objects (e.g. `location.neighbors: Location[]`), but IDs (e.g. `location.neighborSlugs: string[]`), and create get/set helpers in place
-- [ ] Instead of revocable write permission, only one thing should get to write to the console at a time, including the user. With a wait timer. Currently, any command from the user revokes write access.
+    -   [ ] To achieve this, we'll also need "use" utility which accepts several arguments
+-   [ ] the look utility should accept two arguments: "at", and an item
+-   [x] [per redux docs](https://redux.js.org/basics/reducers#note-on-relationships), don't store relations as actual objects (e.g. `location.neighbors: Location[]`), but IDs (e.g. `location.neighborSlugs: string[]`), and create get/set helpers in place
+-   [ ] Instead of revocable write permission, only one thing should get to write to the console at a time, including the user. With a wait timer. Currently, any command from the user revokes write access.
