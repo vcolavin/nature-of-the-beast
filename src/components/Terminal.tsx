@@ -33,9 +33,10 @@ export const TAB_WIDTH = '    ';
 export default class Terminal extends React.Component<{}, State> {
 	state: State = {
 		terminalHistory: [
-			{ content: 'you are in a freaky forest', id: uuid() },
+			{ content: 'you are in a cold and quiet forest', id: uuid() },
+			{ content: 'rain fell recently', id: uuid() },
 			{
-				content: 'type help to get an idea of what is going on',
+				content: 'type help to get started',
 				id: uuid()
 			}
 		],
