@@ -39,9 +39,9 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 	state: TerminalState = {
 		terminalHistory: [
 			{ content: 'you are in a cold and quiet forest', id: uuid() },
-			{ content: 'rain fell recently', id: uuid() },
+			{ content: 'rain has recently fallen', id: uuid() },
 			{
-				content: 'type help to get started',
+				content: 'type "help", then press enter, to get started',
 				id: uuid()
 			}
 		],

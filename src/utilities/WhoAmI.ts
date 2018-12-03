@@ -27,4 +27,5 @@ export default class WhoAmI extends BaseUtility {
 	}
 
 	command = 'whoami';
+	helpDescription = 'Ask a difficult question. Get a difficult response';
 }

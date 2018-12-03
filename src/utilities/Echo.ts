@@ -7,4 +7,6 @@ export default class Echo extends BaseUtility {
 	}
 
 	command = 'echo';
+	helpDescription =
+		'Use echo to say something out loud. Example:\n\necho Is anyone there?';
 }

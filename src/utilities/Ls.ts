@@ -14,4 +14,6 @@ export default class Ls extends BaseUtility {
 	}
 
 	command = 'ls';
+	helpDescription =
+		'ls lists the locations and objects you can reach from where you are now.';
 }

@@ -9,4 +9,5 @@ export default class BaseUtility {
 	}
 
 	command: string = '';
+	helpDescription: string = '';
 }

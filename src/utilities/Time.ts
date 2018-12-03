@@ -7,4 +7,5 @@ export default class Time extends BaseUtility {
 	}
 
 	command = 'time';
+	helpDescription = 'time tells you the time';
 }
