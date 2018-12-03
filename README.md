@@ -35,7 +35,7 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] introduce concept of aliased utilities. don't overthink this, but this way "pwd" and "look" can be the same.
 -   [x] make locations a little more complicated. can they behave anything like the "whoami" tool?
 -   [x] `$ cd ..` should work
--   [ ] some sort of CMS / authorship solution. it's no fun writing JSON. But maybe this isn't so important
+-   [ ] some sort of CMS / authorship solution. it's no fun writing JSON. But this isn't a priority.
 -   [ ] create richer features for locations... interactivity, items, different descriptions based on state
 -   [ ] create usable items and an inventory. e.g. "use key on lock"
     -   [ ] To achieve this, we'll also need "use" utility which accepts several arguments
@@ -45,5 +45,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] Rewritable console lines. For example, how would a loading bar be simulated?
 -   [ ] Tab completion should work on whatever the last argument is, not just the second argument
 -   [ ] Use react-redux to connect the terminal component to redux store
--   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
--   [ ] Horror. There is a creature which maybe it follows you, maybe it doesn't. but there is evidence of it wherever you go. It sometimes writes to the console: "you hear a shuffling sound in the hallway", as it ambles.
+-   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. This will make it accessible to blind people too, which is something I'd been struggling with. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
