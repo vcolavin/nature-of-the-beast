@@ -26,11 +26,12 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] make input prompt change based on location
 -   [x] get text to wrap correctly on long passages
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
--   [ ] date utility (probably replicate `date +%s`)
+-   [x] date utility (probably replicate `date +%s`)
 -   [ ] uptime utility (this could be a source of spooky mysteries)
 -   [x] Switch typescript back to strict mode
 -   [ ] Use browser APIs to change some things about the story (e.g. sound, location, camera, time)
--   [ ] A tutorial, or at least better help
+-   [ ] A tutorial
+-   [x] Improved help utility (can give help for particular utilities)
 -   [ ] Create an ambient ASCII sound visualizer.
 -   [ ] introduce concept of aliased utilities. don't overthink this, but this way "pwd" and "look" can be the same.
 -   [x] make locations a little more complicated. can they behave anything like the "whoami" tool?
