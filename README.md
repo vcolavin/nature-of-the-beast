@@ -44,5 +44,6 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] Instead of revocable write permission, only one thing should get to write to the console at a time, including the user. With a wait timer. Currently, any command from the user revokes write access.
 -   [ ] Rewritable console lines. For example, how would a loading bar be simulated?
 -   [ ] Tab completion should work on whatever the last argument is, not just the second argument
--   [ ] Use react-redux to connect the terminal component to redux store
+-   [x] Use react-redux to connect the terminal component to redux store
 -   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. This will make it accessible to blind people too, which is something I'd been struggling with. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
+-   [ ] the "console writer" concept seems fragile and overextended. come up with a better abstraction
