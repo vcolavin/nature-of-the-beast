@@ -1,7 +1,8 @@
 import React from 'react';
 import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
-import store, { getCurrentLocation, ActionTypes } from '../store';
+import store, { getCurrentLocation, ActionTypes, RootState } from '../store';
+import { connect } from 'react-redux';
 
 interface CommandItem {
 	content: string;
@@ -13,10 +14,14 @@ interface HistoryItem {
 	id: string;
 }
 
-interface State {
+interface TerminalState {
 	commandHistory: CommandItem[];
 	terminalHistory: HistoryItem[];
 	currentPlaceInHistory: number;
+}
+
+interface TerminalProps {
+	consoleInteractive: boolean;
 }
 
 interface ConsoleWriter {
@@ -30,8 +35,8 @@ function inputPrompt(): string {
 
 export const TAB_WIDTH = '    ';
 
-export default class Terminal extends React.Component<{}, State> {
-	state: State = {
+class Terminal extends React.Component<TerminalProps, TerminalState> {
+	state: TerminalState = {
 		terminalHistory: [
 			{ content: 'you are in a cold and quiet forest', id: uuid() },
 			{ content: 'rain fell recently', id: uuid() },
@@ -269,19 +274,26 @@ export default class Terminal extends React.Component<{}, State> {
 						''
 					)}
 				</pre>
-
-				<form className="input-form" onSubmit={this.handleSubmit}>
-					<span className="input-prompt">{inputPrompt()}</span>
-					<input
-						className="input"
-						type="text"
-						ref={e => {
-							this.inputEl = e;
-							this.inputEl && this.inputEl.focus();
-						}}
-					/>
-				</form>
+				{this.props.consoleInteractive && (
+					<form className="input-form" onSubmit={this.handleSubmit}>
+						<span className="input-prompt">{inputPrompt()}</span>
+						<input
+							className="input"
+							type="text"
+							ref={e => {
+								this.inputEl = e;
+								this.inputEl && this.inputEl.focus();
+							}}
+						/>
+					</form>
+				)}
 			</div>
 		);
 	}
 }
+
+function mapStateToProps(state: RootState): TerminalProps {
+	return { consoleInteractive: state.consoleInteractive };
+}
+
+export default connect(mapStateToProps)(Terminal);

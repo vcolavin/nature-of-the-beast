@@ -4,7 +4,7 @@ import LocationManifest, {
 	loading as loadingLocation
 } from './locations/LocationManifest';
 
-interface State {
+export interface RootState {
 	location: string;
 	previousLocationStack: string[];
 	consoleInteractive: boolean;
@@ -40,7 +40,7 @@ interface ReleaseConsole {
 	type: ActionTypes.RELEASE_CONSOLE;
 }
 
-const initialState: State = {
+const initialState: RootState = {
 	location: loadingLocation.slug,
 	previousLocationStack: [],
 	consoleInteractive: true
@@ -53,7 +53,10 @@ type CombinedAction =
 	| LockConsole
 	| ReleaseConsole;
 
-function reducer(state: State = initialState, action: CombinedAction): State {
+function reducer(
+	state: RootState = initialState,
+	action: CombinedAction
+): RootState {
 	switch (action.type) {
 		case ActionTypes.SET_LOCATION:
 			return {
