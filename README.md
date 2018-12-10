@@ -39,6 +39,7 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] create usable items and an inventory. e.g. "use key on lock"
     -   [ ] To achieve this, we'll also need "use" utility which accepts several arguments
 -   [ ] the look utility should accept two arguments: "at", and an item
+-   [ ] `listen` utility, similar to `look`
 -   [x] [per redux docs](https://redux.js.org/basics/reducers#note-on-relationships), don't store relations as actual objects (e.g. `location.neighbors: Location[]`), but IDs (e.g. `location.neighborSlugs: string[]`), and create get/set helpers in place
 -   [ ] Rewritable console lines. For example, how would a loading bar be simulated? Probably by having the terminal buffer optionally contain components which handle their own output.
 -   [ ] Tab completion should work on whatever the last argument is, not just the second argument
