@@ -8,6 +8,7 @@ export interface RootState {
 	location: string;
 	previousLocationStack: string[];
 	consoleInteractive: boolean;
+	inventory: string[];
 }
 
 export enum ActionTypes {
@@ -15,7 +16,8 @@ export enum ActionTypes {
 	POP_LOCATION_STACK = 'POP_LOCATION_STACK',
 	PUSH_LOCATION_STACK = 'PUSH_LOCATION_STACK',
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
-	RELEASE_CONSOLE = 'RELEASE_CONSOLE'
+	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
+	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY'
 }
 
 interface SetLocation {
@@ -40,10 +42,16 @@ interface ReleaseConsole {
 	type: ActionTypes.RELEASE_CONSOLE;
 }
 
+interface AddToInventory {
+	type: ActionTypes.ADD_TO_INVENTORY;
+	value: string;
+}
+
 const initialState: RootState = {
 	location: loadingLocation.slug,
 	previousLocationStack: [],
-	consoleInteractive: true
+	consoleInteractive: true,
+	inventory: []
 };
 
 type CombinedAction =
@@ -51,7 +59,8 @@ type CombinedAction =
 	| PopLocationStack
 	| PushLocationStack
 	| LockConsole
-	| ReleaseConsole;
+	| ReleaseConsole
+	| AddToInventory;
 
 function reducer(
 	state: RootState = initialState,
@@ -85,6 +94,11 @@ function reducer(
 			return {
 				...state,
 				consoleInteractive: true
+			};
+		case ActionTypes.ADD_TO_INVENTORY:
+			return {
+				...state,
+				inventory: [...state.inventory, action.value]
 			};
 		default:
 			return state;
