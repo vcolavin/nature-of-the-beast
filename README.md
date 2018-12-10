@@ -46,8 +46,9 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] Use react-redux to connect the terminal component to redux store
 -   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. This will make it accessible to blind people too, which is something I'd been struggling with. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
 -   [x] make it look ok on mobile
--   [ ] input field should be a separate component. this will probably lead to a beneficial refactor of the monolithic terminal component
+-   [ ] input field should be a separate component. this will probably lead to a beneficial refactor of the monolithic terminal component and all the state that it holds.
 -   [ ] items and locations should have different colors in tab completion.
--   [ ] tab completion should work for items
--   [ ] once an item is picked up it should no longer be in visible in the location
--   [ ] Bug: we're storing mutable state in places outside of Redux now. Specifically, locations have a list of items which we are mutating. It's not a problem right now but perhaps it is worth looking into having Redux store _everything_.
+-   [x] tab completion should work for items
+-   [x] once an item is picked up it should no longer be in visible in the location
+-   [ ] Bug(?): we're storing mutable state in places outside of Redux now. Specifically, locations have a list of items which we are mutating. It's not a problem right now but perhaps it is worth looking into having Redux store _every piece of state_.
+-   [ ] different terminal style while someone else has control of the terminal. Maybe pulsing red or something.

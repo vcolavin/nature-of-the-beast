@@ -84,9 +84,10 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			currentVal = '';
 		}
 
-		const options = getCurrentLocation().neighborSlugs.filter(
-			(slug: string) => slug.indexOf(currentVal) === 0
-		);
+		const options = [
+			...getCurrentLocation().neighborSlugs,
+			...getCurrentLocation().itemSlugs
+		].filter((slug: string) => slug.indexOf(currentVal) === 0);
 
 		if (options.length === 0) {
 			return;
