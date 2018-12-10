@@ -17,8 +17,9 @@ export default class Location {
 	}
 
 	descriptions: Description[];
-	neighborSlugs: string[] = [];
 	slug: string;
+	itemSlugs: string[] = [];
+	neighborSlugs: string[] = [];
 
 	get neighbors(): Location[] {
 		return this.neighborSlugs.map(slug => LocationManifest[slug]);

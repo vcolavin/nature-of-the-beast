@@ -1,6 +1,6 @@
 import BaseUtility, { RunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
-import Location from '../locations/Location';
+import Location from '../nouns/Location';
 
 export default class Cd extends BaseUtility {
 	private goToPreviousLocation() {

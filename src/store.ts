@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import Location from './locations/Location';
+import Location from './nouns/Location';
 import LocationManifest, {
 	loading as loadingLocation
-} from './locations/LocationManifest';
+} from './nouns/LocationManifest';
 
 export interface RootState {
 	location: string;

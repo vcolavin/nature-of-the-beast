@@ -2,6 +2,7 @@ import Location from './Location';
 
 import locations from '../data/locations.json';
 import neighbors from '../data/neighbors.json';
+import items from '../data/items.json';
 
 export const loading = new Location({
 	slug: 'loading',
@@ -29,6 +30,10 @@ export function initializeLocations() {
 		LocationManifest[neighborPair[0]].neighborSlugs.push(neighborPair[1]);
 
 		LocationManifest[neighborPair[1]].neighborSlugs.push(neighborPair[0]);
+	});
+
+	items.forEach(item => {
+		LocationManifest[item.locationSlug].itemSlugs.push(item.slug);
 	});
 }
 
