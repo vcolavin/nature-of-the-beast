@@ -3,13 +3,14 @@ import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
 import store, { getCurrentLocation, ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
+import TerminalBuffer from './TerminalBuffer';
 
 interface CommandItem {
 	content: string;
 	id: string;
 }
 
-interface HistoryItem {
+export interface HistoryItem {
 	content: string;
 	id: string;
 }
@@ -277,13 +278,8 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				}}
 				onKeyDown={this.handleKeyDown}
 			>
-				<pre className="terminal-buffer">
-					{this.state.terminalHistory.reduce(
-						(memo, historyItem) =>
-							`${memo}\n${historyItem.content}`,
-						''
-					)}
-				</pre>
+				<TerminalBuffer terminalHistory={this.state.terminalHistory} />
+
 				{this.props.consoleInteractive && (
 					<form className="input-form" onSubmit={this.handleSubmit}>
 						<span className="input-prompt">{inputPrompt()}</span>
