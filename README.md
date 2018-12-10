@@ -42,7 +42,7 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] `listen` utility, similar to `look`
 -   [x] [per redux docs](https://redux.js.org/basics/reducers#note-on-relationships), don't store relations as actual objects (e.g. `location.neighbors: Location[]`), but IDs (e.g. `location.neighborSlugs: string[]`), and create get/set helpers in place
 -   [ ] Rewritable console lines. For example, how would a loading bar be simulated? Probably by having the terminal buffer optionally contain components which handle their own output.
--   [ ] Tab completion should work on whatever the last argument is, not just the second argument
+-   [x] Tab completion should work on whatever the last argument is, not just the second argument
 -   [x] Use react-redux to connect the terminal component to redux store
 -   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. This will make it accessible to blind people too, which is something I'd been struggling with. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
 -   [x] make it look ok on mobile

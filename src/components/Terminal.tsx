@@ -78,7 +78,9 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		}
 
 		// TODO: Regex could probably do a better job of this
-		let [command, currentVal] = this.inputValue.split(' ');
+		const [command, ...rest] = this.inputValue.split(' ');
+
+		let currentVal = rest[rest.length - 1];
 
 		if (typeof currentVal === 'undefined') {
 			currentVal = '';
@@ -89,20 +91,27 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			...getCurrentLocation().itemSlugs
 		].filter((slug: string) => slug.indexOf(currentVal) === 0);
 
-		if (options.length === 0) {
-			return;
+		switch (options.length) {
+			case 0:
+				break;
+			case 1:
+				const newValue = [
+					command,
+					...rest.slice(0, rest.length - 1),
+					options[0]
+				].join(' ');
+				this.inputValue = newValue;
+				break;
+			default:
+				this.writeToConsole(
+					options.reduce(
+						(memo: string, option: string) =>
+							`${memo}${TAB_WIDTH}${option}`
+					)
+				);
+				break;
 		}
-
-		if (options.length === 1) {
-			this.inputValue = `${command} ${options[0]}`;
-			return;
-		}
-
-		this.writeToConsole(
-			options.reduce(
-				(memo: string, option: string) => `${memo}${TAB_WIDTH}${option}`
-			)
-		);
+		return;
 	};
 
 	private goBackInHistory = () => {
