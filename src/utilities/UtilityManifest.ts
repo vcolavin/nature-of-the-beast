@@ -7,6 +7,7 @@ import Look from './Look';
 import Cd from './Cd';
 import Time from './Time';
 import Pickup from './Pickup';
+import Inventory from './Inventory';
 
 const UtilityManifest: { [s: string]: BaseUtility } = {};
 
@@ -27,7 +28,8 @@ export function initializeUtilities() {
 		new Cd(),
 		new Look(),
 		new Time(),
-		new Pickup()
+		new Pickup(),
+		new Inventory()
 	];
 
 	utilities.forEach(utility => {

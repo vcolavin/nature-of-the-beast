@@ -10,6 +10,12 @@ export default class Pickup extends BaseUtility {
 			ItemManifest[item] &&
 			getCurrentLocation().itemSlugs.indexOf(item) > -1
 		) {
+			// TODO: remove item from location
+
+			getCurrentLocation().itemSlugs = getCurrentLocation().itemSlugs.filter(
+				itemSlug => itemSlug === item
+			);
+
 			store.dispatch({
 				type: ActionTypes.ADD_TO_INVENTORY,
 				value: item
@@ -23,7 +29,7 @@ export default class Pickup extends BaseUtility {
 		return Promise.resolve(null);
 	}
 
-	command = 'echo';
+	command = 'pickup';
 	helpDescription =
 		'pickup will allow you to add an object to your inventory';
 }

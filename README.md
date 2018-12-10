@@ -48,3 +48,6 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] make it look ok on mobile
 -   [ ] input field should be a separate component. this will probably lead to a beneficial refactor of the monolithic terminal component
 -   [ ] items and locations should have different colors in tab completion.
+-   [ ] tab completion should work for items
+-   [ ] once an item is picked up it should no longer be in visible in the location
+-   [ ] Bug: we're storing mutable state in places outside of Redux now. Specifically, locations have a list of items which we are mutating. It's not a problem right now but perhaps it is worth looking into having Redux store _everything_.
