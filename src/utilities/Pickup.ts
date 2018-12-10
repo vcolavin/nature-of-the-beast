@@ -13,7 +13,7 @@ export default class Pickup extends BaseUtility {
 			// TODO: remove item from location
 
 			getCurrentLocation().itemSlugs = getCurrentLocation().itemSlugs.filter(
-				itemSlug => itemSlug === item
+				itemSlug => itemSlug !== item
 			);
 
 			store.dispatch({

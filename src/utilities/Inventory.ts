@@ -9,5 +9,6 @@ export default class Inventory extends BaseUtility {
 	}
 
 	command = 'inv';
-	helpDescription = 'List all the items currently on you';
+	helpDescription =
+		'List all the items currently in your inventory. To use an item, write "use <item>"';
 }
