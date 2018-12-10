@@ -21,13 +21,11 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] use Redux instead of a POJO
 -   [x] fix issue where QuietForest is appearing as undefined in neighbors
 -   [x] tab completion
--   [ ] tests???? especially for the utilities
 -   [x] Make the console writing permission revocable, or make running utilities cancellable. E.g. we don't want `whoami` to run through its whole dialog if we've `cd`'d to another location
 -   [x] make input prompt change based on location
 -   [x] get text to wrap correctly on long passages
 -   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
 -   [x] date utility (probably replicate `date +%s`)
--   [ ] uptime utility (this could be a source of spooky mysteries)
 -   [x] Switch typescript back to strict mode
 -   [ ] Use browser APIs to change some things about the story (e.g. sound, location, camera, time)
 -   [ ] A tutorial
@@ -42,9 +40,9 @@ found at http://vcolavin.com/nature-of-the-beast/
     -   [ ] To achieve this, we'll also need "use" utility which accepts several arguments
 -   [ ] the look utility should accept two arguments: "at", and an item
 -   [x] [per redux docs](https://redux.js.org/basics/reducers#note-on-relationships), don't store relations as actual objects (e.g. `location.neighbors: Location[]`), but IDs (e.g. `location.neighborSlugs: string[]`), and create get/set helpers in place
--   [ ] Instead of revocable write permission, only one thing should get to write to the console at a time, including the user. With a wait timer. Currently, any command from the user revokes write access.
--   [ ] Rewritable console lines. For example, how would a loading bar be simulated?
+-   [ ] Rewritable console lines. For example, how would a loading bar be simulated? Probably by having the terminal buffer optionally contain components which handle their own output.
 -   [ ] Tab completion should work on whatever the last argument is, not just the second argument
 -   [x] Use react-redux to connect the terminal component to redux store
 -   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. This will make it accessible to blind people too, which is something I'd been struggling with. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
--   [ ] the "console writer" concept seems fragile and overextended. come up with a better abstraction
+-   [ ] make it look ok on mobile
+-   [ ] input field should be a separate component. this will probably lead to a beneficial refactor of the monolithic terminal component
