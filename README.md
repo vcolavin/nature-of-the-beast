@@ -47,3 +47,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] use browser speech synthesis API to read out the text. maybe with different voices for different situations. This will make it accessible to blind people too, which is something I'd been struggling with. https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API#SpeechSynthesis
 -   [x] make it look ok on mobile
 -   [ ] input field should be a separate component. this will probably lead to a beneficial refactor of the monolithic terminal component
+-   [ ] items and locations should have different colors in tab completion.

@@ -4,11 +4,12 @@ import { TAB_WIDTH } from '../components/Terminal';
 
 export default class Ls extends BaseUtility {
 	run({ writeToConsole }: RunParams): Promise<null> {
-		writeToConsole(
-			getCurrentLocation()
-				.neighborSlugs.sort()
-				.join(TAB_WIDTH)
-		);
+		const slugs = [
+			...getCurrentLocation().neighborSlugs.sort(),
+			...getCurrentLocation().itemSlugs.sort()
+		];
+
+		writeToConsole(slugs.join(TAB_WIDTH));
 
 		return Promise.resolve(null);
 	}
