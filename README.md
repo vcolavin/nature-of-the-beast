@@ -24,7 +24,7 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] Make the console writing permission revocable, or make running utilities cancellable. E.g. we don't want `whoami` to run through its whole dialog if we've `cd`'d to another location
 -   [x] make input prompt change based on location
 -   [x] get text to wrap correctly on long passages
--   [ ] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
+-   [x] cooler terminal styling (e.g. https://css-tricks.com/old-timey-terminal-styling/)
 -   [x] date utility (probably replicate `date +%s`)
 -   [x] Switch typescript back to strict mode
 -   [ ] Use browser APIs to change some things about the story (e.g. sound, location, camera, time)
@@ -34,7 +34,6 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] introduce concept of aliased utilities. don't overthink this, but this way "pwd" and "look" can be the same.
 -   [x] make locations a little more complicated. can they behave anything like the "whoami" tool?
 -   [x] `$ cd ..` should work
--   [ ] some sort of CMS / authorship solution. it's no fun writing JSON. But this isn't a priority.
 -   [ ] create richer features for locations... interactivity, items, different descriptions based on state
 -   [ ] create usable items and an inventory. e.g. "use key on lock"
     -   [ ] To achieve this, we'll also need "use" utility which accepts several arguments
@@ -50,5 +49,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] items and locations should have different colors in tab completion.
 -   [x] tab completion should work for items
 -   [x] once an item is picked up it should no longer be in visible in the location
--   [ ] Bug(?): we're storing mutable state in places outside of Redux now. Specifically, locations have a list of items which we are mutating. It's not a problem right now but perhaps it is worth looking into having Redux store _every piece of state_.
 -   [ ] different terminal style while someone else has control of the terminal. Maybe pulsing red or something.

@@ -1,6 +1,42 @@
-.terminal {
-	background-color: var(--background-color);
+// stolen from
+// https://css-tricks.com/old-timey-terminal-styling/
+body {
+	background-color: black;
+	background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+	padding: 2rem;
 	color: var(--text-color);
+	font: 1.3rem monospace;
+	text-shadow: 0 0 5px #c8c8c8;
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: repeating-linear-gradient(
+			0deg,
+			rgba(black, 0.15),
+			rgba(black, 0.15) 1px,
+			transparent 1px,
+			transparent 2px
+		);
+		pointer-events: none;
+	}
+}
+::selection {
+	background: #0080ff;
+	text-shadow: none;
+}
+
+pre {
+	margin: 0;
+}
+
+.terminal {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -9,19 +45,20 @@
 }
 
 .terminal-buffer {
+	position: absolute;
+	bottom: 1.5rem;
+
 	padding: 0;
 	margin: 0;
-	position: absolute;
-	bottom: 1.2rem;
 	white-space: pre-wrap;
 }
 
 .input-form {
 	display: grid;
-
 	grid-template-columns: min-content auto;
-
 	align-items: end;
+
+	caret-color: var(--text-color);
 
 	position: absolute;
 	bottom: 0;
@@ -32,14 +69,15 @@
 
 .input-prompt {
 	padding-right: 10px;
-	background-color: var(--background-color);
 	white-space: nowrap;
 }
 
 .input {
+	text-shadow: 0 0 5px #c8c8c8;
+
 	font-size: inherit;
 	font-family: inherit;
-	background-color: var(--background-color);
+	background-color: transparent;
 	color: var(--text-color);
 	border: 0;
 	outline: none;
