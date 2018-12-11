@@ -1,14 +1,23 @@
 // stolen from
 // https://css-tricks.com/old-timey-terminal-styling/
-body {
+::selection {
+	background: #0080ff;
+	text-shadow: none;
+}
+
+.terminal {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
 	background-color: black;
 	background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
-	height: 100vh;
-	margin: 0;
+
 	overflow: hidden;
-	padding: 2rem;
 	color: var(--text-color);
-	font: 1.3rem monospace;
+	font: 1rem monospace;
 	text-shadow: 0 0 5px #c8c8c8;
 	&::after {
 		content: '';
@@ -26,22 +35,6 @@ body {
 		);
 		pointer-events: none;
 	}
-}
-::selection {
-	background: #0080ff;
-	text-shadow: none;
-}
-
-pre {
-	margin: 0;
-}
-
-.terminal {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
 }
 
 .terminal-buffer {
