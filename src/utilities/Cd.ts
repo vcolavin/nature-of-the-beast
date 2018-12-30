@@ -1,6 +1,5 @@
 import BaseUtility, { RunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
-import Location from '../nouns/Location';
 
 export default class Cd extends BaseUtility {
 	private goToPreviousLocation() {
@@ -26,8 +25,8 @@ export default class Cd extends BaseUtility {
 			return nullPromise;
 		}
 
-		const newLocation = getCurrentLocation().neighbors.find(
-			(location: Location) => location.slug === args[0]
+		const newLocation = getCurrentLocation().neighborSlugs.find(
+			(slug: string) => slug === args[0]
 		);
 
 		if (newLocation) {
@@ -38,7 +37,7 @@ export default class Cd extends BaseUtility {
 
 			store.dispatch({
 				type: ActionTypes.SET_LOCATION,
-				value: newLocation.slug
+				value: newLocation
 			});
 		} else {
 			writeToConsole(`invalid location ${args[0]}`);
