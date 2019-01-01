@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
 
+export type HistoryItemContent = string | JSX.Element;
+
 export interface HistoryItem {
-	content: string;
+	content: HistoryItemContent;
 	id: string;
 }
 
@@ -19,9 +21,9 @@ interface TerminalProps {
 	consoleInteractive: boolean;
 }
 
-interface ConsoleWriter {
+interface RevocableConsoleWriter {
 	revoke: () => void;
-	writeToConsole: (string: string) => void;
+	writeToConsole: (arg: HistoryItemContent) => void;
 }
 
 function inputPrompt(): string {
@@ -42,7 +44,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		]
 	};
 
-	private consoleWriters: ConsoleWriter[] = [];
+	private consoleWriters: RevocableConsoleWriter[] = [];
 
 	private escapeListener = (e: Event) => {
 		if ((e as any).key === 'Escape') {
@@ -59,16 +61,16 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		window.removeEventListener('keydown', this.escapeListener);
 	}
 
-	private getRevocableConsoleWriter = (): ConsoleWriter => {
+	private getRevocableConsoleWriter = (): RevocableConsoleWriter => {
 		let revoked = false;
 
 		return {
 			revoke: () => {
 				revoked = true;
 			},
-			writeToConsole: (string: string) => {
+			writeToConsole: (item: HistoryItemContent) => {
 				if (!revoked) {
-					this.writeToConsole(string);
+					this.writeToConsole(item);
 				}
 			}
 		};
@@ -108,12 +110,12 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		}
 	};
 
-	private writeToConsole = (value: string) => {
+	private writeToConsole = (item: HistoryItemContent) => {
 		this.setState(state => ({
 			terminalHistory: [
 				...state.terminalHistory,
 				{
-					content: value,
+					content: item,
 					id: uuid()
 				}
 			]

@@ -1,6 +1,8 @@
+import { HistoryItemContent } from '../components/Terminal';
+
 export interface RunParams {
 	args: string[];
-	writeToConsole: (arg: string) => void;
+	writeToConsole: (arg: HistoryItemContent) => void;
 }
 
 export default class BaseUtility {
