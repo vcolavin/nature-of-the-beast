@@ -1,5 +1,3 @@
-import LocationManifest from './LocationManifest';
-
 interface Description {
 	text: string;
 	timer?: number;
@@ -20,8 +18,4 @@ export default class Location {
 	slug: string;
 	itemSlugs: string[] = [];
 	neighborSlugs: string[] = [];
-
-	get neighbors(): Location[] {
-		return this.neighborSlugs.map(slug => LocationManifest[slug]);
-	}
 }

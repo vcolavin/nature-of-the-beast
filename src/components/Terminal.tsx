@@ -53,9 +53,22 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 	private inputEl: HTMLInputElement | null = null;
 	private consoleWriters: ConsoleWriter[] = [];
 
-	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-		this.revokeConsoleWriters();
+	private escapeListener = (e: Event) => {
+		if ((e as any).key === 'Escape') {
+			this.revokeConsoleWriters();
+			store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
+		}
+	};
 
+	componentDidMount() {
+		window.addEventListener('keydown', this.escapeListener);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('keydown', this.escapeListener);
+	}
+
+	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (e.key) {
 			case 'ArrowUp':
 				this.goBackInHistory();
@@ -207,8 +220,6 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		});
 
 		this.consoleWriters = [];
-
-		store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 	};
 
 	private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
