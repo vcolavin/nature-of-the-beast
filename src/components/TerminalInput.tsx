@@ -26,6 +26,20 @@ export default class TerminalInput extends React.Component<Props, State> {
 
 	private inputEl: HTMLInputElement | null = null;
 
+	private focusOnInput = () => {
+		if (this.inputEl) {
+			this.inputEl.focus();
+		}
+	};
+
+	componentDidMount() {
+		window.addEventListener('click', this.focusOnInput);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('click', this.focusOnInput);
+	}
+
 	private goBackInHistory = () => {
 		this.setState(
 			state => {
