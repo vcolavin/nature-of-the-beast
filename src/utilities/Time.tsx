@@ -1,5 +1,4 @@
 import React from 'react';
-
 import BaseUtility, { RunParams } from './BaseUtility';
 
 interface State {
@@ -10,7 +9,7 @@ class TimeComponent extends React.Component<{}, State> {
 	private interval: number = 0;
 
 	state: State = {
-		content: 'initial content'
+		content: new Date().getTime().toString()
 	};
 
 	componentDidMount() {
