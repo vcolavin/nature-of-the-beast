@@ -4,11 +4,6 @@ import BaseUtility, { RunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
 import { TAB_WIDTH } from '../components/Terminal';
 
-enum ItemTypes {
-	PLACE = 'PLACE',
-	ITEM = 'ITEM'
-}
-
 interface Props {
 	items: string[];
 	places: string[];
