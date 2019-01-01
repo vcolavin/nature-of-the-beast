@@ -30,11 +30,8 @@ class TimeComponent extends React.Component<{}, State> {
 
 export default class Time extends BaseUtility {
 	run({ writeToConsole }: RunParams): Promise<null> {
-		const blah: JSX.Element = <TimeComponent />;
+		writeToConsole(<TimeComponent />);
 
-		writeToConsole(blah);
-
-		// writeToConsole(new Date().getTime().toString());
 		return Promise.resolve(null);
 	}
 
