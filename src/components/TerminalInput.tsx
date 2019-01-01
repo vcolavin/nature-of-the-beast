@@ -9,7 +9,6 @@ interface CommandItem {
 }
 
 interface Props {
-	inputPrompt: string;
 	writeToConsole: (arg: string) => void;
 	handleSubmit: (arg: string) => void;
 }
@@ -179,7 +178,6 @@ export default class TerminalInput extends React.Component<Props, State> {
 	render() {
 		return (
 			<>
-				<span className="input-prompt">{this.props.inputPrompt}</span>
 				<input
 					className="input"
 					type="text"

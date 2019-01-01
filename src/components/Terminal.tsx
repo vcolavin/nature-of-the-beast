@@ -127,8 +127,9 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 
 				{this.props.consoleInteractive && (
 					<form className="input-form">
+						<span className="input-prompt">{inputPrompt()}</span>
+
 						<TerminalInput
-							inputPrompt={inputPrompt()}
 							writeToConsole={this.writeToConsole}
 							handleSubmit={this.runCommand}
 						/>
