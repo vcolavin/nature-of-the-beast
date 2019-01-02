@@ -5,8 +5,7 @@ export default class WhoAmI extends BaseUtility {
 		"I don't remember",
 		'But I am glad you asked. I am glad you are here.',
 		"I don't know who you are",
-		'You are an echo of an echo',
-		'You are a grease smudge on a screen',
+		'You are an echo',
 		'You were a mistake',
 		'You are a dog lover',
 		'Or you were'
