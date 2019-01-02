@@ -52,3 +52,6 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [x] tab completion should work for items
 -   [x] once an item is picked up it should no longer be in visible in the location
 -   [ ] different terminal style while someone else has control of the terminal. Maybe pulsing red or something.
+-   [ ] choose better colors to differentiate between items and places. spend some TLC on the styling in general.
+-   [ ] tab autocomplete should make use of LsComponent so that its output has the correct colors
+-   [ ] `exit` utility which shuts the whole thing down, or maybe something a little more playful than that
