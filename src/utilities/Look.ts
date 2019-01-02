@@ -10,6 +10,14 @@ export default class Look extends BaseUtility {
 			return Promise.resolve(null);
 		}
 
+		if (args.length > 0) {
+			writeToConsole(
+				`invalid ${this.command} argument ${args.join(' ')}.`
+			);
+
+			return Promise.resolve(null);
+		}
+
 		return new Promise(resolve => {
 			let timeAccumulator = 0;
 

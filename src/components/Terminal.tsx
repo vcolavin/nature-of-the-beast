@@ -46,19 +46,26 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 
 	private consoleWriters: RevocableConsoleWriter[] = [];
 
-	private escapeListener = (e: Event) => {
-		if ((e as any).key === 'Escape') {
+	private handleKeydown = (e: Event) => {
+		const typedEvent = (e as any) as React.KeyboardEvent;
+
+		const { key } = typedEvent;
+
+		if (
+			key === 'Escape' ||
+			(typedEvent.ctrlKey && ['c', 'C', 'd', 'D'].indexOf(key) >= 0)
+		) {
 			this.revokeConsoleWriters();
 			store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 		}
 	};
 
 	componentDidMount() {
-		window.addEventListener('keydown', this.escapeListener);
+		window.addEventListener('keydown', this.handleKeydown);
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener('keydown', this.escapeListener);
+		window.removeEventListener('keydown', this.handleKeydown);
 	}
 
 	private getRevocableConsoleWriter = (): RevocableConsoleWriter => {
