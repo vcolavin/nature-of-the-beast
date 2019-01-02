@@ -9,7 +9,7 @@ interface Props {
 	places: string[];
 }
 
-function TimeComponent(props: Props) {
+function LsComponent(props: Props) {
 	return (
 		<span>
 			{props.places.map(place => (
@@ -31,7 +31,7 @@ function TimeComponent(props: Props) {
 export default class Ls extends BaseUtility {
 	run({ writeToConsole }: RunParams): Promise<null> {
 		writeToConsole(
-			<TimeComponent
+			<LsComponent
 				places={getCurrentLocation().neighborSlugs.sort()}
 				items={getCurrentLocation().itemSlugs.sort()}
 			/>
