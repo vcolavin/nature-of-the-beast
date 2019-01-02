@@ -1,8 +1,15 @@
 import BaseUtility, { RunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
+import ItemManifest from '../nouns/ItemManifest';
 
 export default class Look extends BaseUtility {
-	run({ writeToConsole }: RunParams): Promise<null> {
+	run({ writeToConsole, args }: RunParams): Promise<null> {
+		if (args[0] === 'at' && ItemManifest[args[1]]) {
+			writeToConsole(ItemManifest[args[1]].description);
+
+			return Promise.resolve(null);
+		}
+
 		return new Promise(resolve => {
 			let timeAccumulator = 0;
 
