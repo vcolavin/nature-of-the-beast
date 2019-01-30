@@ -5,12 +5,10 @@ import { initializeUtilities } from '../utilities/UtilityManifest';
 import store, { ActionTypes } from '../store';
 import { initializeItems } from '../nouns/ItemManifest';
 
-interface Props {}
-
 const INITIAL_LOCATION_SLUG = 'a_quiet_forest';
 
-export default class App extends React.Component<Props, {}> {
-	constructor(props: Props) {
+export default class App extends React.Component<{}, {}> {
+	constructor(props: {}) {
 		super(props);
 
 		initializeLocations();

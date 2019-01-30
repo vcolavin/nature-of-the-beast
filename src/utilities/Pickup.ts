@@ -10,8 +10,6 @@ export default class Pickup extends BaseUtility {
 			ItemManifest[item] &&
 			getCurrentLocation().itemSlugs.indexOf(item) > -1
 		) {
-			// TODO: remove item from location
-
 			getCurrentLocation().itemSlugs = getCurrentLocation().itemSlugs.filter(
 				itemSlug => itemSlug !== item
 			);
