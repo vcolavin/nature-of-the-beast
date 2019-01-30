@@ -1,1 +1,8 @@
-[["a_quiet_forest", "a_cold_cabin"], ["a_cold_cabin", "somebody_once_loved"]]
+[
+	["a_quiet_forest", "a_path"],
+	["in_front_of_the_cabin", "a_path"],
+	["side_yard", "in_front_of_the_cabin"],
+	["side_yard", "backyard"],
+	["inside", "somebody_once_loved"],
+	["inside", "backyard"]
+]

@@ -33,6 +33,12 @@ export function initializeLocations() {
 	});
 
 	items.forEach(item => {
+		if (typeof LocationManifest[item.locationSlug] === 'undefined') {
+			throw `${item.slug} has location ${
+				item.locationSlug
+			}, which does not exist`;
+		}
+
 		LocationManifest[item.locationSlug].itemSlugs.push(item.slug);
 	});
 }

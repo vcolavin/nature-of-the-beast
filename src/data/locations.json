@@ -3,26 +3,120 @@
 		"slug": "a_quiet_forest",
 		"descriptions": [
 			{
-				"text": "it is early morning",
-				"timer": 100
+				"text": "it is early morning"
 			},
 			{
-				"text": "cold rain is melting the remaining snow hanging from the boughs of the surround trees",
-				"timer": 1500
+				"text": "cold rain is melting the remaining snow hanging from the boughs of the surround trees"
 			},
 			{
-				"text": "you are surrounded by evergreens.",
-				"timer": 500
+				"text": "you are surrounded by evergreens."
 			},
-			{ "text": "douglas fir", "timer": 1000 },
+			{ "text": "douglas fir" },
 			{
-				"text": "you can make out a path heading into the fog",
-				"timer": 1500
+				"text": "you can make out a path heading into the fog"
 			}
 		]
 	},
 	{
-		"slug": "a_cold_cabin",
+		"slug": "a_path",
+		"descriptions": [
+			{
+				"text": "somewhere in your brain, you are sure"
+			},
+			{
+				"text": "this path is etched deep and indelible. You could walk it in your sleep."
+			},
+			{
+				"text": "the ground sucks at your boots"
+			},
+			{
+				"text": "the moss beckons"
+			}
+		]
+	},
+	{
+		"slug": "in_front_of_the_cabin",
+		"descriptions": [
+			{
+				"text": "you are standing in front of the house you grew up in"
+			},
+			{
+				"text": "it's been years since you've been back"
+			},
+			{
+				"text": "you experience a strange mixture of feelings"
+			},
+			{
+				"text": "melancholy, though maybe that's just the weather"
+			},
+			{
+				"text": "pride, for leaving"
+			},
+			{
+				"text": "apprehension, for what you know is inside"
+			}
+		]
+	},
+	{
+		"slug": "side_yard",
+		"descriptions": [
+			{
+				"text": "you tried to start a garden here once"
+			},
+			{
+				"text": "you dreamt, specifically, of rhubarb in winter and tomatillos in summer"
+			},
+			{
+				"text": "you dreamt of bringing these things to the dinner table and sharing them with your parents"
+			},
+			{
+				"text": "it was a naïve aspiration, but who could fault you for such a desire?"
+			},
+			{
+				"text": "the side yard has been unused, unvisited since"
+			},
+			{
+				"text": "a space ceded to the damp and clamoring claw of the pacific northwest"
+			},
+			{
+				"text": "a weathered shovel bears aged witness to your efforts"
+			},
+			{
+				"text": "and the gate creaks in the wind"
+			}
+		]
+	},
+	{
+		"slug": "backyard",
+		"descriptions": [
+			{
+				"text": "a mockery of the suburban backyard, with a pool and everything"
+			},
+			{
+				"text": "mom wanted a pool but she hated to swim"
+			},
+			{
+				"text": "dad hated the suburbs but loved pool maintenance"
+			},
+			{
+				"text": "their charade worked until it didn't."
+			},
+			{
+				"text": "a relic of multicolored plastic survives in the swampy remains of the pool"
+			},
+			{
+				"text": "you are unsettled."
+			},
+			{
+				"text": "the damp sets into your bones."
+			},
+			{
+				"text": "you do not wish to stay."
+			}
+		]
+	},
+	{
+		"slug": "inside",
 		"descriptions": [
 			{ "text": "it is a cold cabin" },
 			{
@@ -31,9 +125,17 @@
 			{
 				"text": "sitting alone at a table set for two,"
 			},
-			{ "text": "dead." },
+			{
+				"text": "dead."
+			},
 			{
 				"text": "diffuse light flows and pools and illuminates"
+			},
+			{
+				"text": "why did I return?, you wonder"
+			},
+			{
+				"text": "alack, there is no answer"
 			}
 		]
 	},
@@ -41,7 +143,7 @@
 		"slug": "somebody_once_loved",
 		"descriptions": [
 			{
-				"text": "They are an adult, but beyond that you struggle to make out anything about them. The stench is magnificent."
+				"text": "you struggle to make out anything about them. The stench is magnificent."
 			}
 		]
 	}
