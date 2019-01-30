@@ -117,8 +117,8 @@ export default class TerminalInput extends React.Component<Props, State> {
 				break;
 			case 'Enter':
 				e.preventDefault();
-				this.props.handleSubmit(this.inputValue);
 				this.addToCommandHistory(this.inputValue);
+				this.props.handleSubmit(this.inputValue);
 				this.inputValue = '';
 
 			default:

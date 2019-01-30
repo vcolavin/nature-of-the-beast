@@ -130,20 +130,25 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 	};
 
 	render() {
+		const { terminalHistory } = this.state;
+		const { consoleInteractive } = this.props;
+
 		return (
 			<div className="terminal">
-				<TerminalBuffer terminalHistory={this.state.terminalHistory} />
+				<TerminalBuffer terminalHistory={terminalHistory} />
 
-				{this.props.consoleInteractive && (
-					<form className="input-form">
-						<span className="input-prompt">{inputPrompt()}</span>
+				<form
+					className={`input-form ${
+						consoleInteractive ? 'active' : ''
+					}`}
+				>
+					<span className="input-prompt">{inputPrompt()}</span>
 
-						<TerminalInput
-							writeToConsole={this.writeToConsole}
-							handleSubmit={this.runCommand}
-						/>
-					</form>
-				)}
+					<TerminalInput
+						writeToConsole={this.writeToConsole}
+						handleSubmit={this.runCommand}
+					/>
+				</form>
 			</div>
 		);
 	}
