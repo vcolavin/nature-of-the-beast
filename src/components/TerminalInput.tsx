@@ -45,7 +45,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 			state => {
 				if (
 					state.currentPlaceInHistory ===
-					state.commandHistory.length + 1
+					state.commandHistory.length - 1
 				) {
 					return null;
 				}
