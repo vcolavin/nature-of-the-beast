@@ -2,6 +2,13 @@ import BaseUtility, { RunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
 
 export default class Cd extends BaseUtility {
+
+	private setUrlLocation() {
+		const currentUrl = window.location.href;
+		const newUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + store.getState().location;
+		window.history.pushState({path:newUrl},'',newUrl);
+	}
+
 	private goToPreviousLocation() {
 		const newLocation = store.getState().previousLocationStack[0];
 
@@ -43,6 +50,7 @@ export default class Cd extends BaseUtility {
 			writeToConsole(`invalid location ${args[0]}`);
 		}
 
+		this.setUrlLocation();
 		return nullPromise;
 	}
 

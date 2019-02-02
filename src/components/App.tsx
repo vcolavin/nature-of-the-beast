@@ -15,6 +15,8 @@ export default class App extends React.Component<{}, {}> {
 		initializeUtilities();
 		initializeItems();
 
+		window.history.pushState( {} , '', '/' + INITIAL_LOCATION_SLUG );
+		
 		store.dispatch({
 			type: ActionTypes.SET_LOCATION,
 			value: INITIAL_LOCATION_SLUG
