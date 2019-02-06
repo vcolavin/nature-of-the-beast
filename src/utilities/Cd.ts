@@ -2,10 +2,10 @@ import BaseUtility, { RunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
 
 export default class Cd extends BaseUtility {
-	private goToPreviousLocation() {
-		const newLocation = store.getState().previousLocationStack[0];
+    private goToPreviousLocation() {
+        const newLocation = store.getState().previousLocationStack[0];
 
-		store.dispatch({
+        store.dispatch({
             type: ActionTypes.POP_LOCATION_STACK
         });
 
