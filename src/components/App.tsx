@@ -4,6 +4,7 @@ import { initializeLocations } from '../nouns/LocationManifest';
 import { initializeUtilities } from '../utilities/UtilityManifest';
 import store, { ActionTypes } from '../store';
 import { initializeItems } from '../nouns/ItemManifest';
+import { setUrlLocation } from '../utilities/Cd';
 
 const INITIAL_LOCATION_SLUG = 'a_quiet_forest';
 
@@ -15,8 +16,8 @@ export default class App extends React.Component<{}, {}> {
 		initializeUtilities();
 		initializeItems();
 
-		window.history.pushState( {} , '', '/' + INITIAL_LOCATION_SLUG );
-		
+		setUrlLocation({ location: INITIAL_LOCATION_SLUG });
+
 		store.dispatch({
 			type: ActionTypes.SET_LOCATION,
 			value: INITIAL_LOCATION_SLUG
