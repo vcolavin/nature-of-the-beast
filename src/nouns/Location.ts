@@ -1,4 +1,4 @@
-interface Description {
+export interface Description {
 	text: string;
 	timer?: number;
 }
