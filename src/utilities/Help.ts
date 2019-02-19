@@ -9,15 +9,15 @@ export default class Help extends BaseUtility {
 				? util.helpDescription
 				: `I don't know much about ${args.join(' ')}.`;
 
-			writeToConsole(description);
+			writeToConsole({ item: description });
 		} else {
-			writeToConsole(
-				`The following utilities are available: ${Object.keys(
+			writeToConsole({
+				item: `The following utilities are available: ${Object.keys(
 					UtilityManifest
 				).join(
 					', '
 				)}.\n\nFor help with any particular utility, write "help <utility name>".`
-			);
+			});
 		}
 
 		return Promise.resolve(null);

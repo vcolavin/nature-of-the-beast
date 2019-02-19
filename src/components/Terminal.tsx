@@ -21,9 +21,14 @@ interface TerminalProps {
 	consoleInteractive: boolean;
 }
 
+export interface IConsoleWriteArgs {
+	item: HistoryItemContent;
+	speak?: boolean;
+}
+
 interface RevocableConsoleWriter {
 	revoke: () => void;
-	writeToConsole: (arg: HistoryItemContent) => void;
+	writeToConsole: (arg1: IConsoleWriteArgs) => void;
 }
 
 function inputPrompt(): string {
@@ -75,9 +80,9 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			revoke: () => {
 				revoked = true;
 			},
-			writeToConsole: (item: HistoryItemContent) => {
+			writeToConsole: (args: IConsoleWriteArgs) => {
 				if (!revoked) {
-					this.writeToConsole(item);
+					this.writeToConsole(args);
 				}
 			}
 		};
@@ -96,7 +101,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 
 		const utility = UtilityManifest[utilityName];
 
-		this.writeToConsole(`${inputPrompt()}${value}`);
+		this.writeToConsole({ item: `${inputPrompt()}${value}` });
 
 		if (utility) {
 			const revocableConsoleWriter = this.getRevocableConsoleWriter();
@@ -113,11 +118,11 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				});
 		} else {
-			this.writeToConsole(`I don't know how to ${utilityName}`);
+			this.writeToConsole({ item: `I don't know how to ${utilityName}` });
 		}
 	};
 
-	private writeToConsole = (item: HistoryItemContent) => {
+	private writeToConsole = ({ item, speak }: IConsoleWriteArgs) => {
 		this.setState(state => ({
 			terminalHistory: [
 				...state.terminalHistory,

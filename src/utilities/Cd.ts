@@ -42,7 +42,7 @@ export default class Cd extends BaseUtility {
 					value: newLocation
 				});
 			} else {
-				writeToConsole(`invalid location ${args[0]}`);
+				writeToConsole({ item: `invalid location ${args[0]}` });
 			}
 		}
 

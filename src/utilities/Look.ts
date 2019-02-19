@@ -5,15 +5,15 @@ import ItemManifest from '../nouns/ItemManifest';
 export default class Look extends BaseUtility {
 	run({ writeToConsole, args }: RunParams): Promise<null> {
 		if (args[0] === 'at' && ItemManifest[args[1]]) {
-			writeToConsole(ItemManifest[args[1]].description);
+			writeToConsole({ item: ItemManifest[args[1]].description });
 
 			return Promise.resolve(null);
 		}
 
 		if (args.length > 0) {
-			writeToConsole(
-				`invalid ${this.command} argument ${args.join(' ')}.`
-			);
+			writeToConsole({
+				item: `invalid ${this.command} argument ${args.join(' ')}.`
+			});
 
 			return Promise.resolve(null);
 		}
@@ -30,7 +30,7 @@ export default class Look extends BaseUtility {
 						: description.timer;
 
 				window.setTimeout(() => {
-					writeToConsole(description.text);
+					writeToConsole({ item: description.text });
 
 					if (i === descriptions.length - 1) {
 						resolve();

@@ -19,9 +19,9 @@ export default class Pickup extends BaseUtility {
 				value: item
 			});
 
-			writeToConsole(`I have picked up the ${item}`);
+			writeToConsole({ item: `I have picked up the ${item}` });
 		} else {
-			writeToConsole(`There is no ${item} here`);
+			writeToConsole({ item: `There is no ${item} here` });
 		}
 
 		return Promise.resolve(null);

@@ -30,12 +30,14 @@ function LsComponent(props: Props) {
 
 export default class Ls extends BaseUtility {
 	run({ writeToConsole }: RunParams): Promise<null> {
-		writeToConsole(
-			<LsComponent
-				places={getCurrentLocation().neighborSlugs.sort()}
-				items={getCurrentLocation().itemSlugs.sort()}
-			/>
-		);
+		writeToConsole({
+			item: (
+				<LsComponent
+					places={getCurrentLocation().neighborSlugs.sort()}
+					items={getCurrentLocation().itemSlugs.sort()}
+				/>
+			)
+		});
 
 		return Promise.resolve(null);
 	}
