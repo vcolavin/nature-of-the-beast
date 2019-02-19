@@ -1,13 +1,11 @@
-const { speak } = window.speechSynthesis;
-
-export default function say(text: string): Promise<void> {
+export default function say(text: string): Promise<null> {
 	const utterance = new SpeechSynthesisUtterance(text);
 
-	speak(utterance);
+	window.speechSynthesis.speak(utterance);
 
 	return new Promise(resolve => {
 		utterance.onend = () => {
-			resolve();
+			window.setTimeout(resolve, 250);
 		};
 	});
 }

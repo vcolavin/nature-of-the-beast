@@ -5,7 +5,7 @@ import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
-import say from '../utils/speechUtilities';
+import say from '../utils/SpeechUtilities';
 
 export type HistoryItemContent = string | JSX.Element;
 
@@ -29,7 +29,7 @@ export type IConsoleWriteArgs = {
 
 interface RevocableConsoleWriter {
 	revoke: () => void;
-	writeToConsole: (arg1: IConsoleWriteArgs) => void;
+	writeToConsole: (arg1: IConsoleWriteArgs) => Promise<null>;
 }
 
 function inputPrompt(): string {
@@ -83,8 +83,9 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			},
 			writeToConsole: (args: IConsoleWriteArgs) => {
 				if (!revoked) {
-					this.writeToConsole(args);
+					return this.writeToConsole(args);
 				}
+				return Promise.resolve(null);
 			}
 		};
 	};
@@ -117,17 +118,23 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				})
 				.then(() => {
 					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
-				});
+				})
+				.catch(e => console.error);
 		} else {
 			this.writeToConsole({ item: `I don't know how to ${utilityName}` });
 		}
 	};
 
-	private writeToConsole = ({ item, speak }: IConsoleWriteArgs) => {
+	private writeToConsole = ({
+		item,
+		speak
+	}: IConsoleWriteArgs): Promise<null> => {
+		let speechPromise = null;
+
 		if (speak && typeof item !== 'string') {
 			throw 'cannot "speak" a component';
 		} else if (speak && typeof item === 'string') {
-			say(item);
+			speechPromise = say(item);
 		}
 
 		this.setState(state => ({
@@ -139,6 +146,8 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				}
 			]
 		}));
+
+		return speechPromise ? speechPromise : Promise.resolve(null);
 	};
 
 	render() {
