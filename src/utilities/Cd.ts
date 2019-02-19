@@ -20,8 +20,12 @@ export default class Cd extends BaseUtility {
 	run({ args, writeToConsole }: RunParams): Promise<null> {
 		const nullPromise = Promise.resolve(null);
 
-		if (args[0] == '..') {
-			this.goToPreviousLocation();
+		if (args[0].indexOf('..') >= 0) {
+			const count = (args[0].match(/../g) || []).length;
+
+			for (let i = 0; i < count; i++) {
+				this.goToPreviousLocation();
+			}
 		} else {
 			const newLocation = getCurrentLocation().neighborSlugs.find(
 				(slug: string) => slug === args[0]
