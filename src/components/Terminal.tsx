@@ -5,11 +5,12 @@ import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
+import say from '../utils/speechUtilities';
 
 export type HistoryItemContent = string | JSX.Element;
 
 export interface HistoryItem {
-	content: HistoryItemContent;
+	content: string | JSX.Element;
 	id: string;
 }
 
@@ -21,10 +22,10 @@ interface TerminalProps {
 	consoleInteractive: boolean;
 }
 
-export interface IConsoleWriteArgs {
+export type IConsoleWriteArgs = {
 	item: HistoryItemContent;
 	speak?: boolean;
-}
+};
 
 interface RevocableConsoleWriter {
 	revoke: () => void;
@@ -123,6 +124,12 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 	};
 
 	private writeToConsole = ({ item, speak }: IConsoleWriteArgs) => {
+		if (speak && typeof item !== 'string') {
+			throw 'cannot "speak" a component';
+		} else if (speak && typeof item === 'string') {
+			say(item);
+		}
+
 		this.setState(state => ({
 			terminalHistory: [
 				...state.terminalHistory,

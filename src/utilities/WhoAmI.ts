@@ -15,7 +15,7 @@ export default class WhoAmI extends BaseUtility {
 		return new Promise(resolve => {
 			this.responses.forEach((response, index) => {
 				window.setTimeout(() => {
-					writeToConsole({ item: response });
+					writeToConsole({ item: response, speak: true });
 
 					if (index === this.responses.length - 1) {
 						resolve();
