@@ -59,9 +59,8 @@ export default class Cd extends BaseUtility {
 }
 
 export function setUrlLocation({ location }: { location: string }): void {
-	const currentUrl = window.location.href;
-	const newUrl =
-		currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + location;
-
-	window.history.pushState({ path: newUrl }, '', newUrl);
+	// const currentUrl = window.location.href;
+	// const newUrl =
+	// 	currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + location;
+	// window.history.pushState({ path: newUrl }, '', newUrl);
 }
