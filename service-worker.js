@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/nature-of-the-beast/precache-manifest.25050df1f2beba4b0c86d2dfc9c6853a.js"
+  "/nature-of-the-beast/precache-manifest.458cbbfa8aa699877271a959238613a6.js"
 );
 
 workbox.clientsClaim();
