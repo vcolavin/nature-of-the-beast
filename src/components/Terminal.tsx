@@ -5,7 +5,7 @@ import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
-import say from '../utils/SpeechUtilities';
+import say, { cancelSpeech } from '../utils/SpeechUtilities';
 
 export type HistoryItemContent = string | JSX.Element;
 
@@ -62,6 +62,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			(typedEvent.ctrlKey && ['c', 'C', 'd', 'D'].indexOf(key) >= 0)
 		) {
 			this.revokeConsoleWriters();
+			cancelSpeech();
 			store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 		}
 	};
@@ -119,7 +120,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				.then(() => {
 					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				})
-				.catch(e => console.error);
+				.catch(console.error);
 		} else {
 			this.writeToConsole({ item: `I don't know how to ${utilityName}` });
 		}

@@ -25,16 +25,19 @@
 // 	});
 // }, Promise.resolve(null));
 
-const tessa = window.speechSynthesis
-	.getVoices()
-	.filter(voice => voice.name === 'Tessa')[0];
+const voice =
+	window.speechSynthesis
+		.getVoices()
+		.filter(voice => voice.name === 'Tessa')[0] ||
+	window.speechSynthesis.getVoices()[0];
 
 export default function say(text: string): Promise<null> {
 	const utterance = new SpeechSynthesisUtterance(text);
+
 	utterance.rate = 0.9;
 	utterance.pitch = 0.8;
 
-	utterance.voice = tessa;
+	utterance.voice = voice;
 
 	window.speechSynthesis.speak(utterance);
 
@@ -43,4 +46,8 @@ export default function say(text: string): Promise<null> {
 			window.setTimeout(resolve, 250);
 		};
 	});
+}
+
+export function cancelSpeech(): void {
+	window.speechSynthesis.cancel();
 }
