@@ -1,43 +1,28 @@
 import BaseUtility, { RunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
 import ItemManifest from '../nouns/ItemManifest';
+import { Description } from '../nouns/Location';
 
 export default class Look extends BaseUtility {
 	run({ writeToConsole, args }: RunParams): Promise<null> {
 		if (args[0] === 'at' && ItemManifest[args[1]]) {
-			writeToConsole(ItemManifest[args[1]].description);
-
-			return Promise.resolve(null);
+			return writeToConsole({
+				item: ItemManifest[args[1]].description,
+				speak: true
+			});
 		}
 
 		if (args.length > 0) {
-			writeToConsole(
-				`invalid ${this.command} argument ${args.join(' ')}.`
-			);
-
-			return Promise.resolve(null);
+			return writeToConsole({
+				item: `invalid ${this.command} argument ${args.join(' ')}.`
+			});
 		}
 
-		return new Promise(resolve => {
-			let timeAccumulator = 0;
-
-			const descriptions = getCurrentLocation().descriptions;
-
-			descriptions.forEach((description, i) => {
-				timeAccumulator +=
-					typeof description.timer === 'undefined'
-						? 1500
-						: description.timer;
-
-				window.setTimeout(() => {
-					writeToConsole(description.text);
-
-					if (i === descriptions.length - 1) {
-						resolve();
-					}
-				}, timeAccumulator);
-			});
-		});
+		return getCurrentLocation().descriptions.reduce(
+			(memo: Promise<null>, { text }: Description): Promise<null> =>
+				memo.then(() => writeToConsole({ item: text, speak: true })),
+			Promise.resolve(null)
+		);
 	}
 
 	command = 'look';

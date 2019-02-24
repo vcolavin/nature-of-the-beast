@@ -5,11 +5,12 @@ import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
+import say, { cancelSpeech } from '../utils/SpeechUtilities';
 
 export type HistoryItemContent = string | JSX.Element;
 
 export interface HistoryItem {
-	content: HistoryItemContent;
+	content: string | JSX.Element;
 	id: string;
 }
 
@@ -21,9 +22,14 @@ interface TerminalProps {
 	consoleInteractive: boolean;
 }
 
+export type IConsoleWriteArgs = {
+	item: HistoryItemContent;
+	speak?: boolean;
+};
+
 interface RevocableConsoleWriter {
 	revoke: () => void;
-	writeToConsole: (arg: HistoryItemContent) => void;
+	writeToConsole: (arg1: IConsoleWriteArgs) => Promise<null>;
 }
 
 function inputPrompt(): string {
@@ -56,6 +62,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			(typedEvent.ctrlKey && ['c', 'C', 'd', 'D'].indexOf(key) >= 0)
 		) {
 			this.revokeConsoleWriters();
+			cancelSpeech();
 			store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 		}
 	};
@@ -75,10 +82,11 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			revoke: () => {
 				revoked = true;
 			},
-			writeToConsole: (item: HistoryItemContent) => {
+			writeToConsole: (args: IConsoleWriteArgs) => {
 				if (!revoked) {
-					this.writeToConsole(item);
+					return this.writeToConsole(args);
 				}
+				return Promise.resolve(null);
 			}
 		};
 	};
@@ -96,7 +104,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 
 		const utility = UtilityManifest[utilityName];
 
-		this.writeToConsole(`${inputPrompt()}${value}`);
+		this.writeToConsole({ item: `${inputPrompt()}${value}` });
 
 		if (utility) {
 			const revocableConsoleWriter = this.getRevocableConsoleWriter();
@@ -111,13 +119,25 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				})
 				.then(() => {
 					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
-				});
+				})
+				.catch(console.error);
 		} else {
-			this.writeToConsole(`I don't know how to ${utilityName}`);
+			this.writeToConsole({ item: `I don't know how to ${utilityName}` });
 		}
 	};
 
-	private writeToConsole = (item: HistoryItemContent) => {
+	private writeToConsole = ({
+		item,
+		speak
+	}: IConsoleWriteArgs): Promise<null> => {
+		let speechPromise = null;
+
+		if (speak && typeof item !== 'string') {
+			throw 'cannot "speak" a component';
+		} else if (speak && typeof item === 'string') {
+			speechPromise = say(item);
+		}
+
 		this.setState(state => ({
 			terminalHistory: [
 				...state.terminalHistory,
@@ -127,6 +147,8 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				}
 			]
 		}));
+
+		return speechPromise ? speechPromise : Promise.resolve(null);
 	};
 
 	render() {

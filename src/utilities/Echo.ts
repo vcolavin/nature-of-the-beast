@@ -2,7 +2,7 @@ import BaseUtility, { RunParams } from './BaseUtility';
 
 export default class Echo extends BaseUtility {
 	run({ args, writeToConsole }: RunParams): Promise<null> {
-		writeToConsole(args.join(' '));
+		writeToConsole({ item: args.join(' ') });
 		return Promise.resolve(null);
 	}
 
