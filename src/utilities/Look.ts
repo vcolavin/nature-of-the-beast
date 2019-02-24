@@ -1,7 +1,6 @@
 import BaseUtility, { RunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
 import ItemManifest from '../nouns/ItemManifest';
-import { Description } from '../nouns/Location';
 
 export default class Look extends BaseUtility {
 	run({ writeToConsole, args }: RunParams): Promise<null> {
@@ -19,7 +18,7 @@ export default class Look extends BaseUtility {
 		}
 
 		return getCurrentLocation().descriptions.reduce(
-			(memo: Promise<null>, { text }: Description): Promise<null> =>
+			(memo: Promise<null>, text: string): Promise<null> =>
 				memo.then(() => writeToConsole({ item: text, speak: true })),
 			Promise.resolve(null)
 		);

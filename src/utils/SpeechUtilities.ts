@@ -43,7 +43,7 @@ export default function say(text: string): Promise<null> {
 
 	return new Promise(resolve => {
 		utterance.onend = () => {
-			window.setTimeout(resolve, 250);
+			window.setTimeout(resolve, 300);
 		};
 	});
 }

@@ -1,11 +1,6 @@
-export interface Description {
-	text: string;
-	timer?: number;
-}
-
 interface Args {
 	slug: string;
-	descriptions: Description[];
+	descriptions: string[];
 }
 
 export default class Location {
@@ -14,7 +9,7 @@ export default class Location {
 		this.slug = slug;
 	}
 
-	descriptions: Description[];
+	descriptions: string[];
 	slug: string;
 	itemSlugs: string[] = [];
 	neighborSlugs: string[] = [];

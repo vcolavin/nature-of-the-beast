@@ -6,7 +6,7 @@ import items from '../data/items.json';
 
 export const loading = new Location({
 	slug: 'loading',
-	descriptions: [{ text: 'loading' }]
+	descriptions: ['loading']
 });
 
 const LocationManifest: { [s: string]: Location } = {

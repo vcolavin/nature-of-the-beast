@@ -185,7 +185,6 @@ export default class TerminalInput extends React.Component<Props, State> {
 				});
 				break;
 		}
-		return;
 	};
 
 	render() {
