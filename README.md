@@ -56,3 +56,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] tab autocomplete should make use of LsComponent so that its output has the correct colors
 -   [ ] `exit` utility which shuts the whole thing down, or maybe something a little more playful than that
 -   [x] Make the terminal a controlled component. Don't rely on the DOM as a source of truth.
+-   [ ] Now that the `writeToConsole` method handles speech as well, its name and position are no longer true. What abstraction is missing?

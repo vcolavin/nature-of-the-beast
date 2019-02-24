@@ -82,12 +82,8 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			revoke: () => {
 				revoked = true;
 			},
-			writeToConsole: (args: IConsoleWriteArgs) => {
-				if (!revoked) {
-					return this.writeToConsole(args);
-				}
-				return Promise.resolve(null);
-			}
+			writeToConsole: (args: IConsoleWriteArgs) =>
+				revoked ? Promise.resolve(null) : this.writeToConsole(args)
 		};
 	};
 
