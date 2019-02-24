@@ -55,3 +55,4 @@ found at http://vcolavin.com/nature-of-the-beast/
 -   [ ] choose better colors to differentiate between items and places. spend some TLC on the styling in general.
 -   [ ] tab autocomplete should make use of LsComponent so that its output has the correct colors
 -   [ ] `exit` utility which shuts the whole thing down, or maybe something a little more playful than that
+-   [x] Make the terminal a controlled component. Don't rely on the DOM as a source of truth.

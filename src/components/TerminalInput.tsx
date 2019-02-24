@@ -16,18 +16,25 @@ interface Props {
 interface State {
 	commandHistory: CommandItem[];
 	currentPlaceInHistory: number;
+	inputValue: string;
 }
 
 export default class TerminalInput extends React.Component<Props, State> {
 	state: State = {
 		commandHistory: [],
-		currentPlaceInHistory: -1
+		currentPlaceInHistory: -1,
+		inputValue: ''
 	};
 
-	private inputEl: HTMLInputElement | null = null;
+	constructor(props: Props) {
+		super(props);
+		this.inputEl = React.createRef();
+	}
+
+	private inputEl: React.RefObject<HTMLInputElement>;
 
 	private focusInput = () => {
-		this.inputEl && this.inputEl.focus();
+		this.inputEl.current && this.inputEl.current.focus();
 	};
 
 	componentDidMount() {
@@ -58,7 +65,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 				];
 
 				if (command) {
-					this.inputValue = command.content;
+					this.setState({ inputValue: command.content });
 				}
 			}
 		);
@@ -77,7 +84,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 			},
 			() => {
 				if (this.state.currentPlaceInHistory === -1) {
-					this.inputValue = '';
+					this.setState({ inputValue: '' });
 				}
 
 				const command = this.state.commandHistory[
@@ -85,7 +92,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 				];
 
 				if (command) {
-					this.inputValue = command.content;
+					this.setState({ inputValue: command.content });
 				}
 			}
 		);
@@ -93,13 +100,17 @@ export default class TerminalInput extends React.Component<Props, State> {
 
 	private moveCursorToEnd = () => {
 		window.setTimeout(() => {
-			if (this.inputEl) {
-				this.inputEl.selectionStart = 1000;
+			if (this.inputEl.current) {
+				this.inputEl.current.selectionStart = 1000;
 			}
 		}, 0);
 	};
 
-	private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+	private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ inputValue: (e.target as HTMLInputElement).value });
+	};
+
+	private handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		switch (e.key) {
 			case 'ArrowUp':
 				this.goBackInHistory();
@@ -115,9 +126,9 @@ export default class TerminalInput extends React.Component<Props, State> {
 				break;
 			case 'Enter':
 				e.preventDefault();
-				this.addToCommandHistory(this.inputValue);
-				this.props.handleSubmit(this.inputValue);
-				this.inputValue = '';
+				this.addToCommandHistory(this.state.inputValue);
+				this.props.handleSubmit(this.state.inputValue);
+				this.setState({ inputValue: '' });
 
 			default:
 		}
@@ -136,22 +147,12 @@ export default class TerminalInput extends React.Component<Props, State> {
 		}));
 	};
 
-	private get inputValue(): string {
-		return this.inputEl ? this.inputEl.value : '';
-	}
-
-	private set inputValue(value: string) {
-		if (this.inputEl) {
-			this.inputEl.value = value;
-		}
-	}
-
 	private tabComplete = () => {
-		if (this.inputValue === '') {
+		if (this.state.inputValue === '') {
 			return;
 		}
 
-		const [command, ...rest] = this.inputValue.split(' ');
+		const [command, ...rest] = this.state.inputValue.split(' ');
 
 		let lastValue = rest[rest.length - 1];
 
@@ -173,7 +174,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 					...rest.slice(0, rest.length - 1),
 					options[0]
 				].join(' ');
-				this.inputValue = newValue;
+				this.setState({ inputValue: newValue });
 				break;
 			default:
 				this.props.writeToConsole(
@@ -194,10 +195,9 @@ export default class TerminalInput extends React.Component<Props, State> {
 					className="input"
 					type="text"
 					onKeyDown={this.handleKeyDown}
-					ref={e => {
-						this.inputEl = e;
-						this.inputEl && this.inputEl.focus();
-					}}
+					onChange={this.handleChange}
+					ref={this.inputEl}
+					value={this.state.inputValue}
 				/>
 			</>
 		);
