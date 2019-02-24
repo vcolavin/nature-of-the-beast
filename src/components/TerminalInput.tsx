@@ -190,16 +190,14 @@ export default class TerminalInput extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<>
-				<input
-					className="input"
-					type="text"
-					onKeyDown={this.handleKeyDown}
-					onChange={this.handleChange}
-					ref={this.inputEl}
-					value={this.state.inputValue}
-				/>
-			</>
+			<input
+				className="input"
+				type="text"
+				onKeyDown={this.handleKeyDown}
+				onChange={this.handleChange}
+				ref={this.inputEl}
+				value={this.state.inputValue}
+			/>
 		);
 	}
 }
