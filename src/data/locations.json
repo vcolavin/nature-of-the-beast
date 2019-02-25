@@ -2,43 +2,43 @@
 	{
 		"slug": "a_quiet_forest",
 		"descriptions": [
-			"it is early morning",
-			"cold rain is melting the remaining snow hanging from the boughs of the surrounding trees",
-			"you are surrounded by evergreens.",
-			"douglas fir",
-			"you can make out a path heading into the fog"
+			"it is early morning.",
+			"cold rain is melting the what remaining empty and wet snow hangs from the boughs of the surrounding trees",
+			"I am surrounded by evergreens.",
+			"douglas fir.",
+			"I can make out a path heading into the fog."
 		]
 	},
 	{
 		"slug": "a_path",
 		"descriptions": [
-			"somewhere in your brain, you are sure",
-			"this path is etched deep and indelible. You could walk it in your sleep.",
-			"the ground sucks at your boots",
-			"the moss beckons"
+			"somewhere in my brain, I am sure",
+			"this path is etched deeply and indelible. I could walk it in my sleep.",
+			"the ground sucks at my boots",
+			"and the moss beckons"
 		]
 	},
 	{
 		"slug": "in_front_of_the_cabin",
 		"descriptions": [
-			"you are standing in front of the house you grew up in",
-			"it's been years since you've been back",
-			"you experience a strange mixture of feelings",
+			"I am standing in front of the house I grew up in",
+			"it's been years since I've been back",
+			"I experience a strange mixture of feelings",
 			"melancholy, though maybe that's just the weather",
 			"pride, for leaving",
-			"apprehension, for what you know is inside"
+			"apprehension, for what I know is inside"
 		]
 	},
 	{
 		"slug": "side_yard",
 		"descriptions": [
-			"you tried to start a garden here once",
-			"you dreamt, specifically, of rhubarb in winter and tomatillos in summer",
-			"you dreamt of bringing these things to the dinner table and sharing them with your parents",
+			"I tried to start a garden here once",
+			"I dreamt, specifically, of rhubarb in winter and tomatillos in summer",
+			"I dreamt of bringing these things to the dinner table and sharing them with my parents",
 			"it was a naïve aspiration, but who could fault you for such a desire?",
 			"the side yard has been unused, unvisited since",
 			"a space ceded to the damp and clamoring claw of the pacific northwest",
-			"a weathered shovel bears aged witness to your efforts",
+			"a weathered shovel bears aged witness to my efforts",
 			"and the gate creaks in the wind"
 		]
 	},
@@ -50,27 +50,17 @@
 			"dad hated the suburbs but loved pool maintenance",
 			"their charade worked until it didn't.",
 			"a relic of multicolored plastic survives in the swampy remains of the pool",
-			"you are unsettled.",
+			"I am unsettled.",
 			"the damp sets into your bones.",
-			"you do not wish to stay."
+			"I do not wish to stay."
 		]
 	},
 	{
 		"slug": "inside",
 		"descriptions": [
-			"it is a cold cabin",
-			"someone somebody once loved, probably, is here",
-			"sitting alone at a table set for two,",
-			"dead.",
+			"it is a cold cabin.",
 			"diffuse light flows and pools and illuminates",
-			"why did I return?, you wonder",
-			"alack, there is no answer"
-		]
-	},
-	{
-		"slug": "somebody_once_loved",
-		"descriptions": [
-			"you struggle to make out anything about them. The stench is magnificent."
+			"why did I return?"
 		]
 	}
 ]

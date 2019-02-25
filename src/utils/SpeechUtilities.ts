@@ -36,7 +36,6 @@ export default function say(text: string): Promise<null> {
 
 	utterance.rate = 0.9;
 	utterance.pitch = 0.8;
-
 	utterance.voice = voice;
 
 	window.speechSynthesis.speak(utterance);

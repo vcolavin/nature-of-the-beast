@@ -1,17 +1,17 @@
 interface Args {
 	slug: string;
 	locationSlug: string;
-	description: string;
+	descriptions: string[];
 }
 
 export default class Item {
-	constructor({ description, slug, locationSlug }: Args) {
-		this.description = description;
+	constructor({ descriptions, slug, locationSlug }: Args) {
+		this.descriptions = descriptions;
 		this.slug = slug;
 		this.locationSlug = locationSlug;
 	}
 
-	description: string;
+	descriptions: string[];
 	slug: string;
 	locationSlug: string;
 }

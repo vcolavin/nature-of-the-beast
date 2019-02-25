@@ -3,6 +3,6 @@
 	["in_front_of_the_cabin", "a_path"],
 	["side_yard", "in_front_of_the_cabin"],
 	["side_yard", "backyard"],
-	["inside", "somebody_once_loved"],
+	["in_front_of_the_cabin", "inside"],
 	["inside", "backyard"]
 ]
