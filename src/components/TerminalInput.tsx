@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentLocation } from '../store';
+import store, { getCurrentLocation } from '../store';
 import { TAB_WIDTH, IConsoleWriteArgs } from './Terminal';
 import uuid from '../utils/uuid';
 
@@ -162,7 +162,8 @@ export default class TerminalInput extends React.Component<Props, State> {
 
 		const options = [
 			...getCurrentLocation().neighborSlugs,
-			...getCurrentLocation().itemSlugs
+			...getCurrentLocation().itemSlugs,
+			...store.getState().inventory
 		].filter((slug: string) => slug.indexOf(lastValue) === 0);
 
 		switch (options.length) {

@@ -10,10 +10,16 @@
 	{
 		"slug": "shovel",
 		"descriptions": [
-			"mom bought this shovel when I turned fifteen, from the hardware store in town.",
-			"this was just before her desperation and sadness truly bloomed and bore its devastating fruit",
-			"like water damage worming through photo album."
+			"mom bought me this mini shovel when I turned fifteen",
+			"from the hardware store in town.",
+			"this was just before her desperation and sadness blossomed and eventually bore its devastating fruit",
+			"like water damage worming through a photo album.",
+			"The handle of this shovel is yellow fiberglass and maybe two feet long",
+			"And though it has spent years in damp neglect",
+			"the galvanized scoop has not rusted deeply.",
+			"I recall that the scoop is also sometimes called a blade",
+			"and feel the weapon's comfortable heft in my hand"
 		],
-		"locationSlug": "side_yard"
+		"locationSlug": "trash_heap"
 	}
 ]

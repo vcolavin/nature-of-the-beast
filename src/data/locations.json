@@ -35,11 +35,22 @@
 			"I tried to start a garden here once",
 			"I dreamt, specifically, of rhubarb in winter and tomatillos in summer",
 			"I dreamt of bringing these things to the dinner table and sharing them with my parents",
-			"it was a naïve aspiration, but who could fault you for such a desire?",
-			"the side yard has been unused, unvisited since",
-			"a space ceded to the damp and clamoring claw of the pacific northwest",
-			"a weathered shovel bears aged witness to my efforts",
-			"and the gate creaks in the wind"
+			"it was a naïve aspiration, but who could fault a child for such a desire?",
+			"the side yard has been unused and unvisited since",
+			"a space ceded to the damp clamor of the pacific northwest.",
+			"The gate creaks in the wind.",
+			"And by it is a pile of cans and other refuse."
+		]
+	},
+	{
+		"slug": "trash_heap",
+		"descriptions": [
+			"Towards the end, dad talked a lot about how the Oregon government was scamming us",
+			"by making us pay for can and bottle deposits they knew we'd never redeem",
+			"he started hoarding his empties, bragging about the big dinner he'd take us out on when he took them to the place.",
+			"over time, this project grew and consumed my garden.",
+			"I pick through the moss-covered aluminum like an archaeologist",
+			"and I find several parts of my childhood I had tried to forget."
 		]
 	},
 	{
