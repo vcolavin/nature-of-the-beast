@@ -4,10 +4,10 @@ const responses: string[] = [
 	"I don't remember",
 	'But I am glad you asked. I am glad you are here.',
 	"I don't know who you are",
-	'You are an echo',
+	"I'm sorry for that...",
+	'To the best of my knowledge, you are an echo.',
 	'You were a mistake',
-	'You are a dog lover',
-	'Or you were'
+	'insofar as any human being could be a mistake.'
 ];
 
 export default class WhoAmI extends BaseUtility {

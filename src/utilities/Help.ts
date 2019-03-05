@@ -16,7 +16,7 @@ export default class Help extends BaseUtility {
 					UtilityManifest
 				).join(
 					', '
-				)}.\n\nFor help with any particular utility, write "help <utility name>".`
+				)}.\n\nFor help with any particular utility, write "help <utility name>".\n\nTo stop a dialogue, hit escape or ctrl+c`
 			});
 		}
 
