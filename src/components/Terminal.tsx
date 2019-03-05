@@ -5,12 +5,13 @@ import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
-import say, { cancelSpeech } from '../utils/SpeechUtilities';
+// import say, {  } from '../utils/SpeechUtilities';
+import OutputController from '../utils/OutputController';
 
 export type HistoryItemContent = string | JSX.Element;
 
 export interface HistoryItem {
-	content: string | JSX.Element;
+	content: HistoryItemContent;
 	id: string;
 }
 
@@ -20,16 +21,6 @@ interface TerminalState {
 
 interface TerminalProps {
 	consoleInteractive: boolean;
-}
-
-export type IConsoleWriteArgs = {
-	item: HistoryItemContent;
-	speak?: boolean;
-};
-
-interface RevocableConsoleWriter {
-	revoke: () => void;
-	writeToConsole: (arg1: IConsoleWriteArgs) => Promise<null>;
 }
 
 function inputPrompt(): string {
@@ -50,8 +41,6 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		]
 	};
 
-	private consoleWriters: RevocableConsoleWriter[] = [];
-
 	private handleKeydown = (e: Event) => {
 		const typedEvent = (e as any) as React.KeyboardEvent;
 
@@ -61,9 +50,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 			key === 'Escape' ||
 			(typedEvent.ctrlKey && ['c', 'C', 'd', 'D'].indexOf(key) >= 0)
 		) {
-			this.revokeConsoleWriters();
-			cancelSpeech();
-			store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
+			OutputController.stopOutput();
 		}
 	};
 
@@ -75,85 +62,37 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 		window.removeEventListener('keydown', this.handleKeydown);
 	}
 
-	private getRevocableConsoleWriter = (): RevocableConsoleWriter => {
-		let revoked = false;
-
-		return {
-			revoke: () => {
-				revoked = true;
-			},
-			writeToConsole: (args: IConsoleWriteArgs) =>
-				revoked ? Promise.resolve(null) : this.writeToConsole(args)
-		};
-	};
-
-	private revokeConsoleWriters = (): void => {
-		this.consoleWriters.forEach(writer => {
-			writer.revoke();
-		});
-
-		this.consoleWriters = [];
-	};
-
 	private runCommand = (value: string) => {
 		const [utilityName, ...args] = value.split(' ');
 
 		const utility = UtilityManifest[utilityName];
 
-		this.writeToConsole({ item: `${inputPrompt()}${value}` });
+		OutputController.output({ text: `${inputPrompt()}${value}` });
 
 		if (utility) {
-			const revocableConsoleWriter = this.getRevocableConsoleWriter();
-			this.consoleWriters.push(revocableConsoleWriter);
-
 			store.dispatch({ type: ActionTypes.LOCK_CONSOLE });
 
 			utility
 				.run({
-					args,
-					writeToConsole: revocableConsoleWriter.writeToConsole
+					args
 				})
 				.then(() => {
 					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				})
 				.catch(console.error);
 		} else {
-			this.writeToConsole({ item: `I don't know how to ${utilityName}` });
+			OutputController.output({
+				text: `I don't know how to ${utilityName}`
+			});
 		}
-	};
-
-	private writeToConsole = ({
-		item,
-		speak
-	}: IConsoleWriteArgs): Promise<null> => {
-		let speechPromise = null;
-
-		if (speak && typeof item !== 'string') {
-			throw 'cannot "speak" a component';
-		} else if (speak && typeof item === 'string') {
-			speechPromise = say(item);
-		}
-
-		this.setState(state => ({
-			terminalHistory: [
-				...state.terminalHistory,
-				{
-					content: item,
-					id: uuid()
-				}
-			]
-		}));
-
-		return speechPromise ? speechPromise : Promise.resolve(null);
 	};
 
 	render() {
-		const { terminalHistory } = this.state;
 		const { consoleInteractive } = this.props;
 
 		return (
 			<div className="terminal">
-				<TerminalBuffer terminalHistory={terminalHistory} />
+				<TerminalBuffer />
 
 				<form
 					className={`input-form ${
@@ -162,10 +101,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				>
 					<span className="input-prompt">{inputPrompt()}</span>
 
-					<TerminalInput
-						writeToConsole={this.writeToConsole}
-						handleSubmit={this.runCommand}
-					/>
+					<TerminalInput handleSubmit={this.runCommand} />
 				</form>
 			</div>
 		);

@@ -3,12 +3,15 @@ import Location from './nouns/Location';
 import LocationManifest, {
 	loading as loadingLocation
 } from './nouns/LocationManifest';
+import { HistoryItem } from './components/Terminal';
+import { historyManifest } from './utils/OutputController';
 
 export interface RootState {
 	location: string;
 	previousLocationStack: string[];
 	consoleInteractive: boolean;
 	inventory: string[];
+	history: string[];
 }
 
 export enum ActionTypes {
@@ -17,7 +20,8 @@ export enum ActionTypes {
 	PUSH_LOCATION_STACK = 'PUSH_LOCATION_STACK',
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
 	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
-	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY'
+	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY',
+	ADD_TO_HISTORY = 'ADD_TO_HISTORY'
 }
 
 interface SetLocation {
@@ -47,11 +51,17 @@ interface AddToInventory {
 	value: string;
 }
 
+interface AddToHistory {
+	type: ActionTypes.ADD_TO_HISTORY;
+	value: HistoryItem;
+}
+
 const initialState: RootState = {
 	location: loadingLocation.slug,
 	previousLocationStack: [],
 	consoleInteractive: true,
-	inventory: []
+	inventory: [],
+	history: []
 };
 
 type CombinedAction =
@@ -60,7 +70,8 @@ type CombinedAction =
 	| PushLocationStack
 	| LockConsole
 	| ReleaseConsole
-	| AddToInventory;
+	| AddToInventory
+	| AddToHistory;
 
 function reducer(
 	state: RootState = initialState,
@@ -99,6 +110,16 @@ function reducer(
 			return {
 				...state,
 				inventory: [...state.inventory, action.value]
+			};
+		case ActionTypes.ADD_TO_HISTORY:
+			// FIXME: reducers shouldn't have side effects
+			// the solution is to wrap this action in an action creator
+			// but this is ok for right now.
+			historyManifest[action.value.id] = action.value.content;
+
+			return {
+				...state,
+				history: [...state.history, action.value.id]
 			};
 		default:
 			return state;

@@ -1,5 +1,3 @@
-// // karen, moira, tessa, Ting-Ting
-
 // const voices = window.speechSynthesis
 // 	.getVoices()
 // 	.filter(voice => voice.name === 'Ting-Ting');

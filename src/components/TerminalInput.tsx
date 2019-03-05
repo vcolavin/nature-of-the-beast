@@ -1,7 +1,8 @@
 import React from 'react';
 import store, { getCurrentLocation } from '../store';
-import { TAB_WIDTH, IConsoleWriteArgs } from './Terminal';
+import { TAB_WIDTH } from './Terminal';
 import uuid from '../utils/uuid';
+import OutputController from '../utils/OutputController';
 
 interface CommandItem {
 	content: string;
@@ -9,7 +10,6 @@ interface CommandItem {
 }
 
 interface Props {
-	writeToConsole: (arg: IConsoleWriteArgs) => void;
 	handleSubmit: (arg: string) => void;
 }
 
@@ -178,8 +178,8 @@ export default class TerminalInput extends React.Component<Props, State> {
 				this.setState({ inputValue: newValue });
 				break;
 			default:
-				this.props.writeToConsole({
-					item: options.reduce(
+				OutputController.output({
+					text: options.reduce(
 						(memo: string, option: string) =>
 							`${memo}${TAB_WIDTH}${option}`
 					)
