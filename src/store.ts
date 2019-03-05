@@ -53,7 +53,7 @@ interface AddToInventory {
 
 interface AddToHistory {
 	type: ActionTypes.ADD_TO_HISTORY;
-	value: HistoryItem;
+	value: string;
 }
 
 const initialState: RootState = {
@@ -112,15 +112,9 @@ function reducer(
 				inventory: [...state.inventory, action.value]
 			};
 		case ActionTypes.ADD_TO_HISTORY:
-			// FIXME: reducers shouldn't have side effects
-			// the solution is to wrap this action in an action creator
-			// but this is ok for right now.
-			OutputController.historyManifest[action.value.id] =
-				action.value.content;
-
 			return {
 				...state,
-				history: [...state.history, action.value.id]
+				history: [...state.history, action.value]
 			};
 		default:
 			return state;

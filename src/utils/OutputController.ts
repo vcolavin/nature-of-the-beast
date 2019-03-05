@@ -1,4 +1,4 @@
-import { HistoryItemContent } from '../components/Terminal';
+import { HistoryItemContent, HistoryItem } from '../components/Terminal';
 import say, { cancelSpeech } from './SpeechUtilities';
 import uuid from './uuid';
 import store, { ActionTypes } from '../store';
@@ -44,12 +44,14 @@ export default class OutputController {
 			speechPromise = say(content);
 		}
 
+		const newHistoryItem: HistoryItem = { id: uuid(), content };
+
+		OutputController.historyManifest[newHistoryItem.id] =
+			newHistoryItem.content;
+
 		store.dispatch({
 			type: ActionTypes.ADD_TO_HISTORY,
-			value: {
-				content,
-				id: uuid()
-			}
+			value: newHistoryItem.id
 		});
 
 		return speechPromise ? speechPromise : Promise.resolve(null);
