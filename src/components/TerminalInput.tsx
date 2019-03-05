@@ -179,10 +179,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 				break;
 			default:
 				OutputController.output({
-					content: options.reduce(
-						(memo: string, option: string) =>
-							`${memo}${TAB_WIDTH}${option}`
-					)
+					content: options.join(TAB_WIDTH)
 				});
 				break;
 		}
