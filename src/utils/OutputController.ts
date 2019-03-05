@@ -3,12 +3,12 @@ import say, { cancelSpeech } from './SpeechUtilities';
 import uuid from './uuid';
 import store, { ActionTypes } from '../store';
 
-export type IConsoleWriteArgs = {
+export type OutputterFunction = (arg1: IOutputterArgs) => Promise<null>;
+
+export type IOutputterArgs = {
 	content: HistoryItemContent;
 	speak?: boolean;
 };
-
-export type OutputterFunction = (arg1: IConsoleWriteArgs) => Promise<null>;
 
 interface RevocableOutputter {
 	revoke: () => void;
@@ -26,7 +26,7 @@ export default class OutputController {
 			revoke: () => {
 				revoked = true;
 			},
-			output: (args: IConsoleWriteArgs) =>
+			output: (args: IOutputterArgs) =>
 				revoked ? Promise.resolve(null) : OutputController.output(args)
 		};
 
@@ -35,7 +35,7 @@ export default class OutputController {
 		return revocableOutputter.output;
 	}
 
-	static output({ content, speak }: IConsoleWriteArgs): Promise<null> {
+	static output({ content, speak }: IOutputterArgs): Promise<null> {
 		let speechPromise = null;
 
 		if (speak && typeof content !== 'string') {
@@ -56,8 +56,8 @@ export default class OutputController {
 	}
 
 	private static revokeOutputters() {
-		OutputController.revocableOutputters.forEach(writer => {
-			writer.revoke();
+		OutputController.revocableOutputters.forEach(outputter => {
+			outputter.revoke();
 		});
 
 		this.revocableOutputters = [];
