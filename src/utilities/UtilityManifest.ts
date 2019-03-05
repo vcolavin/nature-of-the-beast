@@ -8,6 +8,7 @@ import Cd from './Cd';
 import Time from './Time';
 import Pickup from './Pickup';
 import Inventory from './Inventory';
+import ToggleSound from './ToggleSound';
 
 const UtilityManifest: { [s: string]: BaseUtility } = {};
 
@@ -29,7 +30,8 @@ export function initializeUtilities() {
 		new Look(),
 		new Time(),
 		new Pickup(),
-		new Inventory()
+		new Inventory(),
+		new ToggleSound()
 	];
 
 	utilities.forEach(utility => {

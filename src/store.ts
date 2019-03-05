@@ -3,8 +3,6 @@ import Location from './nouns/Location';
 import LocationManifest, {
 	loading as loadingLocation
 } from './nouns/LocationManifest';
-import { HistoryItem } from './components/Terminal';
-import OutputController from './utils/OutputController';
 
 export interface RootState {
 	location: string;
@@ -12,6 +10,7 @@ export interface RootState {
 	consoleInteractive: boolean;
 	inventory: string[];
 	history: string[];
+	soundOn: boolean;
 }
 
 export enum ActionTypes {
@@ -21,7 +20,8 @@ export enum ActionTypes {
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
 	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
 	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY',
-	ADD_TO_HISTORY = 'ADD_TO_HISTORY'
+	ADD_TO_HISTORY = 'ADD_TO_HISTORY',
+	TOGGLE_SOUND = 'TOGGLE_SOUND'
 }
 
 interface SetLocation {
@@ -56,12 +56,17 @@ interface AddToHistory {
 	value: string;
 }
 
+interface ToggleSound {
+	type: ActionTypes.TOGGLE_SOUND;
+}
+
 const initialState: RootState = {
 	location: loadingLocation.slug,
 	previousLocationStack: [],
 	consoleInteractive: true,
 	inventory: [],
-	history: []
+	history: [],
+	soundOn: true
 };
 
 type CombinedAction =
@@ -71,7 +76,8 @@ type CombinedAction =
 	| LockConsole
 	| ReleaseConsole
 	| AddToInventory
-	| AddToHistory;
+	| AddToHistory
+	| ToggleSound;
 
 function reducer(
 	state: RootState = initialState,
@@ -115,6 +121,11 @@ function reducer(
 			return {
 				...state,
 				history: [...state.history, action.value]
+			};
+		case ActionTypes.TOGGLE_SOUND:
+			return {
+				...state,
+				soundOn: !state.soundOn
 			};
 		default:
 			return state;
