@@ -40,11 +40,7 @@ export default class OutputController {
 
 		if (speak && typeof content !== 'string') {
 			throw 'cannot "speak" a component';
-		} else if (
-			speak &&
-			typeof content === 'string' &&
-			store.getState().soundOn
-		) {
+		} else if (speak && typeof content === 'string') {
 			speechPromise = say(content);
 		}
 

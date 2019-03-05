@@ -8,7 +8,7 @@ import Cd from './Cd';
 import Time from './Time';
 import Pickup from './Pickup';
 import Inventory from './Inventory';
-import ToggleSound from './ToggleSound';
+import Mute from './Mute';
 
 const UtilityManifest: { [s: string]: BaseUtility } = {};
 
@@ -31,7 +31,7 @@ export function initializeUtilities() {
 		new Time(),
 		new Pickup(),
 		new Inventory(),
-		new ToggleSound()
+		new Mute()
 	];
 
 	utilities.forEach(utility => {
