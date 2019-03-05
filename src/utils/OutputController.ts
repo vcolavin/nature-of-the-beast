@@ -1,54 +1,53 @@
-import {
-	// HistoryItem,s
-	HistoryItemContent
-} from '../components/Terminal';
+import { HistoryItemContent } from '../components/Terminal';
 import say, { cancelSpeech } from './SpeechUtilities';
 import uuid from './uuid';
 import store, { ActionTypes } from '../store';
 
 export type IConsoleWriteArgs = {
-	text: HistoryItemContent;
+	content: HistoryItemContent;
 	speak?: boolean;
 };
 
-interface RevocableConsoleWriter {
+export type OutputterFunction = (arg1: IConsoleWriteArgs) => Promise<null>;
+
+interface RevocableOutputter {
 	revoke: () => void;
-	writeToConsole: (arg1: IConsoleWriteArgs) => Promise<null>;
+	output: OutputterFunction;
 }
 
 export default class OutputController {
 	static historyManifest: { [key: string]: HistoryItemContent } = {};
-	private static revocableOutputters: RevocableConsoleWriter[];
+	private static revocableOutputters: RevocableOutputter[] = [];
 
-	static getRevocableOutputter(): RevocableConsoleWriter {
+	static getRevocableOutputter(): OutputterFunction {
 		let revoked = false;
 
-		const outputter = {
+		const revocableOutputter = {
 			revoke: () => {
 				revoked = true;
 			},
-			writeToConsole: (args: IConsoleWriteArgs) =>
+			output: (args: IConsoleWriteArgs) =>
 				revoked ? Promise.resolve(null) : OutputController.output(args)
 		};
 
-		OutputController.revocableOutputters.push(outputter);
+		OutputController.revocableOutputters.push(revocableOutputter);
 
-		return outputter;
+		return revocableOutputter.output;
 	}
 
-	static output({ text, speak }: IConsoleWriteArgs): Promise<null> {
+	static output({ content, speak }: IConsoleWriteArgs): Promise<null> {
 		let speechPromise = null;
 
-		if (speak && typeof text !== 'string') {
+		if (speak && typeof content !== 'string') {
 			throw 'cannot "speak" a component';
-		} else if (speak && typeof text === 'string') {
-			speechPromise = say(text);
+		} else if (speak && typeof content === 'string') {
+			speechPromise = say(content);
 		}
 
 		store.dispatch({
 			type: ActionTypes.ADD_TO_HISTORY,
 			value: {
-				content: text,
+				content,
 				id: uuid()
 			}
 		});

@@ -1,4 +1,4 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 
 const responses: string[] = [
 	"I don't remember",
@@ -11,10 +11,10 @@ const responses: string[] = [
 ];
 
 export default class WhoAmI extends BaseUtility {
-	run({ writeToConsole }: RunParams): Promise<null> {
+	_run({ output }: PrivateRunParams): Promise<null> {
 		return responses.reduce(
-			(memo: Promise<null>, item: string): Promise<null> =>
-				memo.then(() => writeToConsole({ item, speak: true })),
+			(memo: Promise<null>, content: string): Promise<null> =>
+				memo.then(() => output({ content, speak: true })),
 			Promise.resolve(null)
 		);
 	}

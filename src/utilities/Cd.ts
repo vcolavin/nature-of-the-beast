@@ -1,5 +1,6 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { RunParams, PrivateRunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
+import OutputController from '../utils/OutputController';
 
 export default class Cd extends BaseUtility {
 	private goToPreviousLocation() {
@@ -17,7 +18,7 @@ export default class Cd extends BaseUtility {
 		}
 	}
 
-	run({ args, writeToConsole }: RunParams): Promise<null> {
+	_run({ args, output }: PrivateRunParams): Promise<null> {
 		const nullPromise = Promise.resolve(null);
 
 		if (args[0].indexOf('..') >= 0) {
@@ -42,7 +43,7 @@ export default class Cd extends BaseUtility {
 					value: newLocation
 				});
 			} else {
-				writeToConsole({ item: `invalid location ${args[0]}` });
+				output({ content: `invalid location ${args[0]}` });
 			}
 		}
 

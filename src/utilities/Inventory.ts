@@ -1,10 +1,10 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import store from '../store';
 import { TAB_WIDTH } from '../components/Terminal';
 
 export default class Inventory extends BaseUtility {
-	run({ writeToConsole }: RunParams): Promise<null> {
-		writeToConsole({ item: store.getState().inventory.join(TAB_WIDTH) });
+	_run({ output }: PrivateRunParams): Promise<null> {
+		output({ content: store.getState().inventory.join(TAB_WIDTH) });
 		return Promise.resolve(null);
 	}
 

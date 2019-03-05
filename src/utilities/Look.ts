@@ -1,12 +1,12 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
 import ItemManifest from '../nouns/ItemManifest';
 
 export default class Look extends BaseUtility {
-	run({ writeToConsole, args }: RunParams): Promise<null> {
+	_run({ output, args }: PrivateRunParams): Promise<null> {
 		if (args.length > 0 && !(args[0] === 'at' && ItemManifest[args[1]])) {
-			return writeToConsole({
-				item: `invalid ${this.command} argument ${args.join(' ')}.`
+			return output({
+				content: `invalid ${this.command} argument ${args.join(' ')}.`
 			});
 		}
 
@@ -20,7 +20,7 @@ export default class Look extends BaseUtility {
 
 		return descriptions.reduce(
 			(memo: Promise<null>, text: string): Promise<null> =>
-				memo.then(() => writeToConsole({ item: text, speak: true })),
+				memo.then(() => output({ content: text, speak: true })),
 			Promise.resolve(null)
 		);
 	}

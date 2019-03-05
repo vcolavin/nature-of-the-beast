@@ -1,8 +1,8 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 
 export default class Echo extends BaseUtility {
-	run({ args, writeToConsole }: RunParams): Promise<null> {
-		writeToConsole({ item: args.join(' ') });
+	_run({ args, output }: PrivateRunParams): Promise<null> {
+		output({ content: args.join(' ') });
 		return Promise.resolve(null);
 	}
 

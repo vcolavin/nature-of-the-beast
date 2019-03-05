@@ -1,18 +1,18 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import UtilityManifest from './UtilityManifest';
 
 export default class Help extends BaseUtility {
-	run({ writeToConsole, args }: RunParams): Promise<null> {
+	_run({ output, args }: PrivateRunParams): Promise<null> {
 		if (args.length >= 1) {
 			const util = UtilityManifest[args[0]];
 			const description = util
 				? util.helpDescription
 				: `I don't know much about ${args.join(' ')}.`;
 
-			writeToConsole({ item: description });
+			output({ content: description });
 		} else {
-			writeToConsole({
-				item: `The following utilities are available: ${Object.keys(
+			output({
+				content: `The following utilities are available: ${Object.keys(
 					UtilityManifest
 				).join(
 					', '

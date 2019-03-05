@@ -5,7 +5,6 @@ import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
-// import say, {  } from '../utils/SpeechUtilities';
 import OutputController from '../utils/OutputController';
 
 export type HistoryItemContent = string | JSX.Element;
@@ -67,7 +66,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 
 		const utility = UtilityManifest[utilityName];
 
-		OutputController.output({ text: `${inputPrompt()}${value}` });
+		OutputController.output({ content: `${inputPrompt()}${value}` });
 
 		if (utility) {
 			store.dispatch({ type: ActionTypes.LOCK_CONSOLE });
@@ -82,7 +81,7 @@ class Terminal extends React.Component<TerminalProps, TerminalState> {
 				.catch(console.error);
 		} else {
 			OutputController.output({
-				text: `I don't know how to ${utilityName}`
+				content: `I don't know how to ${utilityName}`
 			});
 		}
 	};

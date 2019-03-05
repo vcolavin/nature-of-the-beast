@@ -1,9 +1,9 @@
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
 import ItemManifest from '../nouns/ItemManifest';
 
 export default class Pickup extends BaseUtility {
-	run({ args, writeToConsole }: RunParams): Promise<null> {
+	_run({ args, output }: PrivateRunParams): Promise<null> {
 		const item = args[0];
 
 		if (
@@ -19,9 +19,9 @@ export default class Pickup extends BaseUtility {
 				value: item
 			});
 
-			writeToConsole({ item: `I have picked up the ${item}` });
+			output({ content: `I have picked up the ${item}` });
 		} else {
-			writeToConsole({ item: `There is no ${item} here` });
+			output({ content: `There is no ${item} here` });
 		}
 
 		return Promise.resolve(null);

@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 
 interface State {
 	content: string;
@@ -28,8 +28,8 @@ class TimeComponent extends React.Component<{}, State> {
 }
 
 export default class Time extends BaseUtility {
-	run({ writeToConsole }: RunParams): Promise<null> {
-		writeToConsole({ item: <TimeComponent /> });
+	_run({ output }: PrivateRunParams): Promise<null> {
+		output({ content: <TimeComponent /> });
 
 		return Promise.resolve(null);
 	}

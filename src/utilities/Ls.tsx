@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BaseUtility, { RunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { getCurrentLocation } from '../store';
 import { TAB_WIDTH } from '../components/Terminal';
 
@@ -29,9 +29,9 @@ function LsComponent(props: Props) {
 }
 
 export default class Ls extends BaseUtility {
-	run({ writeToConsole }: RunParams): Promise<null> {
-		writeToConsole({
-			item: (
+	_run({ output }: PrivateRunParams): Promise<null> {
+		output({
+			content: (
 				<LsComponent
 					places={getCurrentLocation().neighborSlugs.sort()}
 					items={getCurrentLocation().itemSlugs.sort()}

@@ -4,7 +4,7 @@ import LocationManifest, {
 	loading as loadingLocation
 } from './nouns/LocationManifest';
 import { HistoryItem } from './components/Terminal';
-import { historyManifest } from './utils/OutputController';
+import OutputController from './utils/OutputController';
 
 export interface RootState {
 	location: string;
@@ -115,7 +115,8 @@ function reducer(
 			// FIXME: reducers shouldn't have side effects
 			// the solution is to wrap this action in an action creator
 			// but this is ok for right now.
-			historyManifest[action.value.id] = action.value.content;
+			OutputController.historyManifest[action.value.id] =
+				action.value.content;
 
 			return {
 				...state,
