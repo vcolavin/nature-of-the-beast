@@ -4,6 +4,6 @@
 	["side_yard", "in_front_of_the_cabin"],
 	["side_yard", "backyard"],
 	["side_yard", "trash_heap"],
-	["in_front_of_the_cabin", "inside"],
-	["inside", "backyard"]
+	["in_front_of_the_cabin", "the_kitchen"],
+	["the_kitchen", "backyard"]
 ]

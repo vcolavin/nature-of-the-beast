@@ -27,13 +27,19 @@ export function initializeLocations() {
 	});
 
 	neighbors.forEach(neighborPair => {
-		LocationManifest[neighborPair[0]].neighborSlugs.push(neighborPair[1]);
+		if (
+			!LocationManifest[neighborPair[0]] ||
+			!LocationManifest[neighborPair[1]]
+		) {
+			throw 'neighborPair has an invalid member';
+		}
 
+		LocationManifest[neighborPair[0]].neighborSlugs.push(neighborPair[1]);
 		LocationManifest[neighborPair[1]].neighborSlugs.push(neighborPair[0]);
 	});
 
 	items.forEach(item => {
-		if (typeof LocationManifest[item.locationSlug] === 'undefined') {
+		if (!LocationManifest[item.locationSlug]) {
 			throw `${item.slug} has location ${
 				item.locationSlug
 			}, which does not exist`;
