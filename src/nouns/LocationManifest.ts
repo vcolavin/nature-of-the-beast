@@ -27,11 +27,12 @@ export function initializeLocations() {
 	});
 
 	neighbors.forEach(neighborPair => {
-		if (
-			!LocationManifest[neighborPair[0]] ||
-			!LocationManifest[neighborPair[1]]
-		) {
-			throw 'neighborPair has an invalid member';
+		if (!LocationManifest[neighborPair[0]]) {
+			throw `${neighborPair[0]} is an invalid location`;
+		}
+
+		if (!LocationManifest[neighborPair[1]]) {
+			throw `${neighborPair[1]} is an invalid location`;
 		}
 
 		LocationManifest[neighborPair[0]].neighborSlugs.push(neighborPair[1]);

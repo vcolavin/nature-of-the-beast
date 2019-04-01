@@ -67,11 +67,50 @@
 		]
 	},
 	{
-		"slug": "the_kitchen",
+		"slug": "foyer",
 		"descriptions": [
-			"it is a cold cabin.",
-			"diffuse light flows and pools and illuminates",
-			"why did I return?"
+			"You enter the foyer",
+			"And the voidish smell of mold hits you like a brick wall",
+			"Just dust.",
+			"The shoe rack is in grand, welcoming disarray.",
+			"You shut the door gently behind you",
+			"Holding the latch down as it closes to muffle the mechanism's click",
+			"out of habit.",
+			"The silence of this place shall not be disturbed."
+		]
+	},
+	{
+		"slug": "kitchen",
+		"descriptions": [
+			"Here on the linoleum floor of the kitchen you can see the ghost",
+			"of the dining table you bought when you moved in twenty years ago"
+		]
+	},
+	{
+		"slug": "range",
+		"descriptions": [
+			"\"I feel like a frog in boiling water,\"",
+			"you had said,",
+			"patient peacemaker that you are, to your husband as you fought.",
+			"It was a metaphor banal and grotesque",
+			"to which you clung like a buoy in a storm",
+			"\"it's like when I was in Italy as a child visiting my grandfather,\"",
+			"you told your therapist",
+			"back when you could still see your therapist",
+			"\"there was a mosquito in my bedroom biting me as I slept.\"",
+			"\"I was so itchy that I dreamt of the itch.\"",
+			"\"In the dream, I had always felt that discomfort\"",
+			"\"It was unbearable but also unquestionable.\"",
+			"Anyways,",
+			"Your husband somehow captured a frog outside and put it in a pot of water on the stove.",
+			"As the water warmed up, it tried to jump outside",
+			"But your husband caught it and placed a heavy lid on the pot.",
+			"It jumped and thrashed and splashed until it didn't,",
+			"until the water all boiled away and its body burned and its smoke",
+			"filled the house",
+			"The smell would linger for weeks and you could never forget it.",
+			"Your husband smiled triumphantly",
+			"As though he had won the argument."
 		]
 	}
 ]
