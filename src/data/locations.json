@@ -3,38 +3,37 @@
 		"slug": "a_quiet_forest",
 		"descriptions": [
 			"it is early morning.",
-			"cold rain is melting the what remaining empty and wet snow hangs from the boughs of the surrounding trees",
-			"I am surrounded by evergreens.",
-			"douglas fir.",
-			"I can make out a path heading into the fog."
+			"cold rain is melting the remaining empty and wet snow hanging from the boughs of the surrounding trees",
+			"You are surrounded by evergreens.",
+			"You can make out a path heading into the fog."
 		]
 	},
 	{
 		"slug": "a_path",
 		"descriptions": [
-			"somewhere in my brain, I am sure",
-			"this path is etched deeply and indelible. I could walk it in my sleep.",
-			"the ground sucks at my boots",
+			"somewhere in your brain, you are sure",
+			"this path is etched deeply and indelible. You could walk it in your sleep.",
+			"the ground sucks at your boots",
 			"and the moss beckons"
 		]
 	},
 	{
 		"slug": "in_front_of_the_cabin",
 		"descriptions": [
-			"I am standing in front of the house I grew up in",
+			"You are standing in front of the house you grew up in",
 			"it's been years since I've been back",
-			"I experience a strange mixture of feelings",
+			"You experience a strange mixture of feelings",
 			"melancholy, though maybe that's just the weather",
 			"pride, for leaving",
-			"apprehension, for what I know is inside"
+			"apprehension, for what you know is inside"
 		]
 	},
 	{
 		"slug": "side_yard",
 		"descriptions": [
-			"I tried to start a garden here once",
-			"I dreamt, specifically, of rhubarb in winter and tomatillos in summer",
-			"I dreamt of bringing these things to the dinner table and sharing them with my parents",
+			"You tried to start a garden here once",
+			"You dreamt, specifically, of rhubarb in winter and tomatillos in summer",
+			"You dreamt of bringing these things to the dinner table and sharing them with your parents",
 			"it was a naïve aspiration, but who could fault a child for such a desire?",
 			"the side yard has been unused and unvisited since",
 			"a space ceded to the damp clamor of the pacific northwest.",
@@ -45,12 +44,12 @@
 	{
 		"slug": "trash_heap",
 		"descriptions": [
-			"Towards the end, dad talked a lot about how the Oregon government was scamming us",
-			"by making us pay for can and bottle deposits they knew we'd never redeem",
-			"he started hoarding his empties, bragging about the big dinner he'd take us out on when he took them to the place.",
-			"over time, this project grew and consumed my garden.",
-			"I pick through the moss-covered aluminum like an archaeologist",
-			"and I find several parts of my childhood I had tried to forget."
+			"your dad talked a lot about how the state government was scamming us",
+			"by making you pay for can and bottle deposits they knew we'd never redeem",
+			"he started hoarding his empties, bragging about the big dinner he'd take you out on when he took them to the place.",
+			"over time, this project grew and consumed your garden.",
+			"You pick through the moss-covered aluminum like an archaeologist",
+			"and find several parts of your childhood you had tried to forget."
 		]
 	},
 	{
@@ -61,9 +60,9 @@
 			"dad hated the suburbs but loved pool maintenance",
 			"their charade worked until it didn't.",
 			"a relic of multicolored plastic survives in the swampy remains of the pool",
-			"I am unsettled.",
+			"You are unsettled.",
 			"the damp sets into your bones.",
-			"I do not wish to stay."
+			"You do not wish to stay."
 		]
 	},
 	{
@@ -103,12 +102,12 @@
 			"\"It was unbearable but also unquestionable.\"",
 			"Anyways,",
 			"Your husband somehow captured a frog outside and put it in a pot of water on the stove.",
-			"As the water warmed up, it tried to jump outside",
+			"As the water warmed up, it tried to jump out",
 			"But your husband caught it and placed a heavy lid on the pot.",
 			"It jumped and thrashed and splashed until it didn't,",
 			"until the water all boiled away and its body burned and its smoke",
 			"filled the house",
-			"The smell would linger for weeks and you could never forget it.",
+			"The smell would linger for weeks and you would never forget it.",
 			"Your husband smiled triumphantly",
 			"As though he had won the argument."
 		]
