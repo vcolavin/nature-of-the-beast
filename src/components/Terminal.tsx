@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from '../utils/uuid';
 import UtilityManifest from '../utilities/UtilityManifest';
 import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
