@@ -3,6 +3,7 @@ import store, { getCurrentLocation } from '../store';
 import { TAB_WIDTH } from './Terminal';
 import uuid from '../utils/uuid';
 import OutputController from '../utils/OutputController';
+import UtilityManifest from '../utilities/UtilityManifest';
 
 interface CommandItem {
 	content: string;
@@ -148,23 +149,24 @@ export default class TerminalInput extends React.Component<Props, State> {
 	};
 
 	private tabComplete = () => {
-		if (this.state.inputValue === '') {
+		const [command, ...rest] = this.state.inputValue.split(' ');
+
+		if (rest.length === 0) {
 			return;
 		}
 
-		const [command, ...rest] = this.state.inputValue.split(' ');
+		const lastValue = rest[rest.length - 1] || '';
 
-		let lastValue = rest[rest.length - 1];
+		const utility = UtilityManifest[command];
 
-		if (typeof lastValue === 'undefined') {
-			lastValue = '';
-		}
-
-		const options = [
-			...getCurrentLocation().neighborSlugs,
-			...getCurrentLocation().itemSlugs,
-			...store.getState().inventory
-		].filter((slug: string) => slug.indexOf(lastValue) === 0);
+		const options =
+			utility && utility.getTabCompleteOptions
+				? utility.getTabCompleteOptions(lastValue)
+				: [
+						...getCurrentLocation().neighborSlugs,
+						...getCurrentLocation().itemSlugs,
+						...store.getState().inventory
+				  ].filter((slug: string) => slug.indexOf(lastValue) === 0);
 
 		switch (options.length) {
 			case 0:

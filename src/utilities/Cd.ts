@@ -1,5 +1,6 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
+import LocationManifest from '../nouns/LocationManifest';
 
 const INVALID_LOCATION = 'INVALID_LOCATION';
 
@@ -79,6 +80,50 @@ export default class Cd extends BaseUtility {
 
 		return Promise.resolve(null);
 	}
+
+	getTabCompleteOptions = (path: string): string[] => {
+		const locations = path.split('/');
+
+		const locationChain = locations.splice(0, locations.length - 1);
+		const finalFragment = locations[locations.length - 1];
+
+		if (locationChain.length === 0) {
+			return getCurrentLocation().neighborSlugs;
+		}
+
+		if (this.locationChainValid(locationChain)) {
+			const finalLocationInChain =
+				LocationManifest[locationChain[locationChain.length - 1]];
+
+			return finalLocationInChain.neighborSlugs.filter(
+				(slug: string) => slug.indexOf(finalFragment) === 0
+			);
+		}
+
+		return [];
+	};
+
+	private locationChainValid = (locations: string[]): boolean => {
+		if (locations.length === 0) {
+			return true;
+		}
+
+		const valid = locations.reduce((memo, location, i, arr) => {
+			if (i === 0) {
+				return true;
+			}
+
+			if (!memo) {
+				return false;
+			}
+
+			const prevLocation = LocationManifest[arr[i - 1]];
+
+			return prevLocation.neighborSlugs.indexOf(location) >= 0;
+		}, true);
+
+		return valid;
+	};
 
 	command = 'cd';
 	helpDescription =

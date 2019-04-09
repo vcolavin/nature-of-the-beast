@@ -20,6 +20,8 @@ export default class BaseUtility {
 		throw 'not implemented';
 	}
 
+	getTabCompleteOptions?: (arg: string) => string[];
+
 	command: string = '';
 	helpDescription: string = '';
 }
