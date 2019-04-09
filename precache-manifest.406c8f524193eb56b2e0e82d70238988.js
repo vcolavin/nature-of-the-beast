@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/nature-of-the-beast/static/js/runtime~main.1a6b0e33.js"
   },
   {
-    "revision": "858442deb06d95499038",
-    "url": "/nature-of-the-beast/static/js/main.858442de.chunk.js"
+    "revision": "bb08c544cfc3924d1ba3",
+    "url": "/nature-of-the-beast/static/js/main.bb08c544.chunk.js"
   },
   {
     "revision": "80e4684003842fff629b",
     "url": "/nature-of-the-beast/static/js/1.80e46840.chunk.js"
   },
   {
-    "revision": "858442deb06d95499038",
+    "revision": "bb08c544cfc3924d1ba3",
     "url": "/nature-of-the-beast/static/css/main.9557c5f0.chunk.css"
   },
   {
-    "revision": "84e312e4e491ab87380722474b90fda5",
+    "revision": "7b4690a566d4eecce3ce00a55e92fe63",
     "url": "/nature-of-the-beast/index.html"
   }
 ];
