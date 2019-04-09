@@ -19,8 +19,8 @@ function TerminalBuffer({ terminalHistory }: Props) {
 	);
 }
 
-function mapStateToProps({ history }: RootState): Props {
-	return { terminalHistory: history };
-}
+const mapStateToProps = ({ history }: RootState): Props => ({
+	terminalHistory: history
+});
 
 export default connect(mapStateToProps)(TerminalBuffer);

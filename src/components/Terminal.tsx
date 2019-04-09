@@ -91,8 +91,8 @@ class Terminal extends React.Component<TerminalProps, {}> {
 	}
 }
 
-function mapStateToProps(state: RootState): TerminalProps {
-	return { consoleInteractive: state.consoleInteractive };
-}
+const mapStateToProps = ({ consoleInteractive }: RootState): TerminalProps => ({
+	consoleInteractive
+});
 
 export default connect(mapStateToProps)(Terminal);
