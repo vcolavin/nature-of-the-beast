@@ -10,17 +10,17 @@ interface Props {
 function TerminalBuffer({ terminalHistory }: Props) {
 	return (
 		<div className="terminal-buffer">
-			{terminalHistory.map(item => (
-				<React.Fragment key={item}>
-					{OutputController.historyManifest[item]} <br />
-				</React.Fragment>
+			{terminalHistory.map(itemId => (
+				<p className="terminal-buffer-item" key={itemId}>
+					{OutputController.historyManifest[itemId]}
+				</p>
 			))}
 		</div>
 	);
 }
 
-function mapStateToProps(state: RootState): Props {
-	return { terminalHistory: state.history };
+function mapStateToProps({ history }: RootState): Props {
+	return { terminalHistory: history };
 }
 
 export default connect(mapStateToProps)(TerminalBuffer);

@@ -46,6 +46,10 @@
 	white-space: pre-wrap;
 }
 
+.terminal-buffer-item {
+	margin: 0;
+}
+
 .input-form {
 	display: none;
 	grid-template-columns: min-content auto;
