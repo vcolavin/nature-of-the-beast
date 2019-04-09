@@ -84,42 +84,39 @@ export default class Cd extends BaseUtility {
 		return Promise.resolve(null);
 	}
 
+	// TODO: This doesn't handle .. in the chain
+	// e.g. place1/place2/../place2 crashes
 	getTabCompleteOptions = (path: string): string[] => {
 		const locations = path.split('/');
 
 		const locationChain = locations.splice(0, locations.length - 1);
 		const finalFragment = locations[locations.length - 1];
 
-		// TODO: looks like some repeated logic here.
-
-		if (locationChain.length === 0) {
-			const options = getCurrentLocation().neighborSlugs.filter(
-				(slug: string) => slug.indexOf(finalFragment) === 0
-			);
-
-			if (options.length === 1) {
-				return [`${options[0]}/`];
-			}
-
-			return options;
+		if (!this.locationChainValid(locationChain)) {
+			return [];
 		}
 
-		if (this.locationChainValid(locationChain)) {
-			const finalLocationInChain =
-				LocationManifest[locationChain[locationChain.length - 1]];
+		const finalLocationInChain =
+			locationChain.length === 0
+				? getCurrentLocation()
+				: LocationManifest[locationChain[locationChain.length - 1]];
 
-			const options = finalLocationInChain.neighborSlugs.filter(
-				(slug: string) => slug.indexOf(finalFragment) === 0
-			);
-
-			if (options.length === 1) {
-				return [`${locationChain.join('/')}/${options[0]}/`];
-			}
-
-			return options;
+		if (!finalLocationInChain) {
+			// in the case of '..', which is valid but not currently working
+			return [];
 		}
 
-		return [];
+		const options = finalLocationInChain.neighborSlugs.filter(
+			(slug: string) => slug.indexOf(finalFragment) === 0
+		);
+
+		if (options.length === 1) {
+			const path =
+				locationChain.length === 0 ? '' : `${locationChain.join('/')}/`;
+			return [`${path}${options[0]}/`];
+		}
+
+		return options;
 	};
 
 	private locationChainValid = (locations: string[]): boolean => {
@@ -139,6 +136,8 @@ export default class Cd extends BaseUtility {
 
 			const prevLocation = LocationManifest[arr[i - 1]];
 
+			// should be
+			// return prevLocation.neighborSlugs.indexOf(location) >= 0 || location === '..';
 			return prevLocation.neighborSlugs.indexOf(location) >= 0;
 		}, true);
 
