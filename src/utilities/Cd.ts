@@ -55,7 +55,10 @@ export default class Cd extends BaseUtility {
 		} = store.getState();
 
 		try {
-			args[0].split('/').forEach(this.goToLocation);
+			args[0]
+				.split('/')
+				.filter(location => location)
+				.forEach(this.goToLocation);
 		} catch (e) {
 			if (e.code === INVALID_LOCATION) {
 				output({ content: e.message });
@@ -88,7 +91,9 @@ export default class Cd extends BaseUtility {
 		const finalFragment = locations[locations.length - 1];
 
 		if (locationChain.length === 0) {
-			return getCurrentLocation().neighborSlugs;
+			return getCurrentLocation().neighborSlugs.filter(
+				(slug: string) => slug.indexOf(finalFragment) === 0
+			);
 		}
 
 		if (this.locationChainValid(locationChain)) {
