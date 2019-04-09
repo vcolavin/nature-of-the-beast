@@ -23,7 +23,7 @@ class TimeComponent extends React.Component<{}, State> {
 	}
 
 	render() {
-		return <span>{this.state.content}</span>;
+		return this.state.content;
 	}
 }
 

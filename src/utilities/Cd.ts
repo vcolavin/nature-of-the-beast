@@ -1,6 +1,7 @@
-import BaseUtility, { RunParams, PrivateRunParams } from './BaseUtility';
+import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import store, { ActionTypes, getCurrentLocation } from '../store';
-import OutputController from '../utils/OutputController';
+
+const INVALID_LOCATION = 'INVALID_LOCATION';
 
 export default class Cd extends BaseUtility {
 	private goToPreviousLocation() {
@@ -18,32 +19,49 @@ export default class Cd extends BaseUtility {
 		}
 	}
 
-	_run({ args, output }: PrivateRunParams): Promise<null> {
-		const nullPromise = Promise.resolve(null);
+	private goToLocation = (location: string) => {
+		if (location === '..') {
+			this.goToPreviousLocation();
+			return;
+		}
 
-		if (args[0].indexOf('..') >= 0) {
-			const count = (args[0].match(/../g) || []).length;
+		const newLocation = getCurrentLocation().neighborSlugs.find(
+			(slug: string) => slug === location
+		);
 
-			for (let i = 0; i < count; i++) {
-				this.goToPreviousLocation();
-			}
+		if (newLocation) {
+			store.dispatch({
+				type: ActionTypes.PUSH_LOCATION_STACK,
+				value: store.getState().location
+			});
+
+			store.dispatch({
+				type: ActionTypes.SET_LOCATION,
+				value: newLocation
+			});
 		} else {
-			const newLocation = getCurrentLocation().neighborSlugs.find(
-				(slug: string) => slug === args[0]
-			);
+			throw {
+				code: INVALID_LOCATION,
+				message: `${location} is an invalid location`
+			};
+		}
+	};
 
-			if (newLocation) {
-				store.dispatch({
-					type: ActionTypes.PUSH_LOCATION_STACK,
-					value: store.getState().location
-				});
+	_run({ args, output }: PrivateRunParams): Promise<null> {
+		const initialLocation = store.getState().location;
+
+		try {
+			args[0].split('/').forEach(this.goToLocation);
+		} catch (e) {
+			if (e.code === INVALID_LOCATION) {
+				output({ content: e.message });
 
 				store.dispatch({
 					type: ActionTypes.SET_LOCATION,
-					value: newLocation
+					value: initialLocation
 				});
 			} else {
-				output({ content: `invalid location ${args[0]}` });
+				throw e;
 			}
 		}
 
@@ -51,7 +69,7 @@ export default class Cd extends BaseUtility {
 			location: store.getState().location
 		});
 
-		return nullPromise;
+		return Promise.resolve(null);
 	}
 
 	command = 'cd';
@@ -60,5 +78,5 @@ export default class Cd extends BaseUtility {
 }
 
 export function setUrlLocation({ location }: { location: string }): void {
-	window.location.hash = location
+	window.location.hash = location;
 }
