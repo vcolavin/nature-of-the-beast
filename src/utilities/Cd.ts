@@ -29,26 +29,29 @@ export default class Cd extends BaseUtility {
 			(slug: string) => slug === location
 		);
 
-		if (newLocation) {
-			store.dispatch({
-				type: ActionTypes.PUSH_LOCATION_STACK,
-				value: store.getState().location
-			});
-
-			store.dispatch({
-				type: ActionTypes.SET_LOCATION,
-				value: newLocation
-			});
-		} else {
+		if (!newLocation) {
 			throw {
 				code: INVALID_LOCATION,
 				message: `${location} is an invalid location`
 			};
 		}
+
+		store.dispatch({
+			type: ActionTypes.PUSH_LOCATION_STACK,
+			value: store.getState().location
+		});
+
+		store.dispatch({
+			type: ActionTypes.SET_LOCATION,
+			value: newLocation
+		});
 	};
 
 	_run({ args, output }: PrivateRunParams): Promise<null> {
-		const initialLocation = store.getState().location;
+		const {
+			location: initialLocation,
+			previousLocationStack: initialStack
+		} = store.getState();
 
 		try {
 			args[0].split('/').forEach(this.goToLocation);
@@ -59,6 +62,11 @@ export default class Cd extends BaseUtility {
 				store.dispatch({
 					type: ActionTypes.SET_LOCATION,
 					value: initialLocation
+				});
+
+				store.dispatch({
+					type: ActionTypes.SET_LOCATION_STACK,
+					value: initialStack
 				});
 			} else {
 				throw e;

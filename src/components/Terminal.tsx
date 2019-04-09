@@ -56,9 +56,7 @@ class Terminal extends React.Component<TerminalProps, {}> {
 			store.dispatch({ type: ActionTypes.LOCK_CONSOLE });
 
 			utility
-				.run({
-					args
-				})
+				.run({ args })
 				.then(() => {
 					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				})

@@ -17,6 +17,7 @@ export enum ActionTypes {
 	SET_LOCATION = 'SET_LOCATION',
 	POP_LOCATION_STACK = 'POP_LOCATION_STACK',
 	PUSH_LOCATION_STACK = 'PUSH_LOCATION_STACK',
+	SET_LOCATION_STACK = 'SET_LOCATION_STACK',
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
 	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
 	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY',
@@ -36,6 +37,11 @@ interface PopLocationStack {
 interface PushLocationStack {
 	type: ActionTypes.PUSH_LOCATION_STACK;
 	value: string;
+}
+
+interface SetLocationStack {
+	type: ActionTypes.SET_LOCATION_STACK;
+	value: string[];
 }
 
 interface LockConsole {
@@ -73,6 +79,7 @@ type CombinedAction =
 	| SetLocation
 	| PopLocationStack
 	| PushLocationStack
+	| SetLocationStack
 	| LockConsole
 	| ReleaseConsole
 	| AddToInventory
@@ -101,6 +108,11 @@ function reducer(
 			return {
 				...state,
 				previousLocationStack: state.previousLocationStack.slice(1)
+			};
+		case ActionTypes.SET_LOCATION_STACK:
+			return {
+				...state,
+				previousLocationStack: action.value
 			};
 		case ActionTypes.LOCK_CONSOLE:
 			return {
