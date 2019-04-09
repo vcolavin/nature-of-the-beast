@@ -95,9 +95,15 @@ export default class Cd extends BaseUtility {
 			const finalLocationInChain =
 				LocationManifest[locationChain[locationChain.length - 1]];
 
-			return finalLocationInChain.neighborSlugs.filter(
+			const options = finalLocationInChain.neighborSlugs.filter(
 				(slug: string) => slug.indexOf(finalFragment) === 0
 			);
+
+			if (options.length === 1) {
+				return [`${locationChain.join('/')}/${options[0]}`];
+			}
+
+			return options;
 		}
 
 		return [];
@@ -108,6 +114,7 @@ export default class Cd extends BaseUtility {
 			return true;
 		}
 
+		// for some reason TS won't let me return the result of this reduce directly
 		const valid = locations.reduce((memo, location, i, arr) => {
 			if (i === 0) {
 				return true;
