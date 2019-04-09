@@ -3,12 +3,12 @@ import say, { cancelSpeech } from './SpeechUtilities';
 import uuid from './uuid';
 import store, { ActionTypes } from '../store';
 
-export type OutputterFunction = (arg1: IOutputterArgs) => Promise<null>;
-
 export type IOutputterArgs = {
 	content: HistoryItemContent;
 	speak?: boolean;
 };
+
+export type OutputterFunction = (arg1: IOutputterArgs) => Promise<null>;
 
 interface RevocableOutputter {
 	revoke: () => void;
@@ -38,9 +38,10 @@ export default class OutputController {
 	static output({ content, speak }: IOutputterArgs): Promise<null> {
 		let speechPromise = null;
 
-		if (speak && typeof content !== 'string') {
-			throw 'cannot "speak" a component';
-		} else if (speak && typeof content === 'string') {
+		if (speak) {
+			if (typeof content !== 'string') {
+				throw 'cannot "speak" a component';
+			}
 			speechPromise = say(content);
 		}
 

@@ -136,6 +136,5 @@ const store = createStore(reducer);
 
 export default store;
 
-export function getCurrentLocation(): Location {
-	return LocationManifest[store.getState().location];
-}
+export const getCurrentLocation = (): Location =>
+	LocationManifest[store.getState().location];
