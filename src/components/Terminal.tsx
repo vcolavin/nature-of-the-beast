@@ -14,10 +14,6 @@ export interface HistoryItem {
 	id: string;
 }
 
-interface TerminalState {
-	terminalHistory: HistoryItem[];
-}
-
 interface TerminalProps {
 	consoleInteractive: boolean;
 }
@@ -28,18 +24,7 @@ function inputPrompt(): string {
 
 export const TAB_WIDTH = '    ';
 
-class Terminal extends React.Component<TerminalProps, TerminalState> {
-	state: TerminalState = {
-		terminalHistory: [
-			{ content: 'you are in a cold and quiet forest', id: uuid() },
-			{ content: 'rain has recently fallen', id: uuid() },
-			{
-				content: 'type "help", then press enter, to get started',
-				id: uuid()
-			}
-		]
-	};
-
+class Terminal extends React.Component<TerminalProps, {}> {
 	private handleKeydown = (e: Event) => {
 		const typedEvent = (e as any) as React.KeyboardEvent;
 
