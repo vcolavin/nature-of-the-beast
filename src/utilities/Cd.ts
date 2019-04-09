@@ -90,10 +90,18 @@ export default class Cd extends BaseUtility {
 		const locationChain = locations.splice(0, locations.length - 1);
 		const finalFragment = locations[locations.length - 1];
 
+		// TODO: looks like some repeated logic here.
+
 		if (locationChain.length === 0) {
-			return getCurrentLocation().neighborSlugs.filter(
+			const options = getCurrentLocation().neighborSlugs.filter(
 				(slug: string) => slug.indexOf(finalFragment) === 0
 			);
+
+			if (finalFragment === options[0] && options.length === 1) {
+				return [`${options[0]}/`];
+			}
+
+			return options;
 		}
 
 		if (this.locationChainValid(locationChain)) {
@@ -105,6 +113,9 @@ export default class Cd extends BaseUtility {
 			);
 
 			if (options.length === 1) {
+				if (finalFragment === options[0]) {
+					return [`${locationChain.join('/')}/${options[0]}/`];
+				}
 				return [`${locationChain.join('/')}/${options[0]}`];
 			}
 
