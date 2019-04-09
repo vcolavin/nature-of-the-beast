@@ -97,7 +97,7 @@ export default class Cd extends BaseUtility {
 				(slug: string) => slug.indexOf(finalFragment) === 0
 			);
 
-			if (finalFragment === options[0] && options.length === 1) {
+			if (options.length === 1) {
 				return [`${options[0]}/`];
 			}
 
@@ -113,10 +113,7 @@ export default class Cd extends BaseUtility {
 			);
 
 			if (options.length === 1) {
-				if (finalFragment === options[0]) {
-					return [`${locationChain.join('/')}/${options[0]}/`];
-				}
-				return [`${locationChain.join('/')}/${options[0]}`];
+				return [`${locationChain.join('/')}/${options[0]}/`];
 			}
 
 			return options;
