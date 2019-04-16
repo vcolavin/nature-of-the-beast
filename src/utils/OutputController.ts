@@ -20,7 +20,10 @@ interface RevocableOutputter {
 }
 
 export default class OutputController {
-	static historyManifest: { [key: string]: HistoryItemContent } = {};
+	// Make the public manifest a readonly clone of the mutable private manifest
+	private static _historyManifest: { [key: string]: HistoryItemContent } = {};
+	static readonly historyManifest = OutputController._historyManifest;
+
 	private static revocableOutputters: RevocableOutputter[] = [];
 
 	private static pushItem(item: HistoryItem) {
@@ -29,7 +32,7 @@ export default class OutputController {
 	}
 
 	static clearHistory() {
-		OutputController.historyManifest = {};
+		OutputController._historyManifest = {};
 		clearStoreHistory();
 	}
 
