@@ -8,5 +8,6 @@ export default class Mute extends BaseUtility {
 	}
 
 	command = 'mute';
+	aliases = ['quiet'];
 	helpDescription = 'smash the mute button';
 }

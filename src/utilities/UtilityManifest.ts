@@ -10,7 +10,8 @@ import Pickup from './Pickup';
 import Inventory from './Inventory';
 import Mute from './Mute';
 
-const UtilityManifest: { [s: string]: BaseUtility } = {};
+export const UtilityManifest: { [s: string]: BaseUtility } = {};
+export const ExtendedUtilityManifest: { [s: string]: BaseUtility } = {};
 
 let hasRun: boolean = false;
 
@@ -36,7 +37,11 @@ export function initializeUtilities() {
 
 	utilities.forEach(utility => {
 		UtilityManifest[utility.command] = utility;
+
+		ExtendedUtilityManifest[utility.command] = utility;
+
+		utility.aliases.forEach(alias => {
+			ExtendedUtilityManifest[alias] = utility;
+		});
 	});
 }
-
-export default UtilityManifest;

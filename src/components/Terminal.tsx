@@ -1,5 +1,5 @@
 import React from 'react';
-import UtilityManifest from '../utilities/UtilityManifest';
+import { ExtendedUtilityManifest } from '../utilities/UtilityManifest';
 import store, { ActionTypes, RootState } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
@@ -48,7 +48,7 @@ class Terminal extends React.Component<TerminalProps, {}> {
 	private runCommand = (value: string) => {
 		const [utilityName, ...args] = value.split(' ');
 
-		const utility = UtilityManifest[utilityName];
+		const utility = ExtendedUtilityManifest[utilityName];
 
 		OutputController.output({ content: `${inputPrompt()}${value}` });
 

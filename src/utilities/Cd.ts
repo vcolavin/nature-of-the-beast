@@ -145,6 +145,7 @@ export default class Cd extends BaseUtility {
 	};
 
 	command = 'cd';
+	aliases = ['go', 'goto'];
 	helpDescription =
 		'Use cd to move to a new location. For example:\n\ncd a_cold_cabin';
 }

@@ -1,12 +1,18 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import UtilityManifest from './UtilityManifest';
+import { UtilityManifest } from './UtilityManifest';
 
 export default class Help extends BaseUtility {
 	_run({ output, args }: PrivateRunParams): Promise<null> {
 		if (args.length >= 1) {
 			const util = UtilityManifest[args[0]];
 			const description = util
-				? util.helpDescription
+				? `${util.helpDescription}${
+						util.aliases.length > 0
+							? `\nAliases for this command are: ${util.aliases.join(
+									', '
+							  )}.`
+							: ''
+				  }`
 				: `I don't know much about ${args.join(' ')}.`;
 
 			output({ content: description });
@@ -16,7 +22,7 @@ export default class Help extends BaseUtility {
 					UtilityManifest
 				).join(
 					', '
-				)}.\n\nFor help with any particular utility, write "help <utility name>".\n\nTo stop a dialogue, hit escape or ctrl+c`
+				)}.\n\nFor help with any particular utility, write "help <utility name>". This will also show you available aliases for those commands.\n\nTo stop a dialogue, hit escape or ctrl+c`
 			});
 		}
 

@@ -3,7 +3,7 @@ import store, { getCurrentLocation } from '../store';
 import { TAB_WIDTH } from './Terminal';
 import uuid from '../utils/uuid';
 import OutputController from '../utils/OutputController';
-import UtilityManifest from '../utilities/UtilityManifest';
+import { ExtendedUtilityManifest } from '../utilities/UtilityManifest';
 
 interface CommandItem {
 	content: string;
@@ -157,7 +157,7 @@ export default class TerminalInput extends React.Component<Props, State> {
 
 		const lastValue = rest[rest.length - 1] || '';
 
-		const utility = UtilityManifest[command];
+		const utility = ExtendedUtilityManifest[command];
 
 		const options =
 			utility && utility.getTabCompleteOptions

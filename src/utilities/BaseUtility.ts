@@ -23,5 +23,6 @@ export default class BaseUtility {
 	getTabCompleteOptions?: (arg: string) => string[];
 
 	command: string = '';
+	aliases: string[] = [];
 	helpDescription: string = '';
 }
