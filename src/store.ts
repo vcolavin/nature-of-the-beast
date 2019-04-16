@@ -4,7 +4,6 @@ import LocationManifest, {
 	loading as loadingLocation
 } from './nouns/LocationManifest';
 import { HistoryItem } from './components/Terminal';
-import OutputController from './utils/OutputController';
 
 export interface RootState {
 	location: string;

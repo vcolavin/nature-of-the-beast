@@ -24,13 +24,13 @@ export default class OutputController {
 	private static revocableOutputters: RevocableOutputter[] = [];
 
 	private static pushItem(item: HistoryItem) {
-		pushToStoreHistory(item);
 		OutputController.historyManifest[item.id] = item.content;
+		pushToStoreHistory(item);
 	}
 
 	static clearHistory() {
-		clearStoreHistory();
 		OutputController.historyManifest = {};
+		clearStoreHistory();
 	}
 
 	static getRevocableOutputter(): OutputterFunction {
