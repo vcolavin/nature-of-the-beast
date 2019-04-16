@@ -22,7 +22,7 @@ export default class Help extends BaseUtility {
 					UtilityManifest
 				).join(
 					', '
-				)}.\n\nTo get more details for a verb, write "help <verb name>". This will also show you available aliases for that verb.\n\nTo stop a dialogue, press the escape key.`
+				)}.\n\nTo get more details for a verb, type e.g., "help look". This will also show you available aliases for that verb.\n\nTo stop a dialogue, press the escape key.`
 			});
 		}
 
