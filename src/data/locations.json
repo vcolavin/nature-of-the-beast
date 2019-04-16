@@ -3,29 +3,32 @@
 		"slug": "a_quiet_forest",
 		"descriptions": [
 			"it is early morning.",
-			"cold rain is melting the remaining empty and wet snow hanging from the boughs of the surrounding trees",
-			"You are surrounded by evergreens.",
-			"You can make out a path heading into the fog."
+			"a cold rain is melting the remaining empty and wet snow hanging from the boughs of the surrounding trees",
+			"it is falling in irregular clumps around you",
+			"and you can make out a path heading forward into the fog."
 		]
 	},
 	{
 		"slug": "a_path",
 		"descriptions": [
-			"somewhere in your brain, you are sure",
-			"this path is etched deeply and indelible. You could walk it in your sleep.",
-			"the ground sucks at your boots",
-			"and the moss beckons"
+			"the rot beckons",
+			"and the mud sucks at your boots.",
+			"you are confronted with the unavoidable putrescence and death of the temperate rainforest"
 		]
 	},
 	{
-		"slug": "in_front_of_the_cabin",
+		"slug": "in_front_of_the_house",
 		"descriptions": [
-			"You are standing in front of the house you grew up in",
-			"it's been years since you've been back",
-			"You experience a strange mixture of feelings",
-			"melancholy, though maybe that's just the weather",
-			"pride, for leaving",
-			"apprehension, for what you know is inside"
+			"You're standing in front of the house",
+			"or, rather, your house:",
+			"it is a single story of rotting plastered timber",
+			"it's been a while since you've been back.",
+			"and the forest is in the process of reclaiming its territory",
+			"You knew that white walls were always going to be a problem",
+			"but your husband insisted he would whitewash them every summer",
+			"you cowed without argument",
+			"your exhaustion and fear apparent in hindsight",
+			"Now, contempt floods your mouth as you look towards the mossy grey and black streaking the walls"
 		]
 	},
 	{

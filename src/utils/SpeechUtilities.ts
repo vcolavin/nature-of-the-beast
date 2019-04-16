@@ -9,8 +9,6 @@ export default function say(text: string): Promise<null> {
 	utterance.pitch = 0.8;
 	utterance.volume = store.getState().soundOn ? 1 : 0;
 
-	utterance.voice = voices[0];
-
 	if (text[0] === '"' && text[text.length - 1] === '"') {
 		utterance.voice =
 			voices.filter(voice => voice.name === 'Karen')[0] || voices[0];
