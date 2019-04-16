@@ -18,11 +18,11 @@ export default class Help extends BaseUtility {
 			output({ content: description });
 		} else {
 			output({
-				content: `The following utilities are available: ${Object.keys(
+				content: `In general, you can interact with the world by typing a verb, optionally followed by some nouns.\nFor example, type 'look' to observe where you are. Type 'look at knife' to take a closer look at an object\nThe following verbs are available: ${Object.keys(
 					UtilityManifest
 				).join(
 					', '
-				)}.\n\nFor help with any particular utility, write "help <utility name>". This will also show you available aliases for those commands.\n\nTo stop a dialogue, hit escape or ctrl+c`
+				)}.\n\nTo get more details for a verb, write "help <verb name>". This will also show you available aliases for that verb.\n\nTo stop a dialogue, hit escape or ctrl+c`
 			});
 		}
 
