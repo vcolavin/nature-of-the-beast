@@ -9,6 +9,11 @@ export const loading = new Location({
 	descriptions: ['loading']
 });
 
+interface NeighborOptions {
+	oneWay: boolean;
+}
+type Neighbors = [string, string, NeighborOptions];
+
 const LocationManifest: { [s: string]: Location } = {
 	loading
 };
@@ -26,17 +31,22 @@ export function initializeLocations() {
 		LocationManifest[location.slug] = new Location(location);
 	});
 
-	neighbors.forEach(neighborPair => {
-		if (!LocationManifest[neighborPair[0]]) {
-			throw `${neighborPair[0]} is an invalid location`;
+	(neighbors as Neighbors[]).forEach((neighbors: Neighbors) => {
+		const [neighbor1, neighbor2, { oneWay }] = neighbors;
+
+		if (!LocationManifest[neighbor1]) {
+			throw `${neighbor1} is an invalid location`;
 		}
 
-		if (!LocationManifest[neighborPair[1]]) {
-			throw `${neighborPair[1]} is an invalid location`;
+		if (!LocationManifest[neighbor2]) {
+			throw `${neighbor2} is an invalid location`;
 		}
 
-		LocationManifest[neighborPair[0]].neighborSlugs.push(neighborPair[1]);
-		LocationManifest[neighborPair[1]].neighborSlugs.push(neighborPair[0]);
+		LocationManifest[neighbor1].neighborSlugs.push(neighbor2);
+
+		if (!oneWay) {
+			LocationManifest[neighbor2].neighborSlugs.push(neighbor1);
+		}
 	});
 
 	items.forEach(item => {
