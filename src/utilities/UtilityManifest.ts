@@ -9,6 +9,7 @@ import Time from './Time';
 import Pickup from './Pickup';
 import Inventory from './Inventory';
 import Mute from './Mute';
+import Clear from './Clear';
 
 export const UtilityManifest: { [s: string]: BaseUtility } = {};
 export const ExtendedUtilityManifest: { [s: string]: BaseUtility } = {};
@@ -32,7 +33,8 @@ export function initializeUtilities() {
 		new Time(),
 		new Pickup(),
 		new Inventory(),
-		new Mute()
+		new Mute(),
+		new Clear()
 	];
 
 	utilities.forEach(utility => {

@@ -1,7 +1,11 @@
 import { HistoryItemContent, HistoryItem } from '../components/Terminal';
 import say, { cancelSpeech } from './SpeechUtilities';
 import uuid from './uuid';
-import store, { ActionTypes } from '../store';
+import store, {
+	ActionTypes,
+	clearStoreHistory,
+	pushToStoreHistory
+} from '../store';
 
 export type IOutputterArgs = {
 	content: HistoryItemContent;
@@ -18,6 +22,16 @@ interface RevocableOutputter {
 export default class OutputController {
 	static historyManifest: { [key: string]: HistoryItemContent } = {};
 	private static revocableOutputters: RevocableOutputter[] = [];
+
+	private static pushItem(item: HistoryItem) {
+		pushToStoreHistory(item);
+		OutputController.historyManifest[item.id] = item.content;
+	}
+
+	static clearHistory() {
+		clearStoreHistory();
+		OutputController.historyManifest = {};
+	}
 
 	static getRevocableOutputter(): OutputterFunction {
 		let revoked = false;
@@ -45,15 +59,8 @@ export default class OutputController {
 			speechPromise = say(content);
 		}
 
-		const newHistoryItem: HistoryItem = { id: uuid(), content };
-
-		OutputController.historyManifest[newHistoryItem.id] =
-			newHistoryItem.content;
-
-		store.dispatch({
-			type: ActionTypes.ADD_TO_HISTORY,
-			value: newHistoryItem.id
-		});
+		const item: HistoryItem = { id: uuid(), content };
+		OutputController.pushItem(item);
 
 		return speechPromise ? speechPromise : Promise.resolve(null);
 	}

@@ -3,6 +3,8 @@ import Location from './nouns/Location';
 import LocationManifest, {
 	loading as loadingLocation
 } from './nouns/LocationManifest';
+import { HistoryItem } from './components/Terminal';
+import OutputController from './utils/OutputController';
 
 export interface RootState {
 	location: string;
@@ -21,8 +23,9 @@ export enum ActionTypes {
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
 	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
 	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY',
-	ADD_TO_HISTORY = 'ADD_TO_HISTORY',
-	TOGGLE_SOUND = 'TOGGLE_SOUND'
+	PUSH_HISTORY = 'PUSH_HISTORY',
+	TOGGLE_SOUND = 'TOGGLE_SOUND',
+	CLEAR_HISTORY = 'CLEAR_HISTORY'
 }
 
 interface SetLocation {
@@ -58,8 +61,12 @@ interface AddToInventory {
 }
 
 interface AddToHistory {
-	type: ActionTypes.ADD_TO_HISTORY;
+	type: ActionTypes.PUSH_HISTORY;
 	value: string;
+}
+
+interface ClearHistory {
+	type: ActionTypes.CLEAR_HISTORY;
 }
 
 interface ToggleSound {
@@ -84,7 +91,8 @@ type CombinedAction =
 	| ReleaseConsole
 	| AddToInventory
 	| AddToHistory
-	| ToggleSound;
+	| ToggleSound
+	| ClearHistory;
 
 function reducer(
 	state: RootState = initialState,
@@ -129,10 +137,15 @@ function reducer(
 				...state,
 				inventory: [...state.inventory, action.value]
 			};
-		case ActionTypes.ADD_TO_HISTORY:
+		case ActionTypes.PUSH_HISTORY:
 			return {
 				...state,
 				history: [...state.history, action.value]
+			};
+		case ActionTypes.CLEAR_HISTORY:
+			return {
+				...state,
+				history: []
 			};
 		case ActionTypes.TOGGLE_SOUND:
 			return {
@@ -142,6 +155,17 @@ function reducer(
 		default:
 			return state;
 	}
+}
+
+export function pushToStoreHistory(item: HistoryItem) {
+	store.dispatch({
+		type: ActionTypes.PUSH_HISTORY,
+		value: item.id
+	});
+}
+
+export function clearStoreHistory() {
+	store.dispatch({ type: ActionTypes.CLEAR_HISTORY });
 }
 
 const store = createStore(reducer);
