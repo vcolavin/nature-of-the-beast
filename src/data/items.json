@@ -5,6 +5,7 @@
 			"many objects carry with them anonymity.",
 			"This knife does not: it was loved as deeply as an object could be loved."
 		],
+		"takeable": true,
 		"locationSlug": "kitchen"
 	},
 	{
@@ -20,6 +21,7 @@
 			"I recall that the scoop is also sometimes called a blade",
 			"and feel the weapon's comfortable heft in my hand"
 		],
+		"takeable": true,
 		"locationSlug": "trash_heap"
 	}
 ]

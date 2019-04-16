@@ -10,16 +10,20 @@ export default class Pickup extends BaseUtility {
 			ItemManifest[item] &&
 			getCurrentLocation().itemSlugs.indexOf(item) > -1
 		) {
-			getCurrentLocation().itemSlugs = getCurrentLocation().itemSlugs.filter(
-				itemSlug => itemSlug !== item
-			);
+			if (ItemManifest[item].takeable) {
+				getCurrentLocation().itemSlugs = getCurrentLocation().itemSlugs.filter(
+					itemSlug => itemSlug !== item
+				);
 
-			store.dispatch({
-				type: ActionTypes.ADD_TO_INVENTORY,
-				value: item
-			});
+				store.dispatch({
+					type: ActionTypes.ADD_TO_INVENTORY,
+					value: item
+				});
 
-			output({ content: `I have picked up the ${item}` });
+				output({ content: `You have picked up ${item}` });
+			} else {
+				output({ content: `You cannot pick up ${item}` });
+			}
 		} else {
 			output({ content: `There is no ${item} here` });
 		}
