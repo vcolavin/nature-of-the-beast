@@ -34,4 +34,5 @@ export default class Pickup extends BaseUtility {
 	command = 'pickup';
 	helpDescription =
 		'pickup will allow you to add an object to your inventory';
+	aliases = ['get', 'grab'];
 }
