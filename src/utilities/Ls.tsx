@@ -42,7 +42,8 @@ export default class Ls extends BaseUtility {
 		return Promise.resolve(null);
 	}
 
-	command = 'ls';
+	command = 'list';
+	aliases = ['ls'];
 	helpDescription =
-		'ls lists the locations and objects you can reach from where you are now.';
+		'list the locations and objects you can reach from where you are now.';
 }

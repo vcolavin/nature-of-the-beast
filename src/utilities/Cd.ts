@@ -144,10 +144,10 @@ export default class Cd extends BaseUtility {
 		return valid;
 	};
 
-	command = 'cd';
-	aliases = ['go', 'goto'];
+	command = 'goto';
+	aliases = ['cd', 'go'];
 	helpDescription =
-		'Use cd to move to a new location. For example:\n\ncd a_cold_cabin';
+		'Use goto to move to a new location. For example:\n\n goto a_cold_cabin';
 }
 
 export function setUrlLocation({ location }: { location: string }): void {

@@ -27,6 +27,5 @@ export default class Look extends BaseUtility {
 
 	command = 'look';
 	aliases = ['l'];
-	helpDescription =
-		'Use look to take some time, to see where you are. Some things take longer to see than others.';
+	helpDescription = 'Use look to take a good look around.';
 }
