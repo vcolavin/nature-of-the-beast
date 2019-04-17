@@ -1,8 +1,6 @@
 import { createStore } from 'redux';
 import Location from './nouns/Location';
-import LocationManifest, {
-	loading as loadingLocation
-} from './nouns/LocationManifest';
+import LocationManifest from './nouns/LocationManifest';
 import { HistoryItem } from './components/Terminal';
 
 export interface RootState {
@@ -73,7 +71,7 @@ interface ToggleSound {
 }
 
 const initialState: RootState = {
-	location: loadingLocation.slug,
+	location: '',
 	previousLocationStack: [],
 	consoleInteractive: true,
 	inventory: [],

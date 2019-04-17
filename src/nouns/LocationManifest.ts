@@ -4,19 +4,12 @@ import locations from '../data/locations.json';
 import neighbors from '../data/neighbors.json';
 import items from '../data/items.json';
 
-export const loading = new Location({
-	slug: 'loading',
-	descriptions: ['loading']
-});
-
 interface NeighborOptions {
 	oneWay: boolean;
 }
 type Neighbors = [string, string, NeighborOptions];
 
-const LocationManifest: { [s: string]: Location } = {
-	loading
-};
+const LocationManifest: { [s: string]: Location } = {};
 
 let hasRun: boolean = false;
 
