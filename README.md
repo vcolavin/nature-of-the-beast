@@ -1,10 +1,14 @@
-# Hey
+# Nature of the Beast
 
-This is a little side project I'm working on with a friend. Maybe it will go somewhere, maybe it won't. It was bootstrapped with create-react-app version 2.1.1, with the typescript flag.
+This is an interactive fiction which is still very much under construction. It is currently playable at [vcolavin.com/nature-of-the-beast](https://vcolavin.com/nature-of-the-beast).
 
-This shouldn't matter as much, but I'm using the most recent node LTS, 10.14 (deuterium).
+The repository contains both the source for the interpreter and the story itself. If I was a more conscientious programmer I might separate these concerns into different repositories, and release the interpreter as a stand-alone framework that could be reused for other fictions. I'm not currently interested in that though. As I see it the fiction and the code are two parts of a singular project.
 
-## To run:
+### Warning:
+
+I'm still writing the story, but as it stands it includes descriptions of abusive relationships, and is played from the victim's perspective. It's meant to be an unsettling familial horror story. Like Gone Home.
+
+## To run in development:
 
 It shouldn't be too hard.
 
