@@ -8,7 +8,7 @@ export default class Inventory extends BaseUtility {
 		return Promise.resolve(null);
 	}
 
-	command = 'inv';
-	helpDescription =
-		'List all the items currently in your inventory. To use an item, write "use <item>"';
+	command = 'inventory';
+	helpDescription = 'List all the items currently in your inventory.';
+	aliases = ['inv'];
 }
