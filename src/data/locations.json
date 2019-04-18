@@ -114,5 +114,55 @@
 			"Your husband smiled triumphantly",
 			"As though he had won the argument."
 		]
+	},
+	{
+		"slug": "outside",
+		"descriptions": [
+			"you walk away from the house.",
+			"You may not feel it, but this is a happy story.",
+			"It is a happy and free story of a woman who was trapped",
+			"until she wasn't.",
+			"Of a human who looked herself in the mirror one day",
+			"touched the scars on her face",
+			"and realized the only power she had was to leave.",
+			"It was terrifying; your stomach dropped.",
+			"Momentously, you countenanced your surroundings:",
+			"the neglected countertop,",
+			"wasted makeup,",
+			"overflowing wastebasket,",
+			"and saw how much comfort you took in their familiarity.",
+			"Saw how that comfort had destroyed you utterly.",
+			"Your sight was clear for the first time in years, and you were totally resigned to what you saw.",
+			"You washed your hands and ",
+			"That was almost it, but luck was with you that day:",
+			"A rare ray of sun broke through the pall and struck your face.",
+			"You saw the beauty and strength inherent to every human life.",
+			"You saw love."
+		]
+	},
+	{
+		"slug": "coffee_shop",
+		"descriptions": [
+			"Several days later you are running errands.",
+			"You stop at a coffeeshop to take a breather. Your arms are tired from carrying grocery bags.",
+			"It's been a long while since you gone shopping like this.",
+			"It feels good to be out,",
+			"but at no moment in the past several days have you unclenched your mind from thoughts of the house.",
+			"Its mildew stench clings like dirt under your fingernails.",
+			"But you have another revelatory experience:",
+			"Your tea is sitting on a small table besides you, still too hot to drink. It steams darkly.",
+			"The steam curls and spirals through the air with infinite lazy grace.",
+			"Grace like in the divine sense.",
+			"An old Cat Stevens song is playing slowly on the radio,",
+			"and a wave of exhaustion flows through you.",
+			"You welcome the feeling.",
+			"It is as though the fist in your mind has released, even if just for a moment,",
+			"and you feel exactly as you are meant to feel,",
+			"and you are exactly as your are meant to be.",
+			"The hurt deep in your bones,",
+			"alongside the love and the pride and the beauty,",
+			"the soreness in your throat from all the crying.",
+			"Your friend walks in."
+		]
 	}
 ]
