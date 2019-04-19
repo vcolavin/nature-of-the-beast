@@ -5,27 +5,7 @@ import LocationManifest from '../nouns/LocationManifest';
 const INVALID_LOCATION = 'INVALID_LOCATION';
 
 export default class Cd extends BaseUtility {
-	private goToPreviousLocation() {
-		const newLocation = store.getState().previousLocationStack[0];
-
-		store.dispatch({
-			type: ActionTypes.POP_LOCATION_STACK
-		});
-
-		if (newLocation) {
-			store.dispatch({
-				type: ActionTypes.SET_LOCATION,
-				value: newLocation
-			});
-		}
-	}
-
 	private goToLocation = (location: string) => {
-		if (location === '..') {
-			this.goToPreviousLocation();
-			return;
-		}
-
 		const newLocation = getCurrentLocation().neighborSlugs.find(
 			(slug: string) => slug === location
 		);
@@ -38,21 +18,13 @@ export default class Cd extends BaseUtility {
 		}
 
 		store.dispatch({
-			type: ActionTypes.PUSH_LOCATION_STACK,
-			value: store.getState().location
-		});
-
-		store.dispatch({
 			type: ActionTypes.SET_LOCATION,
 			value: newLocation
 		});
 	};
 
 	_run({ args, output }: PrivateRunParams): Promise<null> {
-		const {
-			location: initialLocation,
-			previousLocationStack: initialStack
-		} = store.getState();
+		const { location: initialLocation } = store.getState();
 
 		try {
 			args[0]
@@ -67,11 +39,6 @@ export default class Cd extends BaseUtility {
 					type: ActionTypes.SET_LOCATION,
 					value: initialLocation
 				});
-
-				store.dispatch({
-					type: ActionTypes.SET_LOCATION_STACK,
-					value: initialStack
-				});
 			} else {
 				throw e;
 			}
@@ -84,8 +51,6 @@ export default class Cd extends BaseUtility {
 		return Promise.resolve(null);
 	}
 
-	// TODO: This doesn't handle .. in the chain
-	// e.g. place1/place2/../place2 crashes
 	getTabCompleteOptions = (path: string): string[] => {
 		const locations = path.split('/');
 
@@ -102,7 +67,6 @@ export default class Cd extends BaseUtility {
 				: LocationManifest[locationChain[locationChain.length - 1]];
 
 		if (!finalLocationInChain) {
-			// in the case of '..', which is valid but not currently working
 			return [];
 		}
 
@@ -136,8 +100,6 @@ export default class Cd extends BaseUtility {
 
 			const prevLocation = LocationManifest[arr[i - 1]];
 
-			// should be
-			// return prevLocation.neighborSlugs.indexOf(location) >= 0 || location === '..';
 			return prevLocation.neighborSlugs.indexOf(location) >= 0;
 		}, true);
 

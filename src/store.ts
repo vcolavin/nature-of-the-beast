@@ -5,7 +5,6 @@ import { HistoryItem } from './components/Terminal';
 
 export interface RootState {
 	location: string;
-	previousLocationStack: string[];
 	consoleInteractive: boolean;
 	inventory: string[];
 	history: string[];
@@ -14,9 +13,6 @@ export interface RootState {
 
 export enum ActionTypes {
 	SET_LOCATION = 'SET_LOCATION',
-	POP_LOCATION_STACK = 'POP_LOCATION_STACK',
-	PUSH_LOCATION_STACK = 'PUSH_LOCATION_STACK',
-	SET_LOCATION_STACK = 'SET_LOCATION_STACK',
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
 	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
 	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY',
@@ -28,20 +24,6 @@ export enum ActionTypes {
 interface SetLocation {
 	type: ActionTypes.SET_LOCATION;
 	value: string;
-}
-
-interface PopLocationStack {
-	type: ActionTypes.POP_LOCATION_STACK;
-}
-
-interface PushLocationStack {
-	type: ActionTypes.PUSH_LOCATION_STACK;
-	value: string;
-}
-
-interface SetLocationStack {
-	type: ActionTypes.SET_LOCATION_STACK;
-	value: string[];
 }
 
 interface LockConsole {
@@ -72,7 +54,6 @@ interface ToggleSound {
 
 const initialState: RootState = {
 	location: '',
-	previousLocationStack: [],
 	consoleInteractive: true,
 	inventory: [],
 	history: [],
@@ -81,9 +62,6 @@ const initialState: RootState = {
 
 type CombinedAction =
 	| SetLocation
-	| PopLocationStack
-	| PushLocationStack
-	| SetLocationStack
 	| LockConsole
 	| ReleaseConsole
 	| AddToInventory
@@ -100,24 +78,6 @@ function reducer(
 			return {
 				...state,
 				location: action.value
-			};
-		case ActionTypes.PUSH_LOCATION_STACK:
-			return {
-				...state,
-				previousLocationStack: [
-					action.value,
-					...state.previousLocationStack
-				]
-			};
-		case ActionTypes.POP_LOCATION_STACK:
-			return {
-				...state,
-				previousLocationStack: state.previousLocationStack.slice(1)
-			};
-		case ActionTypes.SET_LOCATION_STACK:
-			return {
-				...state,
-				previousLocationStack: action.value
 			};
 		case ActionTypes.LOCK_CONSOLE:
 			return {
