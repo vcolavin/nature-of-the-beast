@@ -1,6 +1,6 @@
 import React from 'react';
 import store, { getCurrentLocation } from '../store';
-import { TAB_WIDTH } from './Terminal';
+import { TAB_WIDTH, inputPrompt } from './Terminal';
 import uuid from '../utils/uuid';
 import OutputController from '../utils/OutputController';
 import { ExtendedUtilityManifest } from '../utilities/UtilityManifest';
@@ -180,6 +180,9 @@ export default class TerminalInput extends React.Component<Props, State> {
 				this.setState({ inputValue: newValue });
 				break;
 			default:
+				OutputController.output({
+					content: `${inputPrompt()}${this.state.inputValue}`
+				});
 				OutputController.output({
 					content: options.join(TAB_WIDTH)
 				});

@@ -17,7 +17,7 @@ interface TerminalProps {
 	consoleInteractive: boolean;
 }
 
-function inputPrompt(): string {
+export function inputPrompt(): string {
 	return `~/${store.getState().location} > `;
 }
 
