@@ -1,6 +1,13 @@
 import store from '../store';
 
-const voices = speechSynthesis.getVoices();
+const voices = speechSynthesis
+	.getVoices()
+	.filter(({ lang }) => lang.indexOf('en') >= 0);
+
+const moira = voices.filter(voice => voice.name === 'Moira')[0] || voices[0];
+
+const victoria =
+	voices.filter(voice => voice.name === 'Victoria')[0] || voices[0];
 
 export default function say(text: string): Promise<null> {
 	if (!store.getState().soundOn) {
@@ -13,9 +20,10 @@ export default function say(text: string): Promise<null> {
 	utterance.rate = 0.9;
 	utterance.volume = 1;
 
+	utterance.voice = victoria;
+
 	if (text[0] === '"' && text[text.length - 1] === '"') {
-		utterance.voice =
-			voices.filter(voice => voice.name === 'Karen')[0] || voices[0];
+		utterance.voice = moira;
 	}
 
 	window.speechSynthesis.speak(utterance);
