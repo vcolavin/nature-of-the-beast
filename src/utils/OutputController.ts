@@ -48,14 +48,14 @@ export default class OutputController {
 	static getRevocableOutputter(dispatch: Dispatch): CurriedOutputterFunction {
 		let revoked = false;
 
-		const curriedOutput = OutputController.output(dispatch);
+		const curriedOutputter = curry(OutputController.output)(dispatch);
 
 		const revocableOutputter = {
 			revoke: () => {
 				revoked = true;
 			},
 			output: (args: IOutputterArgs) =>
-				revoked ? Promise.resolve(null) : curriedOutput(args)
+				revoked ? Promise.resolve(null) : curriedOutputter(args)
 		};
 
 		OutputController.revocableOutputters.push(revocableOutputter);
@@ -63,23 +63,24 @@ export default class OutputController {
 		return revocableOutputter.output;
 	}
 
-	static output = curry(
-		(dispatch, { content, speak }: IOutputterArgs): Promise<null> => {
-			let speechPromise = null;
+	static output = (
+		dispatch: Dispatch,
+		{ content, speak }: IOutputterArgs
+	): Promise<null> => {
+		let speechPromise = null;
 
-			if (speak) {
-				if (typeof content !== 'string') {
-					throw 'cannot "speak" a component';
-				}
-				speechPromise = say(content);
+		if (speak) {
+			if (typeof content !== 'string') {
+				throw 'cannot "speak" a component';
 			}
-
-			const item: HistoryItem = { id: uuid(), content };
-			OutputController.pushItem(dispatch, item);
-
-			return speechPromise ? speechPromise : Promise.resolve(null);
+			speechPromise = say(content);
 		}
-	);
+
+		const item: HistoryItem = { id: uuid(), content };
+		OutputController.pushItem(dispatch, item);
+
+		return speechPromise ? speechPromise : Promise.resolve(null);
+	};
 
 	private static revokeOutputters() {
 		OutputController.revocableOutputters.forEach(outputter => {

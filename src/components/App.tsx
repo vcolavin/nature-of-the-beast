@@ -24,7 +24,7 @@ export default class App extends React.Component<{}, {}> {
 			value: INITIAL_LOCATION_SLUG
 		});
 
-		OutputController.output({
+		OutputController.output(store.dispatch, {
 			content:
 				'The Nature of the Beast:\nA work of interactive fiction by Vincent Colavin.\n\n\nThis game reads descriptions out loud by default. Type "quiet" or "mute" to disable the audio.\nPress escape to shorten a description.\nType "help" for additional instructions.'
 		});

@@ -189,12 +189,13 @@ class TerminalInput extends React.Component<Props, State> {
 				this.setState({ inputValue: newValue });
 				break;
 			default:
-				OutputController.output({
+				const { dispatch } = this.props;
+				OutputController.output(dispatch, {
 					content: `${inputPrompt(locationString)}${
 						this.state.inputValue
 					}`
 				});
-				OutputController.output({
+				OutputController.output(dispatch, {
 					content: options.join(TAB_WIDTH)
 				});
 				break;

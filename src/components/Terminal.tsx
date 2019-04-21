@@ -51,7 +51,7 @@ class Terminal extends React.Component<Props, {}> {
 		const [utilityName, ...args] = value.split(' ');
 		const utility = ExtendedUtilityManifest[utilityName];
 
-		OutputController.output({
+		OutputController.output(dispatch, {
 			content: `${inputPrompt(location)}${value}`
 		});
 
@@ -59,13 +59,13 @@ class Terminal extends React.Component<Props, {}> {
 			dispatch({ type: ActionTypes.LOCK_CONSOLE });
 
 			utility
-				.run({ args })
+				.run({ args, dispatch })
 				.then(() => {
 					dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				})
 				.catch(console.error);
 		} else {
-			OutputController.output({
+			OutputController.output(dispatch, {
 				content: `I don't know how to ${utilityName}`
 			});
 		}
