@@ -1,18 +1,24 @@
 import React from 'react';
-import store, { getCurrentLocation } from '../store';
+import { DispatchProps, RootState } from '../store';
 import { TAB_WIDTH, inputPrompt } from './Terminal';
 import uuid from '../utils/uuid';
 import OutputController from '../utils/OutputController';
 import { ExtendedUtilityManifest } from '../utilities/UtilityManifest';
+import { connect } from 'react-redux';
+import LocationManifest from '../nouns/LocationManifest';
 
 interface CommandItem {
 	content: string;
 	id: string;
 }
 
-interface Props {
+interface OwnProps {
 	handleSubmit: (arg: string) => void;
 }
+
+type StoreProps = Pick<RootState, 'inventory' | 'location'>;
+
+type Props = OwnProps & StoreProps & DispatchProps;
 
 interface State {
 	commandHistory: CommandItem[];
@@ -20,7 +26,7 @@ interface State {
 	inputValue: string;
 }
 
-export default class TerminalInput extends React.Component<Props, State> {
+class TerminalInput extends React.Component<Props, State> {
 	state: State = {
 		commandHistory: [],
 		currentPlaceInHistory: -1,
@@ -159,13 +165,16 @@ export default class TerminalInput extends React.Component<Props, State> {
 
 		const utility = ExtendedUtilityManifest[command];
 
+		const { inventory, location: locationString } = this.props;
+		const location = LocationManifest[this.props.location];
+
 		const options =
 			utility && utility.getTabCompleteOptions
 				? utility.getTabCompleteOptions(lastValue)
 				: [
-						...getCurrentLocation().neighborSlugs,
-						...getCurrentLocation().itemSlugs,
-						...store.getState().inventory
+						...location.neighborSlugs,
+						...location.itemSlugs,
+						...inventory
 				  ].filter((slug: string) => slug.indexOf(lastValue) === 0);
 
 		switch (options.length) {
@@ -181,7 +190,9 @@ export default class TerminalInput extends React.Component<Props, State> {
 				break;
 			default:
 				OutputController.output({
-					content: `${inputPrompt()}${this.state.inputValue}`
+					content: `${inputPrompt(locationString)}${
+						this.state.inputValue
+					}`
 				});
 				OutputController.output({
 					content: options.join(TAB_WIDTH)
@@ -203,3 +214,14 @@ export default class TerminalInput extends React.Component<Props, State> {
 		);
 	}
 }
+
+const mapStateToProps = (
+	{ location, inventory }: RootState,
+	{ handleSubmit }: OwnProps
+): OwnProps & StoreProps => ({
+	location,
+	inventory,
+	handleSubmit
+});
+
+export default connect(mapStateToProps)(TerminalInput);

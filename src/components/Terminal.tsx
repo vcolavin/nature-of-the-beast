@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExtendedUtilityManifest } from '../utilities/UtilityManifest';
-import store, { ActionTypes, RootState } from '../store';
+import { ActionTypes, RootState, DispatchProps } from '../store';
 import { connect } from 'react-redux';
 import TerminalBuffer from './TerminalBuffer';
 import TerminalInput from './TerminalInput';
@@ -13,17 +13,17 @@ export interface HistoryItem {
 	id: string;
 }
 
-interface TerminalProps {
-	consoleInteractive: boolean;
-}
+type StoreProps = Pick<RootState, 'consoleInteractive' | 'location'>;
 
-export function inputPrompt(): string {
-	return `~/${store.getState().location} > `;
+type Props = StoreProps & DispatchProps;
+
+export function inputPrompt(location: string): string {
+	return `~/${location} > `;
 }
 
 export const TAB_WIDTH = '    ';
 
-class Terminal extends React.Component<TerminalProps, {}> {
+class Terminal extends React.Component<Props, {}> {
 	private handleKeydown = (e: Event) => {
 		const typedEvent = (e as any) as React.KeyboardEvent;
 
@@ -46,19 +46,22 @@ class Terminal extends React.Component<TerminalProps, {}> {
 	}
 
 	private runCommand = (value: string) => {
-		const [utilityName, ...args] = value.split(' ');
+		const { dispatch, location } = this.props;
 
+		const [utilityName, ...args] = value.split(' ');
 		const utility = ExtendedUtilityManifest[utilityName];
 
-		OutputController.output({ content: `${inputPrompt()}${value}` });
+		OutputController.output({
+			content: `${inputPrompt(location)}${value}`
+		});
 
 		if (utility) {
-			store.dispatch({ type: ActionTypes.LOCK_CONSOLE });
+			dispatch({ type: ActionTypes.LOCK_CONSOLE });
 
 			utility
 				.run({ args })
 				.then(() => {
-					store.dispatch({ type: ActionTypes.RELEASE_CONSOLE });
+					dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				})
 				.catch(console.error);
 		} else {
@@ -69,7 +72,7 @@ class Terminal extends React.Component<TerminalProps, {}> {
 	};
 
 	render() {
-		const { consoleInteractive } = this.props;
+		const { consoleInteractive, location } = this.props;
 
 		return (
 			<div className="terminal">
@@ -80,7 +83,9 @@ class Terminal extends React.Component<TerminalProps, {}> {
 						consoleInteractive ? 'active' : ''
 					}`}
 				>
-					<span className="input-prompt">{inputPrompt()}</span>
+					<span className="input-prompt">
+						{inputPrompt(location)}
+					</span>
 
 					<TerminalInput handleSubmit={this.runCommand} />
 				</form>
@@ -89,8 +94,12 @@ class Terminal extends React.Component<TerminalProps, {}> {
 	}
 }
 
-const mapStateToProps = ({ consoleInteractive }: RootState): TerminalProps => ({
-	consoleInteractive
+const mapStateToProps = ({
+	consoleInteractive,
+	location
+}: RootState): StoreProps => ({
+	consoleInteractive,
+	location
 });
 
 export default connect(mapStateToProps)(Terminal);
