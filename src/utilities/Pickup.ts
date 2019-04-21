@@ -39,8 +39,8 @@ export default class Pickup extends BaseUtility {
 		return Promise.resolve(null);
 	}
 
-	command = 'pickup';
+	command = 'get';
 	helpDescription =
 		'pickup will allow you to add an object to your inventory';
-	aliases = ['get', 'grab'];
+	aliases = ['pickup', 'grab', 'take'];
 }
