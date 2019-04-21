@@ -1,62 +1,25 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { ActionTypes, RootState } from '../store';
 import LocationManifest from '../nouns/LocationManifest';
-import { Dispatch } from 'redux';
-import curry from 'ramda/es/curry';
-
-const INVALID_LOCATION = 'INVALID_LOCATION';
 
 export default class Cd extends BaseUtility {
-	private goToLocation = (
-		dispatch: Dispatch,
-		currentLocation: string,
-		newLocation: string
-	) => {
-		const newLocationObj = LocationManifest[newLocation];
-		const currentLocationObj = LocationManifest[currentLocation];
+	_run({ args, output, dispatch }: PrivateRunParams): Promise<null> {
+		const locationChain = args[0].split('/').filter(l => l);
 
-		if (!newLocationObj || !currentLocationObj.hasNeighbor(newLocation)) {
-			throw {
-				code: INVALID_LOCATION,
-				message: `${location} is an invalid location`
-			};
+		if (this.locationChainValid(locationChain)) {
+			const finalLocation = locationChain[locationChain.length - 1];
+
+			dispatch({
+				type: ActionTypes.SET_LOCATION,
+				value: finalLocation
+			});
+
+			setUrlLocation({
+				location: finalLocation
+			});
+		} else {
+			output({ content: 'invalid location' });
 		}
-
-		dispatch({
-			type: ActionTypes.SET_LOCATION,
-			value: newLocation
-		});
-	};
-
-	_run({ args, output, dispatch, state }: PrivateRunParams): Promise<null> {
-		const { location: initialLocation } = state;
-
-		const curriedGoToLocation = curry(this.goToLocation)(
-			dispatch,
-			state.location
-		);
-
-		try {
-			args[0]
-				.split('/')
-				.filter(location => location)
-				.forEach(curriedGoToLocation);
-		} catch (e) {
-			if (e.code === INVALID_LOCATION) {
-				output({ content: e.message });
-
-				dispatch({
-					type: ActionTypes.SET_LOCATION,
-					value: initialLocation
-				});
-			} else {
-				throw e;
-			}
-		}
-
-		setUrlLocation({
-			location: state.location
-		});
 
 		return Promise.resolve(null);
 	}
