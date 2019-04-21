@@ -9,6 +9,9 @@ export default class Location {
 		this.slug = slug;
 	}
 
+	hasNeighbor = (neighbor: string): boolean =>
+		this.neighborSlugs.indexOf(neighbor) >= 0;
+
 	descriptions: string[];
 	slug: string;
 	itemSlugs: string[] = [];

@@ -7,12 +7,15 @@ import curry from 'ramda/es/curry';
 const INVALID_LOCATION = 'INVALID_LOCATION';
 
 export default class Cd extends BaseUtility {
-	private goToLocation = (dispatch: Dispatch, location: string) => {
-		const newLocation = LocationManifest[location].neighborSlugs.find(
-			(slug: string) => slug === location
-		);
+	private goToLocation = (
+		dispatch: Dispatch,
+		currentLocation: string,
+		newLocation: string
+	) => {
+		const newLocationObj = LocationManifest[newLocation];
+		const currentLocationObj = LocationManifest[currentLocation];
 
-		if (!newLocation) {
+		if (!newLocationObj || !currentLocationObj.hasNeighbor(newLocation)) {
 			throw {
 				code: INVALID_LOCATION,
 				message: `${location} is an invalid location`
@@ -28,7 +31,10 @@ export default class Cd extends BaseUtility {
 	_run({ args, output, dispatch, state }: PrivateRunParams): Promise<null> {
 		const { location: initialLocation } = state;
 
-		const curriedGoToLocation = curry(this.goToLocation)(dispatch);
+		const curriedGoToLocation = curry(this.goToLocation)(
+			dispatch,
+			state.location
+		);
 
 		try {
 			args[0]
