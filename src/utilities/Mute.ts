@@ -1,14 +1,16 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import store, { ActionTypes } from '../store';
+import { ActionTypes } from '../store';
 
 export default class Mute extends BaseUtility {
-	_run({ output }: PrivateRunParams): Promise<null> {
-		store.dispatch({ type: ActionTypes.TOGGLE_SOUND });
+	_run({
+		output,
+		dispatch,
+		state: { soundOn }
+	}: PrivateRunParams): Promise<null> {
+		dispatch({ type: ActionTypes.TOGGLE_SOUND });
 
 		output({
-			content: `Sound has been turned ${
-				store.getState().soundOn ? 'on' : 'off'
-			}.`
+			content: `Sound has been turned ${soundOn ? 'on' : 'off'}.`
 		});
 
 		return Promise.resolve(null);

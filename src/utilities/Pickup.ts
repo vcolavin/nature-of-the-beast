@@ -1,21 +1,29 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import store, { ActionTypes, getCurrentLocation } from '../store';
+import { ActionTypes } from '../store';
 import ItemManifest from '../nouns/ItemManifest';
+import LocationManifest from '../nouns/LocationManifest';
 
 export default class Pickup extends BaseUtility {
-	_run({ args, output }: PrivateRunParams): Promise<null> {
+	_run({
+		args,
+		output,
+		state: { location },
+		dispatch
+	}: PrivateRunParams): Promise<null> {
 		const item = args[0];
+
+		const currentLocation = LocationManifest[location];
 
 		if (
 			ItemManifest[item] &&
-			getCurrentLocation().itemSlugs.indexOf(item) > -1
+			currentLocation.itemSlugs.indexOf(item) > -1
 		) {
 			if (ItemManifest[item].takeable) {
-				getCurrentLocation().itemSlugs = getCurrentLocation().itemSlugs.filter(
+				currentLocation.itemSlugs = currentLocation.itemSlugs.filter(
 					itemSlug => itemSlug !== item
 				);
 
-				store.dispatch({
+				dispatch({
 					type: ActionTypes.ADD_TO_INVENTORY,
 					value: item
 				});

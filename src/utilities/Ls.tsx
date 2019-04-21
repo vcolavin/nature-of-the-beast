@@ -1,8 +1,8 @@
 import React from 'react';
 
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import { getCurrentLocation } from '../store';
 import { TAB_WIDTH } from '../components/Terminal';
+import LocationManifest from '../nouns/LocationManifest';
 
 interface Props {
 	items: string[];
@@ -29,12 +29,12 @@ function LsComponent(props: Props) {
 }
 
 export default class Ls extends BaseUtility {
-	_run({ output }: PrivateRunParams): Promise<null> {
+	_run({ output, state: { location } }: PrivateRunParams): Promise<null> {
 		output({
 			content: (
 				<LsComponent
-					places={getCurrentLocation().neighborSlugs.sort()}
-					items={getCurrentLocation().itemSlugs.sort()}
+					places={LocationManifest[location].neighborSlugs.sort()}
+					items={LocationManifest[location].itemSlugs.sort()}
 				/>
 			)
 		});

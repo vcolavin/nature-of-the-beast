@@ -1,6 +1,4 @@
 import { createStore, Dispatch } from 'redux';
-import Location from './nouns/Location';
-import LocationManifest from './nouns/LocationManifest';
 import { HistoryItem } from './components/Terminal';
 
 export interface RootState {
@@ -132,7 +130,3 @@ export default store;
 export interface DispatchProps {
 	dispatch: Dispatch;
 }
-
-// TODO: this is an anti-pattern. But it's useful. Get rid of it plz.
-export const getCurrentLocation = (): Location =>
-	LocationManifest[store.getState().location];
