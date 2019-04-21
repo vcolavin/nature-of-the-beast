@@ -1,19 +1,22 @@
-import OutputController, { OutputterFunction } from '../utils/OutputController';
+import OutputController, {
+	CurriedOutputterFunction
+} from '../utils/OutputController';
+import { Dispatch } from 'redux';
 
 export interface RunParams {
 	args: string[];
+	dispatch: Dispatch;
 }
 
-export interface PrivateRunParams {
-	args: string[];
-	output: OutputterFunction;
+export interface PrivateRunParams extends RunParams {
+	output: CurriedOutputterFunction;
 }
 
 export default class BaseUtility {
-	run(_params: RunParams): Promise<null> {
-		const output = OutputController.getRevocableOutputter();
+	run(params: RunParams): Promise<null> {
+		const output = OutputController.getRevocableOutputter(params.dispatch);
 
-		return this._run({ ..._params, output });
+		return this._run({ ...params, output });
 	}
 
 	_run(_params: PrivateRunParams): Promise<null> {

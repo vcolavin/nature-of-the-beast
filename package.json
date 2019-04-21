@@ -6,10 +6,12 @@
 	"dependencies": {
 		"@types/jest": "23.3.9",
 		"@types/node": "10.12.2",
+		"@types/ramda": "^0.26.8",
 		"@types/react": "16.4.18",
 		"@types/react-dom": "16.0.9",
 		"@types/react-redux": "^6.0.10",
 		"node-sass": "^4.9.4",
+		"ramda": "^0.26.1",
 		"react": "^16.6.0",
 		"react-dom": "^16.6.0",
 		"react-redux": "^5.1.1",

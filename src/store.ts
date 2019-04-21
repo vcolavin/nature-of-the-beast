@@ -115,14 +115,14 @@ function reducer(
 }
 
 export function pushToStoreHistory(item: HistoryItem) {
-	store.dispatch({
+	return {
 		type: ActionTypes.PUSH_HISTORY,
 		value: item.id
-	});
+	};
 }
 
 export function clearStoreHistory() {
-	store.dispatch({ type: ActionTypes.CLEAR_HISTORY });
+	return { type: ActionTypes.CLEAR_HISTORY };
 }
 
 const store = createStore(reducer);

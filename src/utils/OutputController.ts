@@ -6,17 +6,26 @@ import store, {
 	clearStoreHistory,
 	pushToStoreHistory
 } from '../store';
+import { Dispatch } from 'redux';
+import curry from 'ramda/src/curry';
 
 export type IOutputterArgs = {
 	content: HistoryItemContent;
 	speak?: boolean;
 };
 
-export type OutputterFunction = (arg1: IOutputterArgs) => Promise<null>;
+export type OutputterFunction = (
+	arg1: Dispatch,
+	arg2: IOutputterArgs
+) => Promise<null>;
+
+// TODO: is there a way to infer the type of a curried function,
+// rather than having to hard-code it like this?
+export type CurriedOutputterFunction = (arg1: IOutputterArgs) => Promise<null>;
 
 interface RevocableOutputter {
 	revoke: () => void;
-	output: OutputterFunction;
+	output: CurriedOutputterFunction;
 }
 
 export default class OutputController {
@@ -26,25 +35,27 @@ export default class OutputController {
 
 	private static revocableOutputters: RevocableOutputter[] = [];
 
-	private static pushItem(item: HistoryItem) {
+	private static pushItem(dispatch: Dispatch, item: HistoryItem) {
 		OutputController.historyManifest[item.id] = item.content;
-		pushToStoreHistory(item);
+		dispatch(pushToStoreHistory(item));
 	}
 
-	static clearHistory() {
+	static clearHistory(dispatch: Dispatch) {
 		OutputController._historyManifest = {};
-		clearStoreHistory();
+		dispatch(clearStoreHistory());
 	}
 
-	static getRevocableOutputter(): OutputterFunction {
+	static getRevocableOutputter(dispatch: Dispatch): CurriedOutputterFunction {
 		let revoked = false;
+
+		const curriedOutput = OutputController.output(dispatch);
 
 		const revocableOutputter = {
 			revoke: () => {
 				revoked = true;
 			},
 			output: (args: IOutputterArgs) =>
-				revoked ? Promise.resolve(null) : OutputController.output(args)
+				revoked ? Promise.resolve(null) : curriedOutput(args)
 		};
 
 		OutputController.revocableOutputters.push(revocableOutputter);
@@ -52,21 +63,23 @@ export default class OutputController {
 		return revocableOutputter.output;
 	}
 
-	static output({ content, speak }: IOutputterArgs): Promise<null> {
-		let speechPromise = null;
+	static output = curry(
+		(dispatch, { content, speak }: IOutputterArgs): Promise<null> => {
+			let speechPromise = null;
 
-		if (speak) {
-			if (typeof content !== 'string') {
-				throw 'cannot "speak" a component';
+			if (speak) {
+				if (typeof content !== 'string') {
+					throw 'cannot "speak" a component';
+				}
+				speechPromise = say(content);
 			}
-			speechPromise = say(content);
+
+			const item: HistoryItem = { id: uuid(), content };
+			OutputController.pushItem(dispatch, item);
+
+			return speechPromise ? speechPromise : Promise.resolve(null);
 		}
-
-		const item: HistoryItem = { id: uuid(), content };
-		OutputController.pushItem(item);
-
-		return speechPromise ? speechPromise : Promise.resolve(null);
-	}
+	);
 
 	private static revokeOutputters() {
 		OutputController.revocableOutputters.forEach(outputter => {
