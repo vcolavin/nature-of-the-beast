@@ -11,13 +11,9 @@ export default class Pickup extends BaseUtility {
 		dispatch
 	}: PrivateRunParams): Promise<null> {
 		const item = args[0];
-
 		const currentLocation = LocationManifest[location];
 
-		if (
-			ItemManifest[item] &&
-			currentLocation.itemSlugs.indexOf(item) > -1
-		) {
+		if (ItemManifest[item] && currentLocation.hasItem(item)) {
 			if (ItemManifest[item].takeable) {
 				currentLocation.itemSlugs = currentLocation.itemSlugs.filter(
 					itemSlug => itemSlug !== item

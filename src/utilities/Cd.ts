@@ -113,7 +113,7 @@ export default class Cd extends BaseUtility {
 
 			const prevLocation = LocationManifest[arr[i - 1]];
 
-			return prevLocation.neighborSlugs.indexOf(location) >= 0;
+			return prevLocation.hasNeighbor(location);
 		}, true);
 
 		return valid;
