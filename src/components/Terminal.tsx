@@ -13,7 +13,9 @@ export interface HistoryItem {
 	id: string;
 }
 
-type StoreProps = Pick<RootState, 'consoleInteractive' | 'location'>;
+type StoreProps = Pick<RootState, 'consoleInteractive' | 'location'> & {
+	_state: RootState;
+};
 
 type Props = StoreProps & DispatchProps;
 
@@ -46,7 +48,7 @@ class Terminal extends React.Component<Props, {}> {
 	}
 
 	private runCommand = (value: string) => {
-		const { dispatch, location } = this.props;
+		const { dispatch, _state, location } = this.props;
 
 		const [utilityName, ...args] = value.split(' ');
 		const utility = ExtendedUtilityManifest[utilityName];
@@ -59,7 +61,7 @@ class Terminal extends React.Component<Props, {}> {
 			dispatch({ type: ActionTypes.LOCK_CONSOLE });
 
 			utility
-				.run({ args, dispatch })
+				.run({ args, dispatch, state: _state })
 				.then(() => {
 					dispatch({ type: ActionTypes.RELEASE_CONSOLE });
 				})
@@ -94,12 +96,12 @@ class Terminal extends React.Component<Props, {}> {
 	}
 }
 
-const mapStateToProps = ({
-	consoleInteractive,
-	location
-}: RootState): StoreProps => ({
-	consoleInteractive,
-	location
+// state is passed through with the underscore prefix
+// to indicate it is only present to be passed through to utilities
+const mapStateToProps = (state: RootState): StoreProps => ({
+	_state: state,
+	consoleInteractive: state.consoleInteractive,
+	location: state.location
 });
 
 export default connect(mapStateToProps)(Terminal);

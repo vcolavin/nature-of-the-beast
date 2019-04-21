@@ -16,7 +16,9 @@ interface OwnProps {
 	handleSubmit: (arg: string) => void;
 }
 
-type StoreProps = Pick<RootState, 'inventory' | 'location'>;
+type StoreProps = Pick<RootState, 'inventory' | 'location'> & {
+	_state: RootState;
+};
 
 type Props = OwnProps & StoreProps & DispatchProps;
 
@@ -165,12 +167,12 @@ class TerminalInput extends React.Component<Props, State> {
 
 		const utility = ExtendedUtilityManifest[command];
 
-		const { inventory, location: locationString } = this.props;
-		const location = LocationManifest[this.props.location];
+		const { _state, inventory, location: locationString } = this.props;
+		const location = LocationManifest[locationString];
 
 		const options =
 			utility && utility.getTabCompleteOptions
-				? utility.getTabCompleteOptions(lastValue)
+				? utility.getTabCompleteOptions(_state, lastValue)
 				: [
 						...location.neighborSlugs,
 						...location.itemSlugs,
@@ -217,11 +219,12 @@ class TerminalInput extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (
-	{ location, inventory }: RootState,
+	state: RootState,
 	{ handleSubmit }: OwnProps
 ): OwnProps & StoreProps => ({
-	location,
-	inventory,
+	_state: state,
+	location: state.location,
+	inventory: state.inventory,
 	handleSubmit
 });
 

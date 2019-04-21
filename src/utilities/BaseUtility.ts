@@ -2,10 +2,12 @@ import OutputController, {
 	CurriedOutputterFunction
 } from '../utils/OutputController';
 import { Dispatch } from 'redux';
+import { RootState } from '../store';
 
 export interface RunParams {
 	args: string[];
 	dispatch: Dispatch;
+	state: RootState;
 }
 
 export interface PrivateRunParams extends RunParams {
@@ -23,7 +25,7 @@ export default class BaseUtility {
 		throw 'not implemented';
 	}
 
-	getTabCompleteOptions?: (arg: string) => string[];
+	getTabCompleteOptions?: (state: RootState, args: string) => string[];
 
 	command: string = '';
 	aliases: string[] = [];

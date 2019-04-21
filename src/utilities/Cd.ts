@@ -1,12 +1,14 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import store, { ActionTypes, getCurrentLocation } from '../store';
+import { ActionTypes, RootState } from '../store';
 import LocationManifest from '../nouns/LocationManifest';
+import { Dispatch } from 'redux';
+import curry from 'ramda/es/curry';
 
 const INVALID_LOCATION = 'INVALID_LOCATION';
 
 export default class Cd extends BaseUtility {
-	private goToLocation = (location: string) => {
-		const newLocation = getCurrentLocation().neighborSlugs.find(
+	private goToLocation = (dispatch: Dispatch, location: string) => {
+		const newLocation = LocationManifest[location].neighborSlugs.find(
 			(slug: string) => slug === location
 		);
 
@@ -17,25 +19,27 @@ export default class Cd extends BaseUtility {
 			};
 		}
 
-		store.dispatch({
+		dispatch({
 			type: ActionTypes.SET_LOCATION,
 			value: newLocation
 		});
 	};
 
-	_run({ args, output }: PrivateRunParams): Promise<null> {
-		const { location: initialLocation } = store.getState();
+	_run({ args, output, dispatch, state }: PrivateRunParams): Promise<null> {
+		const { location: initialLocation } = state;
+
+		const curriedGoToLocation = curry(this.goToLocation)(dispatch);
 
 		try {
 			args[0]
 				.split('/')
 				.filter(location => location)
-				.forEach(this.goToLocation);
+				.forEach(curriedGoToLocation);
 		} catch (e) {
 			if (e.code === INVALID_LOCATION) {
 				output({ content: e.message });
 
-				store.dispatch({
+				dispatch({
 					type: ActionTypes.SET_LOCATION,
 					value: initialLocation
 				});
@@ -45,13 +49,16 @@ export default class Cd extends BaseUtility {
 		}
 
 		setUrlLocation({
-			location: store.getState().location
+			location: state.location
 		});
 
 		return Promise.resolve(null);
 	}
 
-	getTabCompleteOptions = (path: string): string[] => {
+	getTabCompleteOptions = (
+		{ location }: RootState,
+		path: string
+	): string[] => {
 		const locations = path.split('/');
 
 		const locationChain = locations.splice(0, locations.length - 1);
@@ -63,7 +70,7 @@ export default class Cd extends BaseUtility {
 
 		const finalLocationInChain =
 			locationChain.length === 0
-				? getCurrentLocation()
+				? LocationManifest[location]
 				: LocationManifest[locationChain[locationChain.length - 1]];
 
 		if (!finalLocationInChain) {
