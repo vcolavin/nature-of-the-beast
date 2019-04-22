@@ -1,5 +1,41 @@
 [
 	{
+		"slug": "template",
+		"descriptions": [],
+		"locationSlug": "",
+		"takeable": false
+	},
+	{
+		"slug": "big_tree",
+		"descriptions": [
+			"This must be the largest douglas fir in the forest.",
+			"It emanates strength.",
+			"At its base is a hollow",
+			"Big enough to squeeze into it"
+		],
+		"locationSlug": "",
+		"takeable": false
+	},
+
+	{
+		"slug": "worn_book",
+		"descriptions": [
+			"The Lord of the Rings",
+			"Your long-time favorite book, even though you've grown uncomfortable with its fantasy racism.",
+			"This is an ostentatious hardback edition with an embossed and gilded cover",
+			"It is dusty and tattered from what must be years of re-reading.",
+			"The inside of the front cover is an inscription addressed to you:",
+			"M, I finally got you a nicer copy like I promised!",
+			"Here's to all the kooky adventures in our future.",
+			"Happy birthday lovebird",
+			"- H",
+			"You wonder idly who H is."
+		],
+		"locationSlug": "a_nook",
+		"takeable": true
+	},
+
+	{
 		"slug": "old_knife",
 		"descriptions": [
 			"many objects carry with them anonymity.",

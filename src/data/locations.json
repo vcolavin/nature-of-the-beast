@@ -1,19 +1,27 @@
 [
+	{ "slug": "a_template", "descriptions": [] },
 	{
 		"slug": "a_quiet_forest",
+		"descriptions": ["Judging from the light, it is early morning.", ""]
+	},
+	{
+		"slug": "a_nook",
 		"descriptions": [
-			"it is early morning.",
-			"a cold rain is melting the remaining empty and wet snow hanging from the boughs of the surrounding trees",
-			"it falls in irregular clumps around you",
-			"and you can make out a path heading forward into the fog."
+			"You squeeze through the hollow at the base of the tree",
+			"revealing a dry and warm nook among the roots, slightly larger than one might have expected.",
+			"It has been kept clear of detritus.",
+			"Sitting for a moment on a knuckled and seatlike root,",
+			"you have the notion that you are completely hidden from anyone who might try to find you, and a strong sense that that is a very good thing."
 		]
 	},
+
 	{
 		"slug": "a_path",
 		"descriptions": [
-			"the rot beckons",
-			"and the mud sucks at your boots.",
-			"you are confronted with the unavoidable putrescence and death of the temperate rainforest"
+			"You walk for a long while. Maybe a mile",
+			"The ground softens as you walk downhill towards the house",
+			"The air becomes heavy with mildew and rot",
+			"A smell you know well."
 		]
 	},
 	{
