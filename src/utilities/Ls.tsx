@@ -29,7 +29,10 @@ function LsComponent(props: Props) {
 }
 
 export default class Ls extends BaseUtility {
-	_run({ output, state: { location } }: PrivateRunParams): Promise<null> {
+	protected _run({
+		output,
+		state: { location }
+	}: PrivateRunParams): Promise<null> {
 		output({
 			content: (
 				<LsComponent

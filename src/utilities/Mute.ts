@@ -2,7 +2,7 @@ import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { ActionTypes } from '../store';
 
 export default class Mute extends BaseUtility {
-	_run({
+	protected _run({
 		output,
 		dispatch,
 		state: { soundOn }

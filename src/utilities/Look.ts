@@ -3,7 +3,7 @@ import ItemManifest from '../nouns/ItemManifest';
 import LocationManifest from '../nouns/LocationManifest';
 
 export default class Look extends BaseUtility {
-	_run({
+	protected _run({
 		output,
 		args,
 		state: { location }

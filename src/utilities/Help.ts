@@ -2,7 +2,7 @@ import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { UtilityManifest } from './UtilityManifest';
 
 export default class Help extends BaseUtility {
-	_run({ output, args }: PrivateRunParams): Promise<null> {
+	protected _run({ output, args }: PrivateRunParams): Promise<null> {
 		if (args.length >= 1) {
 			const util = UtilityManifest[args[0]];
 			const description = util

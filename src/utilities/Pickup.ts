@@ -4,7 +4,7 @@ import ItemManifest from '../nouns/ItemManifest';
 import LocationManifest from '../nouns/LocationManifest';
 
 export default class Pickup extends BaseUtility {
-	_run({
+	protected _run({
 		args,
 		output,
 		state: { location },

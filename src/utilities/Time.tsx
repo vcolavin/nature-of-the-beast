@@ -28,7 +28,7 @@ class TimeComponent extends React.Component<{}, State> {
 }
 
 export default class Time extends BaseUtility {
-	_run({ output }: PrivateRunParams): Promise<null> {
+	protected _run({ output }: PrivateRunParams): Promise<null> {
 		output({ content: <TimeComponent /> });
 
 		return Promise.resolve(null);

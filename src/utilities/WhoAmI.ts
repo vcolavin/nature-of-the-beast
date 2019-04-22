@@ -11,7 +11,7 @@ const responses: string[] = [
 ];
 
 export default class WhoAmI extends BaseUtility {
-	_run({ output }: PrivateRunParams): Promise<null> {
+	protected _run({ output }: PrivateRunParams): Promise<null> {
 		return responses.reduce(
 			(memo: Promise<null>, content: string): Promise<null> =>
 				memo.then(() => output({ content, speak: true })),

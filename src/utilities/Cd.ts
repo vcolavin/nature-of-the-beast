@@ -3,7 +3,11 @@ import { ActionTypes, RootState } from '../store';
 import LocationManifest from '../nouns/LocationManifest';
 
 export default class Cd extends BaseUtility {
-	_run({ args, output, dispatch }: PrivateRunParams): Promise<null> {
+	protected _run({
+		args,
+		output,
+		dispatch
+	}: PrivateRunParams): Promise<null> {
 		const locationChain = args[0].split('/').filter(l => l);
 
 		if (this.locationChainValid(locationChain)) {
