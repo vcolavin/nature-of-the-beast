@@ -9,25 +9,25 @@
 		"slug": "big_tree",
 		"descriptions": [
 			"This must be the largest douglas fir in the forest.",
-			"It emanates strength.",
-			"At its base is a hollow",
-			"Big enough to squeeze into it"
+			"It emanates a paternal strength.",
+			"In its base is a hollow whose opening is big enough to squeeze into"
 		],
 		"locationSlug": "",
 		"takeable": false
 	},
-
 	{
 		"slug": "worn_book",
 		"descriptions": [
 			"The Lord of the Rings",
-			"Your long-time favorite book, even though you've grown uncomfortable with its fantasy racism.",
+			"Your long-time favorite book, even though you've grown uncomfortable with its fantasy racism",
+			"and tired of its unimaginative depiction of evil.",
 			"This is an ostentatious hardback edition with an embossed and gilded cover",
-			"It is dusty and tattered from what must be years of re-reading.",
-			"The inside of the front cover is an inscription addressed to you:",
+			"It is dusty and tattered from what must be years of re-reading",
+			"especially the sections concerning Hobbiton, Lothlorien, and Tom Bombadil.",
+			"On the inside front cover is an inscription addressed to you:",
 			"M, I finally got you a nicer copy like I promised!",
 			"Here's to all the kooky adventures in our future.",
-			"Happy birthday lovebird",
+			"Happy birthday, lovebird",
 			"- H",
 			"You wonder idly who H is."
 		],

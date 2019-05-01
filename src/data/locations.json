@@ -2,25 +2,29 @@
 	{ "slug": "a_template", "descriptions": [] },
 	{
 		"slug": "a_quiet_forest",
-		"descriptions": ["Judging from the light, it is early morning.", ""]
+		"descriptions": [
+			"You are standing in the center of a circle of douglas fir trees at the crest of a hill",
+			"softly lit by the dawn light of this winter morning.",
+			"A ragged path leads away, downhill."
+		]
 	},
 	{
 		"slug": "a_nook",
 		"descriptions": [
-			"You squeeze through the hollow at the base of the tree",
-			"revealing a dry and warm nook among the roots, slightly larger than one might have expected.",
-			"It has been kept clear of detritus.",
+			"You squeeze into the hollow at the base of the tree",
+			"It is a dry and warm nook among the roots, slightly larger than one might have expected.",
+			"It has been picked clear of detritus.",
 			"Sitting for a moment on a knuckled and seatlike root,",
-			"you have the notion that you are completely hidden from anyone who might try to find you, and a strong sense that that is a very good thing."
+			"you feel that you are completely hidden from anyone who might try to find you",
+			"and a strong sense that that is a very good thing."
 		]
 	},
-
 	{
 		"slug": "a_path",
 		"descriptions": [
 			"You walk for a long while. Maybe a mile",
 			"The ground softens as you walk downhill towards the house",
-			"The air becomes heavy with mildew and rot",
+			"The air is large with mildew and rot",
 			"A smell you know well."
 		]
 	},
@@ -32,48 +36,35 @@
 			"a single story of rotting plastered timber",
 			"it's been a while since you've been back.",
 			"and the forest is in the process of reclaiming its territory",
-			"You knew that white walls were always going to be a problem",
-			"but your husband insisted he would whitewash them every summer",
-			"you cowed without argument",
-			"your exhaustion and fear apparent in hindsight",
-			"Now, contempt floods your mouth as you look towards the mossy grey and black streaking the walls"
+			"You knew that white walls were always going to be a problem,",
+			"But one summer, Zach demanded that you whitewash the outside of the house.",
+			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaked walls",
+			"And you realize your contempt is for yourself, for your weakness."
 		]
 	},
 	{
 		"slug": "side_yard",
 		"descriptions": [
-			"You tried to start a garden here once",
-			"You dreamt, specifically, of rhubarb in winter and tomatillos in summer",
-			"You dreamt of bringing these things to the dinner table and sharing them with your parents",
-			"it was a naïve aspiration, but who could fault a child for such a desire?",
-			"the side yard has been unused and unvisited since",
-			"a space ceded to the damp clamor of the pacific northwest.",
-			"The gate creaks in the wind.",
-			"And by it, a pile of cans and other refuse."
-		]
-	},
-	{
-		"slug": "trash_heap",
-		"descriptions": [
-			"your dad talked a lot about how the state government was scamming us",
-			"by making you pay for can and bottle deposits they knew we'd never redeem",
-			"he started hoarding his empties, bragging about the big dinner he'd take you out on when he took them to the place.",
-			"over time, this project grew and consumed your garden.",
-			"You pick through the moss-covered aluminum like an archaeologist",
-			"and find several parts of your childhood you had tried to forget."
+			"Zach has used the side yard to hoard his empties ever since you explained to him that they could be redeemed for cash",
+			"You start to do a rough calculation:",
+			"Two sixers a day, six days a week",
+			"That's thirty-seven hundred a year",
+			"But for how many years?",
+			"You cannot remember."
 		]
 	},
 	{
 		"slug": "backyard",
 		"descriptions": [
-			"a mockery of the suburban backyard, with a pool and everything",
-			"mom wanted a pool but she hated to swim",
-			"dad hated the suburbs but loved pool maintenance",
-			"their charade worked until it didn't.",
-			"a relic of multicolored plastic survives in the swampy remains of the pool",
-			"You are unsettled.",
-			"the damp sets into your bones.",
-			"You do not wish to stay."
+			"You tried to garden here once",
+			"Specifically, you wanted rhubarb in winter and tomatillos in summer",
+			"You dreamt of bringing these things to the dinner table and sharing them with your friends, your parents.",
+			"You half-joked with them that you could direct your mothering instincts towards plants",
+			"Seeing as you weren't going to have kids",
+			"They didn't laugh.",
+			"The yard has been unused and unvisited for a long while:",
+			"a space ceded to the wild clamor of the Pacific Northwest",
+			"now crowded with deer fern and fly agaric."
 		]
 	},
 	{
@@ -81,8 +72,6 @@
 		"descriptions": [
 			"You enter the foyer",
 			"And the voidish smell of mold hits you like a brick wall",
-			"Just dust.",
-			"The shoe rack is in grand, welcoming disarray.",
 			"You shut the door gently behind you",
 			"Holding the latch down as it closes to muffle the mechanism's click",
 			"out of habit.",
@@ -101,7 +90,6 @@
 		"descriptions": [
 			"\"I feel like a frog in boiling water,\"",
 			"you had said,",
-			"patient peacemaker that you are, to your husband as you fought.",
 			"It was a metaphor banal and grotesque",
 			"to which you clung like a buoy in a storm",
 			"\"it's like when I would visit my grandfather as a child,\"",

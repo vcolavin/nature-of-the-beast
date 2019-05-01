@@ -3,7 +3,6 @@
 	["in_front_of_the_house", "a_path", {}],
 	["side_yard", "in_front_of_the_house", {}],
 	["side_yard", "backyard", {}],
-	["side_yard", "trash_heap", {}],
 	["in_front_of_the_house", "foyer", {}],
 	["foyer", "kitchen", {}],
 	["kitchen", "backyard", {}],
