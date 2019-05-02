@@ -5,6 +5,5 @@
 	["side_yard", "backyard", {}],
 	["in_front_of_the_house", "foyer", {}],
 	["foyer", "kitchen", {}],
-	["kitchen", "backyard", {}],
 	["range", "kitchen", {}]
 ]

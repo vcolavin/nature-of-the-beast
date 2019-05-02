@@ -3,8 +3,8 @@
 	{
 		"slug": "a_quiet_forest",
 		"descriptions": [
-			"You are standing in the center of a circle of douglas fir trees at the crest of a hill",
-			"softly lit by the dawn light of this winter morning.",
+			"You are standing in the center of a congress of douglas fir trees at the top of a hill",
+			"lit by the diffuse dawn light of winter.",
 			"A ragged path leads away, downhill."
 		]
 	},
@@ -23,9 +23,11 @@
 		"slug": "a_path",
 		"descriptions": [
 			"You walk for a long while. Maybe a mile",
-			"The ground softens as you walk downhill towards the house",
-			"The air is large with mildew and rot",
-			"A smell you know well."
+			"The ground softens as you walk downhill toward the house",
+			"and the air is becomes large with mildew and rot",
+			"An odor which causes your heart to quicken, and your palms to sweat.",
+			"You remind yourself that it is daylight, and for now at least, you are safe",
+			"and you walk."
 		]
 	},
 	{
@@ -36,10 +38,11 @@
 			"a single story of rotting plastered timber",
 			"it's been a while since you've been back.",
 			"and the forest is in the process of reclaiming its territory",
-			"You knew that white walls were always going to be a problem,",
-			"But one summer, Zach demanded that you whitewash the outside of the house.",
-			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaked walls",
-			"And you realize your contempt is for yourself, for your weakness."
+			"Obviously white walls were always going to be a problem,",
+			"but one summer, Zach demanded that you whitewash the outside of the house",
+			"and there was no futher discussion.",
+			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaks.",
+			"And you realize that contempt is directed at yourself."
 		]
 	},
 	{
@@ -63,8 +66,8 @@
 			"Seeing as you weren't going to have kids",
 			"They didn't laugh.",
 			"The yard has been unused and unvisited for a long while:",
-			"a space ceded to the wild clamor of the Pacific Northwest",
-			"now crowded with deer fern and fly agaric."
+			"a space ceded to the wild fertility of the Pacific Northwest",
+			"crowded with deer fern and fly agaric."
 		]
 	},
 	{
@@ -86,6 +89,15 @@
 		]
 	},
 	{
+		"slug": "your_car",
+		"descriptions": [
+			"You slashed your tires a while back",
+			"And your car sags in the driveway, growing moss and rust in equal proportion",
+			"You hardly needed convincing",
+			"At that time you were Zach's accomplice in the systematic dismantlement of your life"
+		]
+	},
+	{
 		"slug": "range",
 		"descriptions": [
 			"\"I feel like a frog in boiling water,\"",
@@ -100,17 +112,27 @@
 			"\"In the dream, I had always felt that discomfort\"",
 			"\"It was unbearable but also unquestionable.\"",
 			"Anyways,",
-			"Your husband somehow captured a frog outside and put it in a pot of water on the stove.",
+			"Zach somehow captured a frog outside and put it in a pot of water on the stove.",
 			"As the water warmed up, it tried to jump out",
-			"But your husband caught it and placed a heavy lid on the pot.",
+			"But Zach caught it and placed a heavy lid on the pot.",
 			"It jumped and thrashed and splashed until it didn't,",
 			"until the water all boiled away and its body burned and its smoke",
 			"filled the house",
-			"The smell would linger for weeks and you would never forget it.",
-			"Your husband smiled triumphantly",
-			"As though he had won the argument."
+			"The smell lingered for weeks, and you will never forget it.",
+			"Zach smiled triumphantly,",
+			"as though he had won the argument."
 		]
 	},
+	{
+		"slug": "zachs_room",
+		"descriptions": [
+			"this place is gross",
+			"Kept constantly hot with space heaters",
+			"Perhaps there's like an egg sac or something?",
+			"Something which obviously clues you in to the fact that he is not human."
+		]
+	},
+
 	{
 		"slug": "outside",
 		"descriptions": [
@@ -149,16 +171,16 @@
 			"Your tea is sitting on a small table besides you, still too hot to drink. It steams darkly.",
 			"The steam curls and spirals through the air with infinite lazy grace.",
 			"Grace like in the divine sense.",
-			"An old Cat Stevens song is playing slowly on the radio,",
-			"and a wave of exhaustion flows through you.",
-			"You welcome the feeling.",
-			"It is as though the fist in your mind has released, even if just for a moment,",
-			"and you feel exactly as you are meant to feel,",
-			"and you are exactly as your are meant to be.",
-			"The hurt deep in your bones,",
-			"alongside the love and the pride and the beauty,",
-			"the soreness in your throat from all the crying.",
-			"Your friend walks in."
+			"An old Cat Stevens song is playing slowly on the radio.",
+			"A wave of exhaustion flows through you,",
+			"and you welcome it.",
+			"It is as though the clenched fist in your mind has released, even if just for a moment,",
+			"and you feel exactly as you are meant to feel;",
+			"you exist exactly as you ought to.",
+			"There is a hurt deep in your bones that you suspect will never completely go away.",
+			"Alongside love for yourself, pride and beauty,",
+			"the sore throat, from crying.",
+			"Henrietta walks in."
 		]
 	}
 ]

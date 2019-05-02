@@ -6,13 +6,33 @@
 		"takeable": false
 	},
 	{
+		"slug": "dark_picture",
+		"descriptions": [
+			"a dark picture",
+			"it's you and zach",
+			"your son.",
+			"Though he is too large to fit entirely in frame"
+		],
+		"locationSlug": "foyer",
+		"takeable": false
+	},
+	{
+		"slug": "hidden_picture",
+		"descriptions": [
+			"you and Henrietta",
+			"Smiling, as though it was the most obvious thing to do"
+		],
+		"locationSlug": "",
+		"takeable": false
+	},
+	{
 		"slug": "big_tree",
 		"descriptions": [
 			"This must be the largest douglas fir in the forest.",
-			"It emanates a paternal strength.",
+			"It emanates a maternal strength.",
 			"In its base is a hollow whose opening is big enough to squeeze into"
 		],
-		"locationSlug": "",
+		"locationSlug": "a_quiet_forest",
 		"takeable": false
 	},
 	{
@@ -33,6 +53,36 @@
 		],
 		"locationSlug": "a_nook",
 		"takeable": true
+	},
+	{
+		"slug": "patio_furniture",
+		"descriptions": [
+			"Cheap plastic patio furniture from Craigslist,",
+			"cracked and yellowed.",
+			"\"Starter furniture\"",
+			"You had called it optimistically."
+		],
+		"locationSlug": "backyard",
+		"takeable": false
+	},
+	{
+		"slug": "raised_beds",
+		"descriptions": [
+			"You had no idea how to build garden beds, so you just kind of went for it.",
+			"All things considered, you didn't do a bad job",
+			"They are even still intact, though inundated with local flora.",
+			"You catch yourself smiling as you recall a trip to the emergency room after smashing your foot with a redwood two-by-six.",
+			"It turned out not to be broken, but it still hurt like a motherfucker.",
+			"You were pretending to be brave in the passenger seat",
+			"(which, you've since learned, is the same thing as actual bravery)",
+			"distracting yourself by looking at your driver with mournful love",
+			"admiring her steely determination,",
+			"her defensive driving,",
+			"and her well-defined cheekbones.",
+			"What was her name?"
+		],
+		"locationSlug": "backyard",
+		"takeable": false
 	},
 
 	{
