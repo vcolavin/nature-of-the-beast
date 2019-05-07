@@ -6,12 +6,74 @@
 		"takeable": false
 	},
 	{
+		"slug": "cutting_board",
+		"descriptions": [
+			"A heavy block of maple cut concave from untold thousands of slices and chops.",
+			"darkened with blood",
+			"almost exclusively pork, despite your sincere efforts to get your son to eat better.",
+			"This you remember well: You were a zealous vegetarian once",
+			"Abstaining from eating meat was such an obvious thing to do that you had trouble explaining it",
+			"How do you even begin to justify deciding not to commit regular and lethal violence on feeling creatures?",
+			"How is that the position that needs justifying in the first place?",
+			"In therapy, you were able to express that you felt gaslit by the people you loved and cared for the most.",
+			"...",
+			"Of course, now, your calculus is different.",
+			"Now, you just eat what's left."
+		],
+		"locationSlug": "kitchen",
+		"takeable": false
+	},
+	{
+		"slug": "bottle_of_poison",
+		"descriptions": [
+			"A dark glass bottle of some nasty liquid intended for developing photos",
+			"Which you read online could kill someone if eaten slowly over several days.",
+			"The bottle is half empty."
+		],
+		"locationSlug": "refrigerator",
+		"takeable": true
+	},
+	{
+		"slug": "old_knife",
+		"descriptions": [
+			"Many objects carry with them anonymity.",
+			"This knife does not: it was loved as deeply as an object could be loved.",
+			"Its handle polished from the oil and sweat of your hand",
+			"Its vicious blade shrunken from being kept sharp enough to shave with.",
+			"You learned early on how big of a difference that makes when breaking down a pig."
+		],
+		"takeable": true,
+		"locationSlug": "kitchen"
+	},
+	{
+		"slug": "sliding_door",
+		"descriptions": [
+			"Through the unclean glass and torn screen door mesh, you see the overgrown backyard.",
+			"This door's latch has been welded shut."
+		],
+		"locationSlug": "kitchen",
+		"takeable": false
+	},
+	{
+		"slug": "dining_table",
+		"descriptions": [
+			"A circular wooden table, four or five feet across.",
+			"The place where Zach sits is worn straight through the veneer",
+			"frayed at the edge.",
+			"The floor beneath his usual seat is darkly stained, despite your diligent cleaning after every meal."
+		],
+		"locationSlug": "kitchen",
+		"takeable": false
+	},
+	{
 		"slug": "dark_picture",
 		"descriptions": [
-			"a dark picture",
-			"it's you and zach",
-			"your son.",
-			"Though he is too large to fit entirely in frame"
+			"It's of you and your son",
+			"Zach.",
+			"He is too large to fit entirely within the frame, so you can't see his face, his teeth, which always seem to show, like a crocodile smile.",
+			"You wonder at your son's proportions",
+			"The way he fills almost the entire picture.",
+			"You feel strongly that he was not always that size."
 		],
 		"locationSlug": "foyer",
 		"takeable": false
@@ -19,11 +81,53 @@
 	{
 		"slug": "hidden_picture",
 		"descriptions": [
-			"you and Henrietta",
-			"Smiling, as though it was the most obvious thing to do"
+			"You and Henrietta",
+			"Smiling, as though it was an obvious thing to do."
 		],
-		"locationSlug": "",
-		"takeable": false
+		"locationSlug": "zachs_dresser",
+		"takeable": true
+	},
+	{
+		"slug": "hidden_letter",
+		"descriptions": [
+			"Marla,",
+			"I am sad to write this",
+			"This is like my fifth time trying to write this letter.",
+			"I want to make sure I am perfect with my words, because I want you to understand how serious this is, and I think you are having trouble understanding right now.",
+			"I feel insane having to write this, but I feel even worse in this house",
+			"I don't know what's going on with you, but I don't want to be a boiling frog or whatever it is you said.",
+			"Who is Zach?",
+			"You found him on Couchsurfing a few weeks ago and we thought it'd be fun to have a guest.",
+			"Why is he still here?",
+			"Why did you give him our bedroom?",
+			"Why do you cook for him so much?",
+			"We can't afford all the food you're buying for him",
+			"I think he's gotten even bigger since you started doing that.",
+			"And he started calling you mom.",
+			"You laughed it off the first time",
+			"But now... you respond, like it's your name.",
+			"This shouldn't even need to be said, but I'm not sure right now",
+			"We don't have kids.",
+			"Remember? We tried IVF with Danny.",
+			"Do you actually remember these things?",
+			"You looked at me this morning and I think it took you a second to recall who I was.",
+			"Ok, sorry, I'm losing the thread a little here.",
+			"Let me be clear:",
+			"Zach is a monster, like, an actual monster, and he is stealing you from me",
+			"He is stealing you from yourself.",
+			"You get to decide now",
+			"Him or me.",
+			"Him, or the life we always wanted to have together.",
+			"If it's him, I'm leaving. I wish I didn't have to.",
+			"But you will always be allowed to change your mind.",
+			"When you do, you have my number.",
+			"Love,",
+			"Henrietta",
+			"P.S., you deserve better.",
+			"I promise."
+		],
+		"locationSlug": "zachs_dresser",
+		"takeable": true
 	},
 	{
 		"slug": "big_tree",
@@ -86,21 +190,40 @@
 	},
 
 	{
-		"slug": "old_knife",
-		"descriptions": [
-			"many objects carry with them anonymity.",
-			"This knife does not: it was loved as deeply as an object could be loved."
-		],
-		"takeable": true,
-		"locationSlug": "kitchen"
-	},
-	{
 		"slug": "table",
 		"descriptions": [
 			"A table from Ikea.",
 			"It has a plain white acrylic top and bright yellow legs.",
 			"You chose it for its plain geometry and color.",
 			"It seemed honest"
+		],
+		"takeable": false,
+		"locationSlug": "kitchen"
+	},
+	{
+		"slug": "range",
+		"descriptions": [
+			"\"I feel like a frog in boiling water,\"",
+			"you had said,",
+			"It was a metaphor banal and grotesque",
+			"to which you clung like a buoy in a storm",
+			"\"it's like when I would visit my grandfather as a child,\"",
+			"you told your therapist",
+			"back when you could still see your therapist",
+			"\"there was a mosquito that bit me as I slept.\"",
+			"\"I was so itchy that I dreamt of the itch.\"",
+			"\"In the dream, I had always felt that discomfort\"",
+			"\"It was unbearable but also unquestionable.\"",
+			"Anyways,",
+			"Zach somehow captured a frog outside and put it in a pot of water on the stove.",
+			"As the water warmed up, it tried to jump out",
+			"But Zach caught it and placed a heavy lid on the pot.",
+			"It jumped and thrashed and splashed until it didn't,",
+			"until the water all boiled away and its body burned and its smoke",
+			"filled the house",
+			"The smell lingered for weeks, and you will never forget it.",
+			"Zach smiled triumphantly,",
+			"as though he had won the argument."
 		],
 		"takeable": false,
 		"locationSlug": "kitchen"

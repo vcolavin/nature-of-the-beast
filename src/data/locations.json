@@ -9,6 +9,16 @@
 		]
 	},
 	{
+		"slug": "refrigerator",
+		"descriptions": [
+			"You've opened this nameless white monolith",
+			"(discolored, like everything else in this house)",
+			"And are standing in its cold light.",
+			"The shelves are weighed down with unpackaged pork",
+			"And the door full of jars of the blood he drinks."
+		]
+	},
+	{
 		"slug": "a_nook",
 		"descriptions": [
 			"You squeeze into the hollow at the base of the tree",
@@ -35,10 +45,9 @@
 		"descriptions": [
 			"You're standing in front of the house",
 			"or, rather, your house:",
-			"a single story of rotting plastered timber",
-			"it's been a while since you've been back.",
-			"and the forest is in the process of reclaiming its territory",
-			"Obviously white walls were always going to be a problem,",
+			"a single story of rotting stucco.",
+			"The forest is in the process of reclaiming its territory",
+			"You knew white walls were always going to be a problem,",
 			"but one summer, Zach demanded that you whitewash the outside of the house",
 			"and there was no futher discussion.",
 			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaks.",
@@ -77,50 +86,28 @@
 			"And the voidish smell of mold hits you like a brick wall",
 			"You shut the door gently behind you",
 			"Holding the latch down as it closes to muffle the mechanism's click",
-			"out of habit.",
-			"The silence of this place shall not be disturbed."
+			"out of habit."
 		]
 	},
 	{
 		"slug": "kitchen",
 		"descriptions": [
-			"Here on the linoleum floor of the kitchen you can see the ghost",
-			"of the dining table you bought when you moved in twenty years ago"
+			"This is where you've spent almost all of your waking hours for some number of years",
+			"Preparing large, ornate meals for Zach and yourself.",
+			"He only eats at night"
 		]
+	},
+	{
+		"slug": "covered_driveway",
+		"descriptions": ["In the center sits your car"]
 	},
 	{
 		"slug": "your_car",
 		"descriptions": [
+			"Your 2004 jazz blue Camry sags under the , mossy and tarnished and undrivable",
 			"You slashed your tires a while back",
-			"And your car sags in the driveway, growing moss and rust in equal proportion",
-			"You hardly needed convincing",
-			"At that time you were Zach's accomplice in the systematic dismantlement of your life"
-		]
-	},
-	{
-		"slug": "range",
-		"descriptions": [
-			"\"I feel like a frog in boiling water,\"",
-			"you had said,",
-			"It was a metaphor banal and grotesque",
-			"to which you clung like a buoy in a storm",
-			"\"it's like when I would visit my grandfather as a child,\"",
-			"you told your therapist",
-			"back when you could still see your therapist",
-			"\"there was a mosquito that bit me as I slept.\"",
-			"\"I was so itchy that I dreamt of the itch.\"",
-			"\"In the dream, I had always felt that discomfort\"",
-			"\"It was unbearable but also unquestionable.\"",
-			"Anyways,",
-			"Zach somehow captured a frog outside and put it in a pot of water on the stove.",
-			"As the water warmed up, it tried to jump out",
-			"But Zach caught it and placed a heavy lid on the pot.",
-			"It jumped and thrashed and splashed until it didn't,",
-			"until the water all boiled away and its body burned and its smoke",
-			"filled the house",
-			"The smell lingered for weeks, and you will never forget it.",
-			"Zach smiled triumphantly,",
-			"as though he had won the argument."
+			"You hardly needed convincing.",
+			"By that time you were Zach's accomplice in the systematic dismantlement of your life"
 		]
 	},
 	{
@@ -132,7 +119,6 @@
 			"Something which obviously clues you in to the fact that he is not human."
 		]
 	},
-
 	{
 		"slug": "outside",
 		"descriptions": [
@@ -165,22 +151,24 @@
 			"You stop at a coffeeshop to take a breather. Your arms are tired from carrying grocery bags.",
 			"It's been a long while since you gone shopping like this.",
 			"It feels good to be out,",
-			"but at no moment in the past several days have you unclenched your mind from thoughts of the house.",
-			"Its mildew stench clings like dirt under your fingernails.",
+			"but at no moment in the past several days have you felt the tension in your shoulders relax.",
+			"It clings like dirt under your fingernails.",
 			"But you have another revelatory experience:",
-			"Your tea is sitting on a small table besides you, still too hot to drink. It steams darkly.",
-			"The steam curls and spirals through the air with infinite lazy grace.",
-			"Grace like in the divine sense.",
-			"An old Cat Stevens song is playing slowly on the radio.",
+			"Your tea is sitting on an elegant wooden table besides you, still too hot to drink.",
+			"Its steam curls and lengthens with astronomical lazy grace.",
+			"Grace, like in the divine sense.",
+			"A Cat Stevens song is playing slowly on the radio:",
+			"Moooon shadow,",
+			"Moon shadow",
 			"A wave of exhaustion flows through you,",
 			"and you welcome it.",
-			"It is as though the clenched fist in your mind has released, even if just for a moment,",
+			"It is as though the clenched fist of your mind has released, even if just for a moment,",
 			"and you feel exactly as you are meant to feel;",
-			"you exist exactly as you ought to.",
+			"you exist exactly as you ought to exist.",
 			"There is a hurt deep in your bones that you suspect will never completely go away.",
-			"Alongside love for yourself, pride and beauty,",
-			"the sore throat, from crying.",
-			"Henrietta walks in."
+			"Alongside love for yourself, a sense of pride, beauty,",
+			"and a sore throat from crying a lot.",
+			"At this moment, Henrietta walks in."
 		]
 	}
 ]
