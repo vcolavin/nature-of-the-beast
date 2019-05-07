@@ -4,10 +4,11 @@ import locations from '../data/locations.json';
 import neighbors from '../data/neighbors.json';
 import items from '../data/items.json';
 
-interface NeighborOptions {
-	oneWay: boolean;
+interface Neighbors {
+	from: string;
+	to: string;
+	oneWay?: boolean;
 }
-type Neighbors = [string, string, NeighborOptions];
 
 const LocationManifest: { [s: string]: Location } = {};
 
@@ -24,21 +25,19 @@ export function initializeLocations() {
 		LocationManifest[location.slug] = new Location(location);
 	});
 
-	(neighbors as Neighbors[]).forEach((neighbors: Neighbors) => {
-		const [neighbor1, neighbor2, { oneWay }] = neighbors;
-
-		if (!LocationManifest[neighbor1]) {
-			throw `${neighbor1} is an invalid location`;
+	neighbors.forEach(({ from, to, oneWay }: Neighbors) => {
+		if (!LocationManifest[from]) {
+			throw `${from} is an invalid location`;
 		}
 
-		if (!LocationManifest[neighbor2]) {
-			throw `${neighbor2} is an invalid location`;
+		if (!LocationManifest[to]) {
+			throw `${to} is an invalid location`;
 		}
 
-		LocationManifest[neighbor1].neighborSlugs.push(neighbor2);
+		LocationManifest[from].neighborSlugs.push(to);
 
 		if (!oneWay) {
-			LocationManifest[neighbor2].neighborSlugs.push(neighbor1);
+			LocationManifest[to].neighborSlugs.push(from);
 		}
 	});
 
