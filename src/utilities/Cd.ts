@@ -15,7 +15,7 @@ export default class Cd extends BaseUtility {
 			return nullPromise;
 		}
 
-		const locationChain = args[0].split('/');
+		const locationChain = args[0].split('/').filter(l => l);
 
 		if (this.locationChainValid(locationChain)) {
 			const finalLocation = locationChain[locationChain.length - 1];
