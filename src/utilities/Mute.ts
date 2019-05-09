@@ -10,7 +10,7 @@ export default class Mute extends BaseUtility {
 		dispatch({ type: ActionTypes.TOGGLE_SOUND });
 
 		output({
-			content: `Sound has been turned ${soundOn ? 'on' : 'off'}.`
+			content: `Sound has been turned ${soundOn ? 'off' : 'on'}.`
 		});
 
 		return Promise.resolve(null);
