@@ -71,15 +71,15 @@ export default class OutputController {
 
 		if (speak) {
 			if (typeof content !== 'string') {
+				// TODO: Is there a way to enforce this statically rather than at runtime?
 				throw 'cannot "speak" a component';
 			}
 			speechPromise = say(content);
 		}
 
-		const item: HistoryItem = { id: uuid(), content };
-		OutputController.pushItem(dispatch, item);
+		OutputController.pushItem(dispatch, { id: uuid(), content });
 
-		return speechPromise ? speechPromise : Promise.resolve(null);
+		return speechPromise || Promise.resolve(null);
 	};
 
 	private static revokeOutputters() {
