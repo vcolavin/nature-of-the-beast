@@ -8,7 +8,14 @@ export default class Cd extends BaseUtility {
 		output,
 		dispatch
 	}: PrivateRunParams): Promise<null> {
-		const locationChain = args[0].split('/').filter(l => l);
+		const nullPromise = Promise.resolve(null);
+
+		if (args.length === 0) {
+			output({ content: 'location must be specified' });
+			return nullPromise;
+		}
+
+		const locationChain = args[0].split('/');
 
 		if (this.locationChainValid(locationChain)) {
 			const finalLocation = locationChain[locationChain.length - 1];
@@ -25,7 +32,7 @@ export default class Cd extends BaseUtility {
 			output({ content: 'invalid location' });
 		}
 
-		return Promise.resolve(null);
+		return nullPromise;
 	}
 
 	getTabCompleteOptions = (
@@ -69,18 +76,14 @@ export default class Cd extends BaseUtility {
 		}
 
 		// for some reason TS won't let me return the result of this reduce directly
-		const valid = locations.reduce((memo, location, i, arr) => {
+		const valid = locations.reduce((memo, location, i, locations) => {
 			if (i === 0) {
-				return true;
+				return !!LocationManifest[location];
 			}
 
-			if (!memo) {
-				return false;
-			}
+			const prevLocation = LocationManifest[locations[i - 1]];
 
-			const prevLocation = LocationManifest[arr[i - 1]];
-
-			return prevLocation.hasNeighbor(location);
+			return memo && prevLocation.hasNeighbor(location);
 		}, true);
 
 		return valid;
