@@ -8,30 +8,21 @@
 	{
 		"slug": "cutting_board",
 		"descriptions": [
-			"A heavy block of maple cut concave from untold thousands of slices and chops.",
-			"darkened with blood",
+			"A heavy block of maple cut concave from untold thousands of slices and chops,",
+			"darkened with blood.",
 			"almost exclusively pork, despite your sincere efforts to get your son to eat better.",
 			"This you remember well: You were a zealous vegetarian once",
 			"Abstaining from eating meat was such an obvious thing to do that you had trouble explaining it",
-			"How do you even begin to justify deciding not to commit regular and lethal violence on feeling creatures?",
+			"How do you even begin to justify the decision to not commit regular and lethal violence on feeling creatures?",
 			"How is that the position that needs justifying in the first place?",
+			"It was a plain truth. You knew it like you knew the sky was blue.",
 			"In therapy, you were able to express that you felt gaslit by the people you loved and cared for the most.",
-			"...",
+			"",
 			"Of course, now, your calculus is different.",
 			"Now, you just eat what's left."
 		],
 		"locationSlug": "kitchen",
 		"takeable": false
-	},
-	{
-		"slug": "bottle_of_poison",
-		"descriptions": [
-			"A dark glass bottle of some nasty liquid intended for developing photos",
-			"Which you read online could kill someone if eaten slowly over several days.",
-			"The bottle is half empty."
-		],
-		"locationSlug": "refrigerator",
-		"takeable": true
 	},
 	{
 		"slug": "old_knife",
@@ -66,54 +57,94 @@
 		"takeable": false
 	},
 	{
-		"slug": "dark_picture",
+		"slug": "your_car",
+		"descriptions": [
+			"Your 2004 \"jazz blue\" Camry sags under the awning, mossy and tarnished and completely undrivable",
+			"Even if you knew where the keys were, you slashed the tires a while back.",
+			"It was Zach's idea, but you hardly needed convincing.",
+			"By that time you were his accomplice in the systematic dismantlement of your life"
+		],
+		"locationSlug": "covered_driveway",
+		"takeable": false
+	},
+	{
+		"slug": "master_bathroom_toilet",
+		"descriptions": [
+			"A morbid curiosity overtakes you",
+			"You don't what to know, but you really want to look.",
+			"Standing away from the toilet, on your tip-toes",
+			"You peer over the lip of the bowl",
+			"Just long enough to see something slick and black",
+			"writhe and... pupate? Is that the right word?",
+			"It splashes lightly against the side of the bowl."
+		],
+		"locationSlug": "master_bathroom",
+		"takeable": false
+	},
+	{
+		"slug": "picture",
 		"descriptions": [
 			"It's of you and your son",
 			"Zach.",
-			"He is too large to fit entirely within the frame, so you can't see his face, his teeth, which always seem to show, like a crocodile smile.",
+			"He is too large to fit entirely within the frame, so you can't see his face",
 			"You wonder at your son's proportions",
-			"The way he fills almost the entire picture.",
-			"You feel strongly that he was not always that size."
+			"The way he fills the frame.",
+			"Was he always that size?",
+			"No, right? That's not how children work. He must have grown to be that big.",
+			"You are certain of it: You are his mother and you gave birth to him, so he was small and he grew.",
+			"Sure as eggs is eggs, as your own mother would have said.",
+			"And he has grown to be big and strong, for which you are immensely proud.",
+			"Though now in retrospect, you are having trouble remembering his birth",
+			"Or even the pregancy",
+			"You ",
+			"In the picture you are smiling abundantly and hugging"
 		],
 		"locationSlug": "foyer",
 		"takeable": false
 	},
 	{
-		"slug": "hidden_picture",
+		"slug": "smashed_picture",
 		"descriptions": [
-			"You and Henrietta",
-			"Smiling, as though it was an obvious thing to do."
+			"A picture frame with a spiderweb crack across the glass.",
+			"it's of you and Henrietta standing on top of the Astoria tower",
+			"That beautiful bridge in the background",
+			"The sky blue and cloudless",
+			"You're smiling, as though it was the obvious thing to do.",
+			"You have full cheeks and dark curling hair"
 		],
-		"locationSlug": "zachs_dresser",
+		"locationSlug": "master_closet",
 		"takeable": true
 	},
 	{
-		"slug": "hidden_letter",
+		"slug": "crumpled_letter",
 		"descriptions": [
+			"A handwritten letter in familiar handwriting:",
 			"Marla,",
-			"I am sad to write this",
 			"This is like my fifth time trying to write this letter.",
 			"I want to make sure I am perfect with my words, because I want you to understand how serious this is, and I think you are having trouble understanding right now.",
-			"I feel insane having to write this, but I feel even worse in this house",
-			"I don't know what's going on with you, but I don't want to be a boiling frog or whatever it is you said.",
+			"And when I've tried to bring it up, you've gotten mad at me.",
+			"Like, real mad.",
+			"I don't know what's going on with you, but I don't want to be a boiling frog, or whatever it is you said.",
 			"Who is Zach?",
-			"You found him on Couchsurfing a few weeks ago and we thought it'd be fun to have a guest.",
+			"You found him on Couchsurfing a couple weeks ago and we thought it'd be fun to have a guest.",
 			"Why is he still here?",
 			"Why did you give him our bedroom?",
 			"Why do you cook for him so much?",
 			"We can't afford all the food you're buying for him",
+			"And since when do you eat pork?",
 			"I think he's gotten even bigger since you started doing that.",
 			"And he started calling you mom.",
 			"You laughed it off the first time",
-			"But now... you respond, like it's your name.",
+			"But now...",
+			"you respond.",
 			"This shouldn't even need to be said, but I'm not sure right now",
 			"We don't have kids.",
 			"Remember? We tried IVF with Danny.",
-			"Do you actually remember these things?",
+			"Do you actually remember?",
 			"You looked at me this morning and I think it took you a second to recall who I was.",
-			"Ok, sorry, I'm losing the thread a little here.",
 			"Let me be clear:",
-			"Zach is a monster, like, an actual monster, and he is stealing you from me",
+			"Zach is a monster,",
+			"like, an actual monster, and he is stealing you from me",
 			"He is stealing you from yourself.",
 			"You get to decide now",
 			"Him or me.",
@@ -132,7 +163,7 @@
 	{
 		"slug": "big_tree",
 		"descriptions": [
-			"This must be the largest douglas fir in the forest.",
+			"This must be the largest doug fir in the forest.",
 			"It emanates a maternal strength.",
 			"In its base is a hollow whose opening is big enough to squeeze into"
 		],

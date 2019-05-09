@@ -43,15 +43,14 @@
 	{
 		"slug": "in_front_of_the_house",
 		"descriptions": [
-			"You're standing in front of the house",
-			"or, rather, your house:",
+			"You're standing in front of your house",
 			"a single story of rotting stucco.",
 			"The forest is in the process of reclaiming its territory",
 			"You knew white walls were always going to be a problem,",
 			"but one summer, Zach demanded that you whitewash the outside of the house",
 			"and there was no futher discussion.",
 			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaks.",
-			"And you realize that contempt is directed at yourself."
+			"After a moment, you realize that the contempt is aimed at yourself."
 		]
 	},
 	{
@@ -99,76 +98,189 @@
 	},
 	{
 		"slug": "covered_driveway",
-		"descriptions": ["In the center sits your car"]
-	},
-	{
-		"slug": "your_car",
 		"descriptions": [
-			"Your 2004 jazz blue Camry sags under the , mossy and tarnished and undrivable",
-			"You slashed your tires a while back",
-			"You hardly needed convincing.",
-			"By that time you were Zach's accomplice in the systematic dismantlement of your life"
+			"Semi-translucent white plastic held up by four steel posts, about ten feet above the ground.",
+			"In the center sits your old car."
 		]
 	},
 	{
-		"slug": "zachs_room",
+		"slug": "master_bedroom",
 		"descriptions": [
-			"this place is gross",
+			"You scarcely breathe for fear of disturbing this dark room",
+			"Even though you know you're safe",
+			"Even though you know he's dead.",
+			"In addition to the heavy blackout curtains, there are two space heaters and ",
 			"Kept constantly hot with space heaters",
 			"Perhaps there's like an egg sac or something?",
 			"Something which obviously clues you in to the fact that he is not human."
 		]
 	},
 	{
-		"slug": "outside",
+		"slug": "master_closet",
 		"descriptions": [
-			"you walk away from the house.",
-			"You may not feel it, but this is a happy story.",
-			"This is a happy and free story of a woman who was trapped",
-			"until she wasn't.",
-			"A story of someone who looked herself in the mirror one day",
-			"touched the scars on her face",
-			"and realized the only power she had was to leave.",
-			"It was terrifying; your stomach dropped.",
-			"Momentously, you countenanced your surroundings:",
-			"the neglected countertop,",
-			"wasted makeup,",
+			"in one corner are various pages and envelopes",
+			"In the center of the floor is a bottomless pit.",
+			"The rug around it has been peeled away, the floorboards pried and broken and laid to the side."
+		]
+	},
+	{
+		"slug": "master_bathroom",
+		"descriptions": [
+			"The smell is stronger than anything you've ever experienced.",
+			"This is not somewhere you want to be.",
+			"It is of the ocean and the swamp; agricultural runoff and algal blooms.",
+			"The stagnant marsh in the southwestern reaches of Puget Sound, or the Salton Sea.",
+			"Other than the smell, you are surprised by the bathroom's relative cleanliness, as though it isn't used much.",
+			"And the fact that the mirror has been smashed."
+		]
+	},
+
+	{
+		"slug": "hall_bathroom",
+		"descriptions": [
+			"There is a mirror in front of you.",
+			"You look into it and you see yourself",
+			"Your hair is thin, your cheeks hollow,",
+			"your spirit wretched and exhausted.",
+			"It's been a decade.",
+			"Ten years of hell.",
+			"Ten stolen years.",
+			"From across the house you hear the front door lurch open and slam shut.",
+			"Zach is home.",
+			"He undoubtedly brought with him a sow",
+			"clutching its neck in his strong and sharp mouth",
+			"She breathes her final wet and ragged breath as she is slapped down onto the kitchen's yellowed linoleum.",
+			"When he finds you, he will ask you to cut the warm heart from the pig and serve it to him.",
+			"He will ask you to launder his stinking undergarments.",
+			"He will ask you to massage his tremendous and cloven feet.",
+			"He will ask you to lance the cysts which erupt from his broad white shoulders.",
+			"Any other day you would accede, because he is your son and your love for him is without bound.",
+			"But today, you countenance your neglected countertop, ",
+			"cracked and panned makeup,",
 			"overflowing wastebasket,",
-			"and saw how much comfort you took in their familiarity.",
-			"Saw how that comfort had destroyed you utterly.",
-			"Your sight was clear for the first time in years, and you were totally resigned to what you saw.",
-			"You washed your hands and ",
-			"That was almost it, but luck was with you that day:",
-			"A rare ray of sun broke through the pall and struck your face.",
-			"You saw the beauty and strength inherent to every human life.",
-			"You saw love."
+			"and see with clear eyes the comfort you take in their familiarity.",
+			"How that comfort has destroyed you utterly.",
+			"You have an urge to hate yourself for it but there is no time.",
+			"He is coming.",
+			"You shut the door to the bathroom, holding the knob twisted as it closes to muffle the click of the latch as it comes home.",
+			"You turn off the light.",
+			"And you stop breathing.",
+			"Does he know you are here?",
+			"There is nowhere left to go but down.",
+			"And down.",
+			"And down and down and down."
+		]
+	},
+	{
+		"slug": "down",
+		"descriptions": [
+			"It is completely dark in the bathroom now, so your features are amorphous and imaginary in the mirror.",
+			"Just dark shapes in a darker background.",
+			"You drown in that shadow image of yourself, passively inventing colors and ideas and patterns,",
+			"applying them to the void.",
+			"Who are you?",
+			"Who do you want to be?",
+			"You consider the nothingness in the mirror, and agree with it on principle.",
+			"Zach calls for you from across the house."
+		]
+	},
+	{
+		"slug": "and_down",
+		"descriptions": [
+			"Eigengrau: the intrinsic light of total blackness.",
+			"The dark grey static that you see in a completely dark environment.",
+			"It's caused by the random firing of overexcited cones and rods in your eye.",
+			"Or something like that.",
+			"It's just about the only thing you remember from an epistemology class you took at PCC, and it comes to you now.",
+			"Zach is walking down the hall calling your name. His footfalls rattle the mirror in its frame, which blurs your outline.",
+			"A miracle occurs.",
+			"you see your self.",
+			"all of it",
+			"In your infinite and ineffable and perfect way",
+			"That I'd tried to describe to you so many times",
+			"that you could never see.",
+			"You are worthy of love, Hen",
+			"I known this like I know the sky is blue.",
+			"In this brief moment, you know it too."
+		]
+	},
+	{
+		"slug": "and_down_and_down",
+		"descriptions": [
+			"Zach knocks at the door. Turns the latch impatiently.",
+			"Swings open the door",
+			"Something magical happens.",
+			"You leave.",
+			"In fact, you've already left.",
+			"You're unsure if you invoked it or what.",
+			"You're unsure even about the notion of you-ness.",
+			"Skeptical of the utility of the concept.",
+			"But I digress:",
+			"You're atomized. Ceased, in a real and physical sense."
+		]
+	},
+	{
+		"slug": "silence",
+		"descriptions": [
+			"",
+			"",
+			"",
+			"",
+			"Breathe.",
+			"",
+			"",
+			"",
+			"You are safe.",
+			"",
+			"",
+			"In an ancient world, Zach burst through the threshold and found the bathroom empty.",
+			"He ransacked the house searching for you.",
+			"He tore like a beast through the surrounding forest for weeks.",
+			"He atrophied in filth and rot",
+			"And eventually crumbled to dust.",
+			"You cried and screamed from the darkness of your hidden place.",
+			"Wanting him back more than you've ever wanted anything",
+			"Sick at your failure as a mother",
+			"A creature of rage pointed inwards",
+			"This is the story of a woman who was trapped until she wasn't.",
+			"A story of someone who looked herself in the mirror",
+			"and realized all the power she had was in leaving."
 		]
 	},
 	{
 		"slug": "coffee_shop",
 		"descriptions": [
-			"Several days later you are running errands.",
-			"You stop at a coffeeshop to take a breather. Your arms are tired from carrying grocery bags.",
-			"It's been a long while since you gone shopping like this.",
-			"It feels good to be out,",
-			"but at no moment in the past several days have you felt the tension in your shoulders relax.",
+			"You woke up",
+			"It feels good to be outside,",
+			"but at no moment in the past several days have you released the tension in your shoulders.",
 			"It clings like dirt under your fingernails.",
-			"But you have another revelatory experience:",
-			"Your tea is sitting on an elegant wooden table besides you, still too hot to drink.",
+			"But you have another miraculous experience:",
+			"Your tea is sitting on a fragile wooden table besides you, still too hot to drink.",
 			"Its steam curls and lengthens with astronomical lazy grace.",
 			"Grace, like in the divine sense.",
+			"Grace like mercy.",
 			"A Cat Stevens song is playing slowly on the radio:",
-			"Moooon shadow,",
-			"Moon shadow",
-			"A wave of exhaustion flows through you,",
-			"and you welcome it.",
-			"It is as though the clenched fist of your mind has released, even if just for a moment,",
+			"Moon shadow,",
+			"Moonshadow",
+			"You sense your defenses drop, even if just for a moment,",
 			"and you feel exactly as you are meant to feel;",
 			"you exist exactly as you ought to exist.",
-			"There is a hurt deep in your bones that you suspect will never completely go away.",
-			"Alongside love for yourself, a sense of pride, beauty,",
-			"and a sore throat from crying a lot.",
+			"There is hurt deep in your bones that will never completely go away.",
+			"Dread that you're suddenly going to wake up from a dream.",
+			"A strongly-held belief that you don't deserve happiness",
+			"Yet a nagging suspicion that you are worthy of it anyways.",
+			"And love.",
+			"All alongside a sore throat, from crying.",
 			"At this moment, Henrietta walks in."
+		]
+	},
+	{
+		"slug": "the_end",
+		"descriptions": [
+			"Thank you for reading!",
+			"I hope you lked it.",
+			"The code for this interactive fiction was made by Vincent Colavin and Rebecca Sinclair Colavin",
+			"And the prose was all written by Vincent"
 		]
 	}
 ]
