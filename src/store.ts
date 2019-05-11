@@ -2,11 +2,12 @@ import { createStore, Dispatch } from 'redux';
 import { HistoryItem } from './components/Terminal';
 import Item from './nouns/Item';
 
+export type ItemManifest = { [key: string]: Item };
+
 export interface RootState {
 	location: string;
 	consoleInteractive: boolean;
-	// inventory: string[];
-	items: { [key: string]: Item };
+	items: ItemManifest;
 	history: string[];
 	soundOn: boolean;
 }
@@ -17,6 +18,7 @@ export enum ActionTypes {
 	SET_LOCATION = 'SET_LOCATION',
 	LOCK_CONSOLE = 'LOCK_CONSOLE',
 	RELEASE_CONSOLE = 'RELEASE_CONSOLE',
+	INITIALIZE_INVENTORY = 'INITIALIZE_INVENTORY',
 	ADD_TO_INVENTORY = 'ADD_TO_INVENTORY',
 	PUSH_HISTORY = 'PUSH_HISTORY',
 	TOGGLE_SOUND = 'TOGGLE_SOUND',
@@ -34,6 +36,11 @@ interface LockConsole {
 
 interface ReleaseConsole {
 	type: ActionTypes.RELEASE_CONSOLE;
+}
+
+interface InitializeInventory {
+	type: ActionTypes.INITIALIZE_INVENTORY;
+	value: ItemManifest;
 }
 
 interface AddToInventory {
@@ -66,6 +73,7 @@ type CombinedAction =
 	| SetLocation
 	| LockConsole
 	| ReleaseConsole
+	| InitializeInventory
 	| AddToInventory
 	| AddToHistory
 	| ToggleSound
@@ -90,6 +98,11 @@ function reducer(
 			return {
 				...state,
 				consoleInteractive: true
+			};
+		case ActionTypes.INITIALIZE_INVENTORY:
+			return {
+				...state,
+				items: action.value
 			};
 		case ActionTypes.ADD_TO_INVENTORY:
 			const item = state.items[action.value];

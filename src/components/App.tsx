@@ -15,7 +15,11 @@ export default class App extends React.Component<{}, {}> {
 
 		initializeLocations();
 		initializeUtilities();
-		initializeItems();
+
+		store.dispatch({
+			type: ActionTypes.INITIALIZE_INVENTORY,
+			value: initializeItems()
+		});
 
 		setUrlLocation({ location: INITIAL_LOCATION_SLUG });
 

@@ -6,6 +6,7 @@ import OutputController from '../utils/OutputController';
 import { ExtendedUtilityManifest } from '../utilities/UtilityManifest';
 import { connect } from 'react-redux';
 import LocationManifest from '../nouns/LocationManifest';
+import Item from '../nouns/Item';
 
 interface CommandItem {
 	content: string;
@@ -56,7 +57,7 @@ class TerminalInput extends React.Component<Props, State> {
 
 	private goBackInHistory = () => {
 		this.setState(
-			state => {
+			(state) => {
 				if (
 					state.currentPlaceInHistory ===
 					state.commandHistory.length - 1
@@ -82,7 +83,7 @@ class TerminalInput extends React.Component<Props, State> {
 
 	private goForwardInHistory = () => {
 		this.setState(
-			state => {
+			(state) => {
 				if (state.currentPlaceInHistory === -1) {
 					return null;
 				}
@@ -176,7 +177,7 @@ class TerminalInput extends React.Component<Props, State> {
 				: [
 						...location.neighborSlugs,
 						...location.itemSlugs,
-						...inventory
+						...Item.getInventory(items).map(({ slug }) => slug)
 				  ].filter((slug: string) => slug.indexOf(lastValue) === 0);
 
 		switch (options.length) {
@@ -224,7 +225,7 @@ const mapStateToProps = (
 ): OwnProps & StoreProps => ({
 	_state: state,
 	location: state.location,
-	inventory: state.inventory,
+	items: state.items,
 	handleSubmit
 });
 

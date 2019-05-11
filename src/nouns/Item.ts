@@ -15,8 +15,10 @@ export default class Item {
 		this.takeable = takeable;
 	}
 
-	static getInventory = (items: Item[]) =>
-		items.filter(({ locationSlug }) => locationSlug === INVENTORY);
+	static getInventory = (items: { [key: string]: Item }) =>
+		Object.keys(items)
+			.map((key) => items[key])
+			.filter(({ locationSlug }) => locationSlug === INVENTORY);
 
 	descriptions: string[];
 	slug: string;

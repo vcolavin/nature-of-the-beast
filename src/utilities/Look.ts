@@ -1,14 +1,13 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import ItemManifest from '../nouns/ItemManifest';
 import LocationManifest from '../nouns/LocationManifest';
 
 export default class Look extends BaseUtility {
 	protected _run({
 		output,
 		args,
-		state: { location }
+		state: { location, items }
 	}: PrivateRunParams): Promise<null> {
-		if (args.length > 0 && !(args[0] === 'at' && ItemManifest[args[1]])) {
+		if (args.length > 0 && !(args[0] === 'at' && items[args[1]])) {
 			return output({
 				content: `invalid ${this.command} argument ${args.join(' ')}.`
 			});
@@ -16,8 +15,8 @@ export default class Look extends BaseUtility {
 
 		let descriptions: string[];
 
-		if (args[0] === 'at' && ItemManifest[args[1]]) {
-			descriptions = ItemManifest[args[1]].descriptions;
+		if (args[0] === 'at' && items[args[1]]) {
+			descriptions = items[args[1]].descriptions;
 		} else {
 			descriptions = LocationManifest[location].descriptions;
 		}
