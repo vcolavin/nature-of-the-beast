@@ -1,3 +1,5 @@
+import { INVENTORY } from '../store';
+
 interface Args {
 	slug: string;
 	locationSlug: string;
@@ -12,6 +14,11 @@ export default class Item {
 		this.locationSlug = locationSlug;
 		this.takeable = takeable;
 	}
+
+	static getInventory = (items: { [key: string]: Item }) =>
+		Object.keys(items)
+			.map((key) => items[key])
+			.filter(({ locationSlug }) => locationSlug === INVENTORY);
 
 	descriptions: string[];
 	slug: string;

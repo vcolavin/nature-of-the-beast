@@ -1,22 +1,21 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { ActionTypes } from '../store';
-import ItemManifest from '../nouns/ItemManifest';
 import LocationManifest from '../nouns/LocationManifest';
 
 export default class Pickup extends BaseUtility {
 	protected _run({
 		args,
 		output,
-		state: { location },
+		state: { location, items },
 		dispatch
 	}: PrivateRunParams): Promise<null> {
 		const item = args[0];
 		const currentLocation = LocationManifest[location];
 
-		if (ItemManifest[item] && currentLocation.hasItem(item)) {
-			if (ItemManifest[item].takeable) {
+		if (items[item] && currentLocation.hasItem(item)) {
+			if (items[item].takeable) {
 				currentLocation.itemSlugs = currentLocation.itemSlugs.filter(
-					itemSlug => itemSlug !== item
+					(itemSlug) => itemSlug !== item
 				);
 
 				dispatch({

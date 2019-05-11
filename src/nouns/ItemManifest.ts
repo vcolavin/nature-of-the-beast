@@ -1,20 +1,21 @@
 import Item from './Item';
 import items from '../data/items.json';
-
-const ItemManifest: { [s: string]: Item } = {};
+import { ItemManifest } from '../store';
 
 let hasRun: boolean = false;
 
-export function initializeItems() {
+export function initializeItems(): ItemManifest {
 	if (hasRun) {
-		return;
+		return {};
 	}
 
 	hasRun = true;
 
-	items.forEach(item => {
-		ItemManifest[item.slug] = new Item(item);
-	});
-}
+	const manifest: ItemManifest = {};
 
-export default ItemManifest;
+	items.forEach((item) => {
+		manifest[item.slug] = new Item(item);
+	});
+
+	return manifest;
+}
