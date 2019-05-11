@@ -1,13 +1,17 @@
 import { createStore, Dispatch } from 'redux';
 import { HistoryItem } from './components/Terminal';
+import Item from './nouns/Item';
 
 export interface RootState {
 	location: string;
 	consoleInteractive: boolean;
-	inventory: string[];
+	// inventory: string[];
+	items: { [key: string]: Item };
 	history: string[];
 	soundOn: boolean;
 }
+
+export const INVENTORY = 'inventory';
 
 export enum ActionTypes {
 	SET_LOCATION = 'SET_LOCATION',
@@ -53,7 +57,7 @@ interface ToggleSound {
 const initialState: RootState = {
 	location: '',
 	consoleInteractive: true,
-	inventory: [],
+	items: {},
 	history: [],
 	soundOn: true
 };
@@ -88,9 +92,12 @@ function reducer(
 				consoleInteractive: true
 			};
 		case ActionTypes.ADD_TO_INVENTORY:
+			const item = state.items[action.value];
+			const newItem: Item = { ...item, locationSlug: INVENTORY };
+
 			return {
 				...state,
-				inventory: [...state.inventory, action.value]
+				items: { ...state.items, [newItem.slug]: newItem }
 			};
 		case ActionTypes.PUSH_HISTORY:
 			return {

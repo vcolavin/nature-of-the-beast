@@ -16,7 +16,7 @@ interface OwnProps {
 	handleSubmit: (arg: string) => void;
 }
 
-type StoreProps = Pick<RootState, 'inventory' | 'location'> & {
+type StoreProps = Pick<RootState, 'items' | 'location'> & {
 	_state: RootState;
 };
 
@@ -167,7 +167,7 @@ class TerminalInput extends React.Component<Props, State> {
 
 		const utility = ExtendedUtilityManifest[command];
 
-		const { _state, inventory, location: locationString } = this.props;
+		const { _state, items, location: locationString } = this.props;
 		const location = LocationManifest[locationString];
 
 		const options =

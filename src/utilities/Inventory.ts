@@ -1,12 +1,13 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import { TAB_WIDTH } from '../components/Terminal';
+import { INVENTORY } from '../store';
 
 export default class Inventory extends BaseUtility {
 	protected _run({
 		output,
-		state: { inventory }
+		state: { items }
 	}: PrivateRunParams): Promise<null> {
-		output({ content: inventory.join(TAB_WIDTH) });
+		output({ content: items.filter({location} => location === INVENTORY).join(TAB_WIDTH) });
 		return Promise.resolve(null);
 	}
 
