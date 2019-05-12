@@ -1,21 +1,10 @@
 [
-	{ "slug": "a_template", "descriptions": [] },
 	{
 		"slug": "a_quiet_forest",
 		"descriptions": [
 			"You are standing in the center of a congress of douglas fir trees at the top of a hill",
 			"lit by the diffuse dawn light of winter.",
 			"A ragged path leads away, downhill."
-		]
-	},
-	{
-		"slug": "refrigerator",
-		"descriptions": [
-			"You've opened this nameless white monolith",
-			"(discolored, like everything else in this house)",
-			"And are standing in its cold light.",
-			"The shelves are weighed down with unpackaged pork",
-			"And the door full of jars of the blood he drinks."
 		]
 	},
 	{
@@ -50,7 +39,7 @@
 			"but one summer, Zach demanded that you whitewash the outside of the house",
 			"and there was no futher discussion.",
 			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaks.",
-			"After a moment, you realize that the contempt is aimed at yourself."
+			"And that contempt is aimed at yourself."
 		]
 	},
 	{
@@ -60,15 +49,14 @@
 			"You start to do a rough calculation:",
 			"Two sixers a day, six days a week",
 			"That's thirty-seven hundred a year",
-			"But for how many years?",
-			"You cannot remember."
+			"But you have no idea how many years."
 		]
 	},
 	{
 		"slug": "backyard",
 		"descriptions": [
 			"You tried to garden here once",
-			"Specifically, you wanted rhubarb in winter and tomatillos in summer",
+			"Specifically, you imagined rhubarb pie in late winter and tomatillo salsa in summer",
 			"You dreamt of bringing these things to the dinner table and sharing them with your friends, your parents.",
 			"You half-joked with them that you could direct your mothering instincts towards plants",
 			"Seeing as you weren't going to have kids",
@@ -92,51 +80,67 @@
 		"slug": "kitchen",
 		"descriptions": [
 			"This is where you've spent almost all of your waking hours for some number of years",
-			"Preparing large, ornate meals for Zach and yourself.",
-			"He only eats at night"
+			"Preparing large meals of rare pork for Zach.",
+			"He only eats after midnight, one huge meal a day."
 		]
 	},
 	{
-		"slug": "covered_driveway",
+		"slug": "dining_room",
+		"descriptions": ["TODO"]
+	},
+	{
+		"slug": "hallway",
 		"descriptions": [
-			"Semi-translucent white plastic held up by four steel posts, about ten feet above the ground.",
-			"In the center sits your old car."
+			"There is nothing of note here save for the doors that lead away."
+		]
+	},
+	{
+		"slug": "your_bedroom",
+		"descriptions": [
+			"An inflatable twin sized mattress in the center of a small carpeted room.",
+			"A single synthetic grey comforter.",
+			"A dead prayer plant, starved of light and love.",
+			"A stand-alone clothes rack"
+		]
+	},
+	{
+		"slug": "garage",
+		"descriptions": [
+			"A dusty storage unit the real-estate agent aspirationally termed a garage.",
+			"into which you've managed to squeeze your car.",
+			"It is tightly surrounded by various sundries, including a stack of dusty floor tiles and a decrepit washer-dryer combo."
 		]
 	},
 	{
 		"slug": "master_bedroom",
 		"descriptions": [
 			"You scarcely breathe for fear of disturbing this dark room",
-			"Even though you know you're safe",
-			"Even though you know he's dead.",
-			"In addition to the heavy blackout curtains, there are two space heaters and ",
-			"Kept constantly hot with space heaters",
-			"Perhaps there's like an egg sac or something?",
-			"Something which obviously clues you in to the fact that he is not human."
+			"Even though you know Zach's not home.",
+			"This used to be the most beautiful room in the house,",
+			"with big south-facing windows vaulted over by a viney philodendron",
+			"But now, In addition to the heavy blackout curtains, there's a space heater and a humidifier.",
+			"It feels like the South at night."
 		]
 	},
 	{
 		"slug": "master_closet",
 		"descriptions": [
-			"in one corner are various pages and envelopes",
-			"In the center of the floor is a bottomless pit.",
-			"The rug around it has been peeled away, the floorboards pried and broken and laid to the side."
+			"The closet is empty and ",
+			"Stuffed messily into one corner are various pages and envelopes"
 		]
 	},
 	{
 		"slug": "master_bathroom",
 		"descriptions": [
-			"The smell is stronger than anything you've ever experienced.",
-			"This is not somewhere you want to be.",
-			"It is of the ocean and the swamp; agricultural runoff and algal blooms.",
-			"The stagnant marsh in the southwestern reaches of Puget Sound, or the Salton Sea.",
-			"Other than the smell, you are surprised by the bathroom's relative cleanliness, as though it isn't used much.",
-			"And the fact that the mirror has been smashed."
+			"Initially, you are surprised by the bathroom's relative cleanliness.",
+			"It's certainly not pristine, but there is no obvious grime, no signs of regular use.",
+			"But then the smell creeps up on you.",
+			"It is of the ocean and the tidal marsh; agricultural runoff and algal blooms.",
+			"The stagnant marsh in the southwestern reaches of Puget Sound, or the Salton Sea."
 		]
 	},
-
 	{
-		"slug": "hall_bathroom",
+		"slug": "your_bathroom",
 		"descriptions": [
 			"There is a mirror in front of you.",
 			"You look into it and you see yourself",
@@ -155,7 +159,7 @@
 			"He will ask you to massage his tremendous and cloven feet.",
 			"He will ask you to lance the cysts which erupt from his broad white shoulders.",
 			"Any other day you would accede, because he is your son and your love for him is without bound.",
-			"But today, you countenance your neglected countertop, ",
+			"But today, you countenance your neglected countertop,",
 			"cracked and panned makeup,",
 			"overflowing wastebasket,",
 			"and see with clear eyes the comfort you take in their familiarity.",

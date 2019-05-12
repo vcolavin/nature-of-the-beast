@@ -1,8 +1,14 @@
 [
 	{
-		"slug": "template",
-		"descriptions": [],
-		"locationSlug": "",
+		"slug": "refrigerator",
+		"descriptions": [
+			"You've opened this nameless white monolith",
+			"(discolored, like everything else in this house)",
+			"And are standing in its cold light.",
+			"The shelves are weighed down with cuts of pork.",
+			"And the door full of mason jars of the pig's blood."
+		],
+		"locationSlug": "kitchen",
 		"takeable": false
 	},
 	{
@@ -37,12 +43,21 @@
 		"locationSlug": "kitchen"
 	},
 	{
+		"slug": "king_sized_bed",
+		"descriptions": [
+			"A mattress brought low with decades of wear and a sick rainbow of stains",
+			"in an elegant dark frame."
+		],
+		"takeable": false,
+		"locationSlug": "master_bedroom"
+	},
+	{
 		"slug": "sliding_door",
 		"descriptions": [
 			"Through the unclean glass and torn screen door mesh, you see the overgrown backyard.",
 			"This door's latch has been welded shut."
 		],
-		"locationSlug": "kitchen",
+		"locationSlug": "dining_room",
 		"takeable": false
 	},
 	{
@@ -53,18 +68,32 @@
 			"frayed at the edge.",
 			"The floor beneath his usual seat is darkly stained, despite your diligent cleaning after every meal."
 		],
-		"locationSlug": "kitchen",
+		"locationSlug": "dining_room",
 		"takeable": false
 	},
 	{
 		"slug": "your_car",
 		"descriptions": [
-			"Your 2004 \"jazz blue\" Camry sags under the awning, mossy and tarnished and completely undrivable",
+			"Your 2004 \"jazz blue\" Camry sags, exhausted and tarnished and completely undrivable",
 			"Even if you knew where the keys were, you slashed the tires a while back.",
 			"It was Zach's idea, but you hardly needed convincing.",
 			"By that time you were his accomplice in the systematic dismantlement of your life"
 		],
-		"locationSlug": "covered_driveway",
+		"locationSlug": "garage",
+		"takeable": false
+	},
+	{
+		"slug": "washer_dryer",
+		"descriptions": [
+			"A small and ineffective machine.",
+			"You used to have a decent set of dedicated machines but your son sold them",
+			"It was one of the few times you can recall questioning a decision of his.",
+			"His response was to bolt an after-market coin operation assembly to the top.",
+			"And charge $1.76 per load",
+			"You haven't gotten the chance to do your laundry much since then.",
+			""
+		],
+		"locationSlug": "garage",
 		"takeable": false
 	},
 	{
@@ -100,15 +129,15 @@
 			"In the picture you are smiling abundantly and hugging"
 		],
 		"locationSlug": "foyer",
-		"takeable": false
+		"takeable": true
 	},
 	{
 		"slug": "smashed_picture",
 		"descriptions": [
 			"A picture frame with a spiderweb crack across the glass.",
-			"it's of you and Henrietta standing on top of the Astoria tower",
+			"it's you and Henrietta standing atop the Astoria tower",
 			"That beautiful bridge in the background",
-			"The sky blue and cloudless",
+			"And an endless blue sky.",
 			"You're smiling, as though it was the obvious thing to do.",
 			"You have full cheeks and dark curling hair"
 		],
@@ -118,7 +147,7 @@
 	{
 		"slug": "crumpled_letter",
 		"descriptions": [
-			"A handwritten letter in familiar handwriting:",
+			"A handwritten letter:",
 			"Marla,",
 			"This is like my fifth time trying to write this letter.",
 			"I want to make sure I am perfect with my words, because I want you to understand how serious this is, and I think you are having trouble understanding right now.",
@@ -157,7 +186,7 @@
 			"P.S., you deserve better.",
 			"I promise."
 		],
-		"locationSlug": "zachs_dresser",
+		"locationSlug": "master_closet",
 		"takeable": true
 	},
 	{
@@ -174,7 +203,7 @@
 		"slug": "worn_book",
 		"descriptions": [
 			"The Lord of the Rings",
-			"Your long-time favorite book, even though you've grown uncomfortable with its fantasy racism",
+			"Your favorite book since forever, even though you've grown uncomfortable with its fantasy racism",
 			"and tired of its unimaginative depiction of evil.",
 			"This is an ostentatious hardback edition with an embossed and gilded cover",
 			"It is dusty and tattered from what must be years of re-reading",
@@ -205,7 +234,7 @@
 		"descriptions": [
 			"You had no idea how to build garden beds, so you just kind of went for it.",
 			"All things considered, you didn't do a bad job",
-			"They are even still intact, though inundated with local flora.",
+			"They're still holding together, though inundated with local flora.",
 			"You catch yourself smiling as you recall a trip to the emergency room after smashing your foot with a redwood two-by-six.",
 			"It turned out not to be broken, but it still hurt like a motherfucker.",
 			"You were pretending to be brave in the passenger seat",
@@ -213,7 +242,7 @@
 			"distracting yourself by looking at your driver with mournful love",
 			"admiring her steely determination,",
 			"her defensive driving,",
-			"and her well-defined cheekbones.",
+			"and her good cheekbones.",
 			"What was her name?"
 		],
 		"locationSlug": "backyard",
@@ -235,7 +264,7 @@
 		"slug": "range",
 		"descriptions": [
 			"\"I feel like a frog in boiling water,\"",
-			"you had said,",
+			"you had said in a rare moment of lucidity,",
 			"It was a metaphor banal and grotesque",
 			"to which you clung like a buoy in a storm",
 			"\"it's like when I would visit my grandfather as a child,\"",
@@ -262,17 +291,17 @@
 	{
 		"slug": "shovel",
 		"descriptions": [
-			"You bought this mini shovel shortly after moving in",
+			"You bought this miniature shovel shortly after moving in",
 			"from the hardware store in town.",
-			"this was just before your desperation and sadness blossomed and bore its devastating fruit",
+			"this was just before your relationship with your son truly blossomed and bore its devastating fruit",
 			"like water damage worming through the family photo album.",
-			"The handle of this shovel is yellow fiberglass and maybe two feet long",
-			"And though it has spent years in damp neglect",
+			"The handle of this shovel is yellow fiberglass, maybe two feet long",
+			"And even though it's spent years in damp neglect",
 			"the galvanized scoop is not rusted.",
-			"You recall that the scoop is also sometimes called a blade",
+			"You recall that the scoop is also called a blade",
 			"and feel the weapon's comfortable heft in your hand"
 		],
 		"takeable": true,
-		"locationSlug": "trash_heap"
+		"locationSlug": "side_yard"
 	}
 ]

@@ -1,8 +1,23 @@
 [
 	{ "from": "a_quiet_forest", "to": "a_path", "oneWay": true },
-	{ "from": "in_front_of_the_house", "to": "a_path" },
+	{ "from": "a_quiet_forest", "to": "a_nook" },
+	{ "from": "in_front_of_the_house", "to": "a_path", "oneWay": true },
 	{ "from": "side_yard", "to": "in_front_of_the_house" },
 	{ "from": "side_yard", "to": "backyard" },
 	{ "from": "in_front_of_the_house", "to": "foyer" },
-	{ "from": "foyer", "to": "kitchen" }
+	{ "from": "in_front_of_the_house", "to": "garage" },
+	{ "from": "foyer", "to": "dining_room" },
+	{ "from": "kitchen", "to": "dining_room" },
+	{ "from": "hallway", "to": "dining_room" },
+	{ "from": "hallway", "to": "master_bedroom" },
+	{ "from": "master_bedroom", "to": "master_closet" },
+	{ "from": "master_bedroom", "to": "master_bathroom" },
+	{ "from": "hallway", "to": "your_bedroom" },
+	{ "from": "your_bedroom", "to": "your_bathroom" },
+	{ "from": "your_bathroom", "to": "down", "oneWay": true },
+	{ "from": "down", "to": "and_down", "oneWay": true },
+	{ "from": "and_down", "to": "and_down_and_down", "oneWay": true },
+	{ "from": "and_down_and_down", "to": "silence", "oneWay": true },
+	{ "from": "silence", "to": "coffee_shop", "oneWay": true },
+	{ "from": "coffee_shop", "to": "the_end", "oneWay": true }
 ]
