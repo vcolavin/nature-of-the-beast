@@ -1,6 +1,7 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
 import ItemManifest from '../nouns/ItemManifest';
 import LocationManifest from '../nouns/LocationManifest';
+import { RootState } from '../store';
 
 export default class Look extends BaseUtility {
 	protected _run({
@@ -8,16 +9,10 @@ export default class Look extends BaseUtility {
 		args,
 		state: { location }
 	}: PrivateRunParams): Promise<null> {
-		if (args.length > 0 && !(args[0] === 'at' && ItemManifest[args[1]])) {
-			return output({
-				content: `invalid ${this.command} argument ${args.join(' ')}.`
-			});
-		}
-
 		let descriptions: string[];
 
-		if (args[0] === 'at' && ItemManifest[args[1]]) {
-			descriptions = ItemManifest[args[1]].descriptions;
+		if (ItemManifest[args[0]]) {
+			descriptions = ItemManifest[args[0]].descriptions;
 		} else {
 			descriptions = LocationManifest[location].descriptions;
 		}
@@ -28,6 +23,11 @@ export default class Look extends BaseUtility {
 			Promise.resolve(null)
 		);
 	}
+
+	getTabCompleteOptions = ({ location }: RootState, args: string): string[] =>
+		LocationManifest[location].itemSlugs.filter(
+			(slug: string) => slug.indexOf(args) === 0
+		);
 
 	command = 'look';
 	aliases = ['l'];

@@ -19,7 +19,7 @@ export default class Help extends BaseUtility {
 			output({ content: description });
 		} else {
 			output({
-				content: `You can interact with the story by typing a verb, optionally followed by some details.\nFor example, type 'look' to observe where you are. Type 'look at thing' to take a closer look at that thing.\nThe following verbs are available: ${Object.keys(
+				content: `You can interact with the story by typing a verb, optionally followed by some details.\nFor example, type 'look' to observe where you are. Type 'look thing' to take a closer look at that thing.\nThe following verbs are available: ${Object.keys(
 					UtilityManifest
 				).join(
 					', '

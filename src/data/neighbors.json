@@ -1,7 +1,7 @@
 [
 	{ "from": "a_quiet_forest", "to": "a_path", "oneWay": true },
 	{ "from": "a_quiet_forest", "to": "a_nook" },
-	{ "from": "in_front_of_the_house", "to": "a_path", "oneWay": true },
+	{ "from": "a_path", "to": "in_front_of_the_house", "oneWay": true },
 	{ "from": "side_yard", "to": "in_front_of_the_house" },
 	{ "from": "side_yard", "to": "backyard" },
 	{ "from": "in_front_of_the_house", "to": "foyer" },
