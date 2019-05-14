@@ -5,6 +5,7 @@ const voices = speechSynthesis
 	.filter(({ lang }) => lang.indexOf('en') >= 0);
 
 // TODO: these voices only exist on Firefox.
+// TODO: the voices may not be loaded yet
 const moira = voices.filter(voice => voice.name === 'Moira')[0] || voices[0];
 const victoria =
 	voices.filter(voice => voice.name === 'Victoria')[0] || voices[0];
@@ -17,7 +18,7 @@ export default function say(text: string): Promise<null> {
 	const utterance = new SpeechSynthesisUtterance(text);
 
 	utterance.pitch = 0.8;
-	utterance.rate = 0.9;
+	// utterance.rate = 0.9;
 
 	utterance.voice = victoria;
 

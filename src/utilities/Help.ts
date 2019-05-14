@@ -1,16 +1,17 @@
 import BaseUtility, { PrivateRunParams } from './BaseUtility';
-import { UtilityManifest } from './UtilityManifest';
+import { UtilityManifest, ExtendedUtilityManifest } from './UtilityManifest';
 
 export default class Help extends BaseUtility {
 	protected _run({ output, args }: PrivateRunParams): Promise<null> {
 		if (args.length >= 1) {
-			const util = UtilityManifest[args[0]];
+			const util = ExtendedUtilityManifest[args[0]];
 			const description = util
 				? `${util.helpDescription}${
 						util.aliases.length > 0
-							? `\nAliases for this command are: ${util.aliases.join(
-									', '
-							  )}.`
+							? `\nAliases for this command are: ${[
+									util.command,
+									...util.aliases
+							  ].join(', ')}.`
 							: ''
 				  }`
 				: `I don't know about ${args.join(' ')}.`;
