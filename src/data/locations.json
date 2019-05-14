@@ -80,27 +80,42 @@
 		"slug": "kitchen",
 		"descriptions": [
 			"This is where you've spent almost all of your waking hours for some number of years",
-			"Preparing large meals of rare pork for Zach.",
-			"He only eats after midnight, one huge meal a day."
+			"Preparing large meals of rare pork for Zach."
 		]
 	},
 	{
 		"slug": "dining_room",
-		"descriptions": ["TODO"]
+		"descriptions": [
+			"It's something like a combined dining room and living room, with a wide opening towards the kitchen.",
+			"This is the natural heart of the house, where guests could feel warm and cared for",
+			"Where you imagined directing the layout of diverse potluck dishes",
+			"Appropriately labelling the vegan and gluten-free options.",
+			"Checking in with the girl who has the nut allergy,",
+			"Asking if nutmeg is okay, even though you know it is,",
+			"just to let her know that you care.",
+			"An electric frisson flows through you as you fantasize the banal performance of love for friends",
+			"",
+			"",
+			"",
+			"It is cold now in the dining room."
+		]
 	},
 	{
 		"slug": "hallway",
 		"descriptions": [
-			"There is nothing of note here save for the doors that lead away."
+			"When the bedroom doors are closed, the hallway gets dark,",
+			"even on a bright day.",
+			"Today is not a bright day."
 		]
 	},
 	{
 		"slug": "your_bedroom",
 		"descriptions": [
-			"An inflatable twin sized mattress in the center of a small carpeted room.",
+			"A small grey-carpeted room with a north-facing window behind dull linen curtains.",
+			"An inflatable twin sized mattress in the center, which you fill every night using a foot-pump.",
 			"A single synthetic grey comforter.",
-			"A dead prayer plant, starved of light and love.",
-			"A stand-alone clothes rack"
+			"An etiolated succulent.",
+			"A stand-alone clothing rack."
 		]
 	},
 	{
@@ -143,12 +158,11 @@
 		"slug": "your_bathroom",
 		"descriptions": [
 			"There is a mirror in front of you.",
-			"You look into it and you see yourself",
-			"Your hair is thin, your cheeks hollow,",
-			"your spirit wretched and exhausted.",
-			"It's been a decade.",
+			"In a moment of clarity, you see yourself:",
+			"Your face thin and hollow.",
+			"Your spirit visibly exhausted.",
+			"It's been a wretched decade.",
 			"Ten years of hell.",
-			"Ten stolen years.",
 			"From across the house you hear the front door lurch open and slam shut.",
 			"Zach is home.",
 			"He undoubtedly brought with him a sow",

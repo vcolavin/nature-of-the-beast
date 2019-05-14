@@ -55,7 +55,7 @@
 		"slug": "sliding_door",
 		"descriptions": [
 			"Through the unclean glass and torn screen door mesh, you see the overgrown backyard.",
-			"This door's latch has been welded shut."
+			"The door's latch has been welded shut."
 		],
 		"locationSlug": "dining_room",
 		"takeable": false
@@ -66,7 +66,7 @@
 			"A circular wooden table, four or five feet across.",
 			"The place where Zach sits is worn straight through the veneer",
 			"frayed at the edge.",
-			"The floor beneath his usual seat is darkly stained, despite your diligent cleaning after every meal."
+			"The floor beneath his usual seat is darkly stained, despite your diligent cleaning."
 		],
 		"locationSlug": "dining_room",
 		"takeable": false
@@ -83,6 +83,26 @@
 		"takeable": false
 	},
 	{
+		"slug": "foot_pump",
+		"descriptions": [
+			"A black plastic pad with yellow accordion bellows",
+			"Attachable via a corrugated black plastic tube to your inflatable mattress."
+		],
+		"locationSlug": "your_bedroom",
+		"takeable": true
+	},
+	{
+		"slug": "clothing_rack",
+		"descriptions": [
+			"A dark bronze spindly and arabesque contruction you picked up from a street corner in San Francisco's Inner Sunset district.",
+			"\"It's amazing what these rich assholes throw away\"",
+			"You thought to yourself at the time"
+		],
+		"locationSlug": "your_bedroom",
+		"takeable": false
+	},
+
+	{
 		"slug": "washer_dryer",
 		"descriptions": [
 			"A small and ineffective machine.",
@@ -90,8 +110,7 @@
 			"It was one of the few times you can recall questioning a decision of his.",
 			"His response was to bolt an after-market coin operation assembly to the top.",
 			"And charge $1.76 per load",
-			"You haven't gotten the chance to do your laundry much since then.",
-			""
+			"You haven't done much laundry since then."
 		],
 		"locationSlug": "garage",
 		"takeable": false
