@@ -21,42 +21,42 @@
 	{
 		"slug": "a_path",
 		"descriptions": [
-			"You walk for a long while. Maybe a mile",
-			"The ground softens as you walk downhill toward the house",
-			"and the air is becomes large with mildew and rot",
+			"You walk for a long while. Maybe a mile.",
+			"The path turns to mud as you approach the house",
+			"and the air becomes large with mildew and rot",
 			"An odor which causes your heart to quicken, and your palms to sweat.",
-			"You remind yourself that it is daylight, and for now at least, you are safe",
+			"You remind yourself that it is daylight, and that at least for now, you are safe",
 			"and you walk."
 		]
 	},
 	{
 		"slug": "in_front_of_the_house",
 		"descriptions": [
-			"You're standing in front of your house",
+			"You are standing in front of your house",
 			"a single story of rotting stucco.",
-			"The forest is in the process of reclaiming its territory",
-			"You knew white walls were always going to be a problem,",
+			"The forest is in the process of reclaiming its territory.",
+			"You knew white walls would be a problem,",
 			"but one summer, Zach demanded that you whitewash the outside of the house",
 			"and there was no futher discussion.",
-			"Now, a visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaks.",
-			"And that contempt is aimed at yourself."
+			"A visceral sensation of contempt floods your mouth as you look towards the mossy grey and black streaks.",
+			"A sensation aimed at yourself."
 		]
 	},
 	{
 		"slug": "side_yard",
 		"descriptions": [
-			"Zach has used the side yard to hoard his empties ever since you explained to him that they could be redeemed for cash",
+			"Zach has used the side yard to hoard his empties ever since he learned that they could be redeemed for cash",
 			"You start to do a rough calculation:",
-			"Two sixers a day, six days a week",
+			"Two six packs a day, six days a week",
 			"That's thirty-seven hundred a year",
-			"But you have no idea how many years."
+			"But you have lost count of the years."
 		]
 	},
 	{
 		"slug": "backyard",
 		"descriptions": [
 			"You tried to garden here once",
-			"Specifically, you imagined rhubarb pie in late winter and tomatillo salsa in summer",
+			"You dreamt of rhubarb pie in late winter and tomatillo salsa in summer",
 			"You dreamt of bringing these things to the dinner table and sharing them with your friends, your parents.",
 			"You half-joked with them that you could direct your mothering instincts towards plants",
 			"Seeing as you weren't going to have kids",
@@ -80,7 +80,7 @@
 		"slug": "kitchen",
 		"descriptions": [
 			"This is where you've spent almost all of your waking hours for some number of years",
-			"Preparing large meals of rare pork for Zach."
+			"Preparing large meals of pork for Zach."
 		]
 	},
 	{
@@ -90,9 +90,9 @@
 			"This is the natural heart of the house, where guests could feel warm and cared for",
 			"Where you imagined directing the layout of diverse potluck dishes",
 			"Appropriately labelling the vegan and gluten-free options.",
-			"Checking in with the girl who has the nut allergy,",
+			"Checking in with your friend who has the nut allergy,",
 			"Asking if nutmeg is okay, even though you know it is,",
-			"just to let her know that you care.",
+			"just to let her know that you care, to help her feel safe.",
 			"An electric frisson flows through you as you fantasize the banal performance of love for friends",
 			"",
 			"",
@@ -105,13 +105,13 @@
 		"descriptions": [
 			"When the bedroom doors are closed, the hallway gets dark,",
 			"even on a bright day.",
-			"Today is not a bright day."
+			"And today is not a bright day."
 		]
 	},
 	{
 		"slug": "your_bedroom",
 		"descriptions": [
-			"A small grey-carpeted room with a north-facing window behind dull linen curtains.",
+			"A small grey-carpeted room with a north-facing window behind dull cotton curtains.",
 			"An inflatable twin sized mattress in the center, which you fill every night using a foot-pump.",
 			"A single synthetic grey comforter.",
 			"An etiolated succulent.",

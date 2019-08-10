@@ -1,17 +1,28 @@
 import React from 'react';
 import Terminal from './Terminal';
 import { initializeLocations } from '../nouns/LocationManifest';
-import { initializeUtilities } from '../utilities/UtilityManifest';
-import store, { ActionTypes } from '../store';
+import {
+	initializeUtilities,
+	UtilityManifest
+} from '../utilities/UtilityManifest';
+import store, { ActionTypes, RootState, DispatchProps } from '../store';
 import { initializeItems } from '../nouns/ItemManifest';
 import { setUrlLocation } from '../utilities/Cd';
-import OutputController from '../utils/OutputController';
+import { connect } from 'react-redux';
 
 const INITIAL_LOCATION_SLUG = 'a_quiet_forest';
 
-export default class App extends React.Component<{}, {}> {
-	constructor(props: {}) {
+interface StoreProps {
+	state: RootState;
+}
+
+interface Props extends DispatchProps, StoreProps {}
+
+class App extends React.Component<Props, {}> {
+	constructor(props: Props) {
 		super(props);
+
+		const { dispatch, state } = props;
 
 		initializeLocations();
 		initializeUtilities();
@@ -24,13 +35,18 @@ export default class App extends React.Component<{}, {}> {
 			value: INITIAL_LOCATION_SLUG
 		});
 
-		OutputController.output(store.dispatch, {
-			content:
-				'The Nature of the Beast:\nA work of interactive fiction by Vincent Colavin.\n\nContent warning: This story depicts an emotionally abusive parent-child relationship.\n\nDescriptions are spoken out loud by your browser by default. Type "mute" to toggle the audio.\n\nPress escape to stop a description.\nType "help" for additional instructions.'
-		});
+		const helpUtility = UtilityManifest['help'];
+
+		helpUtility.run({ args: [], dispatch, state });
 	}
 
 	render() {
 		return <Terminal />;
 	}
 }
+
+const mapStateToProps = (state: RootState): StoreProps => ({
+	state
+});
+
+export default connect(mapStateToProps)(App);

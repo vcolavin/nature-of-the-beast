@@ -13,11 +13,12 @@ export interface HistoryItem {
 	id: string;
 }
 
-type StoreProps = Pick<RootState, 'consoleInteractive' | 'location'> & {
+interface StoreProps
+	extends Pick<RootState, 'consoleInteractive' | 'location'> {
 	_state: RootState;
-};
+}
 
-type Props = StoreProps & DispatchProps;
+interface Props extends StoreProps, DispatchProps {}
 
 export function inputPrompt(location: string): string {
 	return `~/${location} > `;

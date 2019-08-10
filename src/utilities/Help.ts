@@ -19,11 +19,7 @@ export default class Help extends BaseUtility {
 			output({ content: description });
 		} else {
 			output({
-				content: `You can interact with the story by typing a verb, optionally followed by some details.\nFor example, type 'look' to observe where you are. Type 'look thing' to take a closer look at that thing.\nThe following verbs are available: ${Object.keys(
-					UtilityManifest
-				).join(
-					', '
-				)}.\n\nTo get more details for a verb, type e.g., "help look". This will also show you available aliases for that verb.\n\nTo stop a dialogue, press the escape key.`
+				content: this.helpMessage
 			});
 		}
 
@@ -32,4 +28,25 @@ export default class Help extends BaseUtility {
 
 	command = 'help';
 	helpDescription = 'Use help to make sense of the world.';
+
+	helpMessage = `\
+The Nature of the Beast
+A work of interactive fiction by Vincent Colavin.
+
+Content warning: This story depicts an emotionally abusive parent-child relationship. Descriptions are spoken out loud by your browser by default. Type "mute" to toggle the audio.
+
+Here are some basic commands:
+- List nearby places and objects by typing "list". Places are green, and items are blue.
+- Observe your current location by typing "look".
+- Examine an object by typing "look at <object>".
+- Travel to a location by typing "go <location>".
+- Attempt to pick up an object by typing "pickup <object>".
+- To view this message at any time, type "help".
+
+The complete list of available commands is: ${Object.keys(UtilityManifest).join(
+		', '
+	)}.
+
+To get more details for a command, type "help <command>".
+`;
 }
