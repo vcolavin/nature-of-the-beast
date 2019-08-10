@@ -11,8 +11,11 @@ export default class Look extends BaseUtility {
 	}: PrivateRunParams): Promise<null> {
 		let descriptions: string[];
 
-		if (ItemManifest[args[0]]) {
-			descriptions = ItemManifest[args[0]].descriptions;
+		const subject =
+			args[0] === 'at' ? ItemManifest[args[1]] : ItemManifest[args[0]];
+
+		if (subject) {
+			descriptions = subject.descriptions;
 		} else {
 			descriptions = LocationManifest[location].descriptions;
 		}

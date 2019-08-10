@@ -9,24 +9,22 @@ interface Props {
 	places: string[];
 }
 
-function LsComponent(props: Props) {
-	return (
-		<span>
-			{props.places.map(place => (
-				<span key={place} className="place">
-					{place}
-					{TAB_WIDTH}
-				</span>
-			))}
-			{props.items.map(item => (
-				<span key={item} className="item">
-					{item}
-					{TAB_WIDTH}
-				</span>
-			))}
-		</span>
-	);
-}
+const LsComponent = (props: Props) => (
+	<span>
+		{props.places.map(place => (
+			<span key={place} className="place">
+				{place}
+				{TAB_WIDTH}
+			</span>
+		))}
+		{props.items.map(item => (
+			<span key={item} className="item">
+				{item}
+				{TAB_WIDTH}
+			</span>
+		))}
+	</span>
+);
 
 export default class Ls extends BaseUtility {
 	protected _run({
