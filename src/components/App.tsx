@@ -26,7 +26,7 @@ export default class App extends React.Component<{}, {}> {
 
 		OutputController.output(store.dispatch, {
 			content:
-				'The Nature of the Beast:\nA work of interactive fiction by Vincent Colavin.\n\nContent warning: This story depicts an emotionally abusive parent-child relationship.\n\nDescriptions out loud by default. Type "quiet" to disable the audio.\n\nPress escape to stop a description.\nType "help" for additional instructions.'
+				'The Nature of the Beast:\nA work of interactive fiction by Vincent Colavin.\n\nContent warning: This story depicts an emotionally abusive parent-child relationship.\n\nDescriptions are spoken out loud by your browser by default. Type "mute" to toggle the audio.\n\nPress escape to stop a description.\nType "help" for additional instructions.'
 		});
 	}
 
