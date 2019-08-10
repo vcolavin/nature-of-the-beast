@@ -17,9 +17,8 @@ export default class Cd extends BaseUtility {
 
 		const locationChain = args[0].split('/').filter(l => l);
 
+		const finalLocation = locationChain[locationChain.length - 1];
 		if (this.locationChainValid(locationChain)) {
-			const finalLocation = locationChain[locationChain.length - 1];
-
 			dispatch({
 				type: ActionTypes.SET_LOCATION,
 				value: finalLocation
@@ -29,7 +28,7 @@ export default class Cd extends BaseUtility {
 				location: finalLocation
 			});
 		} else {
-			output({ content: 'invalid location' });
+			output({ content: `${finalLocation} is not a valid location` });
 		}
 
 		return nullPromise;

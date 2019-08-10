@@ -50,7 +50,7 @@ class Terminal extends React.Component<Props, {}> {
 	private runCommand = (value: string) => {
 		const { dispatch, _state, location } = this.props;
 
-		const [utilityName, ...args] = value.split(' ');
+		const [utilityName, ...args] = value.trim().split(' ');
 		const utility = ExtendedUtilityManifest[utilityName];
 
 		OutputController.output(dispatch, {
