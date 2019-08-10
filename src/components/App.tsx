@@ -31,10 +31,6 @@ export default class App extends React.Component<{}, {}> {
 	}
 
 	render() {
-		return (
-			<div className="main">
-				<Terminal />
-			</div>
-		);
+		return <Terminal />;
 	}
 }
