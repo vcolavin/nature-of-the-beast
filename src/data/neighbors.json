@@ -13,7 +13,7 @@
 	{ "from": "master_bedroom", "to": "master_closet" },
 	{ "from": "master_bedroom", "to": "master_bathroom" },
 	{ "from": "hallway", "to": "your_bedroom" },
-	{ "from": "your_bedroom", "to": "your_bathroom" },
+	{ "from": "your_bedroom", "to": "your_bathroom", "oneWay": true },
 	{ "from": "your_bathroom", "to": "down", "oneWay": true },
 	{ "from": "down", "to": "and_down", "oneWay": true },
 	{ "from": "and_down", "to": "and_down_and_down", "oneWay": true },
