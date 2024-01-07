@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/nature-of-the-beast/static/css/main.fd524609.css",
-    "main.js": "/nature-of-the-beast/static/js/main.55cefb4f.js",
+    "main.js": "/nature-of-the-beast/static/js/main.f390a355.js",
     "index.html": "/nature-of-the-beast/index.html",
     "main.fd524609.css.map": "/nature-of-the-beast/static/css/main.fd524609.css.map",
-    "main.55cefb4f.js.map": "/nature-of-the-beast/static/js/main.55cefb4f.js.map"
+    "main.f390a355.js.map": "/nature-of-the-beast/static/js/main.f390a355.js.map"
   },
   "entrypoints": [
     "static/css/main.fd524609.css",
-    "static/js/main.55cefb4f.js"
+    "static/js/main.f390a355.js"
   ]
 }
