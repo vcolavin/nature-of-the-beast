@@ -46,6 +46,10 @@ class TerminalInput extends React.Component<Props, State> {
 		this.inputEl.current && this.inputEl.current.focus();
 	};
 
+	componentDidUpdate() {
+		this.focusInput();
+	}
+
 	componentDidMount() {
 		window.addEventListener('click', this.focusInput);
 	}
