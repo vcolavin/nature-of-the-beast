@@ -1,13 +1,13 @@
 {
-  "main.css": "/nature-of-the-beast/static/css/main.611e840d.chunk.css",
-  "main.js": "/nature-of-the-beast/static/js/main.aec981d2.chunk.js",
-  "main.js.map": "/nature-of-the-beast/static/js/main.aec981d2.chunk.js.map",
-  "static/js/1.b0606366.chunk.js": "/nature-of-the-beast/static/js/1.b0606366.chunk.js",
-  "static/js/1.b0606366.chunk.js.map": "/nature-of-the-beast/static/js/1.b0606366.chunk.js.map",
-  "runtime~main.js": "/nature-of-the-beast/static/js/runtime~main.1a6b0e33.js",
-  "runtime~main.js.map": "/nature-of-the-beast/static/js/runtime~main.1a6b0e33.js.map",
-  "static/css/main.611e840d.chunk.css.map": "/nature-of-the-beast/static/css/main.611e840d.chunk.css.map",
-  "index.html": "/nature-of-the-beast/index.html",
-  "precache-manifest.5867274fdbc226b13544275272b40d19.js": "/nature-of-the-beast/precache-manifest.5867274fdbc226b13544275272b40d19.js",
-  "service-worker.js": "/nature-of-the-beast/service-worker.js"
+  "files": {
+    "main.css": "/nature-of-the-beast/static/css/main.fd524609.css",
+    "main.js": "/nature-of-the-beast/static/js/main.55cefb4f.js",
+    "index.html": "/nature-of-the-beast/index.html",
+    "main.fd524609.css.map": "/nature-of-the-beast/static/css/main.fd524609.css.map",
+    "main.55cefb4f.js.map": "/nature-of-the-beast/static/js/main.55cefb4f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fd524609.css",
+    "static/js/main.55cefb4f.js"
+  ]
 }
