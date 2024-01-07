@@ -2,7 +2,7 @@ import BaseUtility, { PrivateRunParams } from './BaseUtility';
 
 export default class Echo extends BaseUtility {
 	protected _run({ args, output }: PrivateRunParams): Promise<null> {
-		output({ content: args.join(' ') });
+		output({ content: args.join(' '), speak: true });
 		return Promise.resolve(null);
 	}
 
