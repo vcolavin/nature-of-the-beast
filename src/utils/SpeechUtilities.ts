@@ -15,7 +15,11 @@ export default function say(text: string): Promise<null> {
 		return Promise.resolve(null);
 	}
 
-	const utterance = new SpeechSynthesisUtterance(text);
+	// something changed in the browser speech API
+	// and now it doesn't call onend after "uttering" an empty string
+	// a string with a space works though
+	const normalizedText = text === "" ? " " : text;
+	const utterance = new SpeechSynthesisUtterance(normalizedText);
 
 	utterance.pitch = 0.8;
 	// utterance.rate = 0.9;
